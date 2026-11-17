@@ -283,11 +283,11 @@ aside a:focus-visible,aside button:focus-visible{outline-color:#fff;outline-offs
 <div class="flex-1 flex flex-col h-screen overflow-y-auto">
 <header class="keep-h1 h-16 px-8 bg-white border-b border-line flex items-center justify-between flex-shrink-0 sticky top-0 z-20">
 <div class="min-w-0"><div class="flex items-center gap-1 text-xs text-muted font-semibold"><a href="../10-admin-quan-ly-su-kien/code.html" class="hover:text-secondary">Quản lý sự kiện</a><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-ink">Chỉnh sửa</span></div>
-<div class="flex items-center gap-3"><h1 class="text-xl font-bold text-primary truncate max-w-[520px]">Deep Dive LLM &amp; AWS Bedrock</h1><span class="badge badge-green">Đang mở đăng ký</span></div></div>
+<div class="flex items-center gap-3"><h1 class="text-xl font-bold text-primary truncate max-w-[520px]">Deep Dive LLM &amp; AWS Bedrock</h1><span class="badge badge-green">Đang diễn ra</span><span class="badge badge-amber" id="dirtyH" hidden>Chưa lưu</span></div></div>
 <div class="flex items-center gap-3 flex-shrink-0">
-<button class="btn btn-ghost" type="button"><span class="material-symbols-outlined">open_in_new</span>Xem trang</button>
-<button class="btn btn-ghost" type="button"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
-<button class="btn btn-primary" type="button"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
+<a class="btn btn-ghost" href="../02-chi-tiet-su-kien/code.html"><span class="material-symbols-outlined">open_in_new</span>Xem trang</a>
+<button class="btn btn-ghost" type="button" data-act="draft"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
+<button class="btn btn-primary" type="button" data-act="pub"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
 </div></header>
 <style>
 .seg{display:inline-flex;padding:3px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;gap:2px}
@@ -324,6 +324,7 @@ aside a:focus-visible,aside button:focus-visible{outline-color:#fff;outline-offs
 section[id^=s-]{scroll-margin-top:140px}
 .row-edit .input{padding:9px 8px!important}
 .ck-ok{color:#0f6b3a}.ck-no{color:#cbd5e1}
+@media (max-width:1023px){.subnav{top:56px!important}aside-col{position:static!important}}
 @media (max-width:767px){
  .subnav{top:56px!important;margin-left:-16px!important;margin-right:-16px!important;padding-left:16px!important;padding-right:16px!important}
  aside-col{position:static!important}
@@ -356,7 +357,7 @@ section[id^=s-]{scroll-margin-top:140px}
 <span id="dirty" class="badge badge-amber hidden flex-shrink-0">Chưa lưu</span>
 </div>
 
-<div class="grid grid-cols-[minmax(0,1fr)_320px] gap-5 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-5 items-start">
 <!-- LEFT -->
 <div class="space-y-5" id="form">
 
@@ -368,7 +369,7 @@ section[id^=s-]{scroll-margin-top:140px}
 <label class="lbl">Ảnh bìa (banner)</label>
 <div id="cover" class="cover-prev rounded-xl h-[180px] flex items-end overflow-hidden">
 <div class="relative z-[1] p-4 text-white w-full flex items-end justify-between">
-<div><span class="badge" style="background:rgba(255,255,255,.18)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important">Talk &amp; Lab</span><div class="text-xl font-extrabold mt-2 leading-tight">Deep Dive LLM &amp; AWS Bedrock</div><div class="text-sm text-[#d5e6f8] mt-1">18/11/26 · Enouvo Space Đà Nẵng</div></div>
+<div><span class="badge" id="cvType" style="background:rgba(255,255,255,.18)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important">Talk &amp; Lab</span><div class="text-xl font-extrabold mt-2 leading-tight" id="cvName">Deep Dive LLM &amp; AWS Bedrock</div><div class="text-sm text-[#d5e6f8] mt-1" id="cvMeta">18/11/26 · Enouvo Space, Đà Nẵng</div></div>
 <span id="coverName" class="hidden sm:inline text-xs bg-black/30 rounded-full px-3 py-1 font-semibold whitespace-nowrap">cover-default.jpg · 1600x900</span>
 </div></div>
 <div id="drop" class="drop mt-3 p-3 flex items-center gap-3">
@@ -405,14 +406,14 @@ section[id^=s-]{scroll-margin-top:140px}
 <!-- 2 THÔNG TIN -->
 <section id="s-thongtin" class="card p-5 space-y-4">
 <div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">info</span></span>Thông tin chung</div>
-<div><label class="lbl" for="name">Tên sự kiện</label><input id="name" class="input" value="Deep Dive LLM &amp; AWS Bedrock"></div>
+<div><label class="lbl" for="name">Tên sự kiện <span class="text-[#be123c]">*</span></label><input id="name" class="input" maxlength="100" value="Deep Dive LLM &amp; AWS Bedrock"><div class="hint flex justify-between gap-3"><span id="nameH">Hiển thị ở danh sách, vé và tin nhắn Facebook.</span><span id="nameCnt">0/100</span></div></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div><label class="lbl">Slug (đường dẫn)</label><div class="flex"><span class="inline-flex items-center px-3 text-xs text-muted bg-[#f1f5f9] border border-r-0 border-[#e2e8f0] rounded-l-xl whitespace-nowrap">fcaj.vn/su-kien/</span><input id="slug" class="input !rounded-l-none" style="border-radius:0 12px 12px 0!important" value="deep-dive-llm-aws-bedrock"></div></div>
-<div><label class="lbl">Loại sự kiện</label><select class="input"><option>Meetup</option><option selected>Workshop</option><option>Lab</option><option>Conference</option><option>Talk</option></select></div>
+<div><label class="lbl" for="slug">Slug (đường dẫn) <span class="text-[#be123c]">*</span></label><div class="flex"><span class="inline-flex items-center px-3 text-xs text-muted bg-[#f1f5f9] border border-r-0 border-[#e2e8f0] rounded-l-xl whitespace-nowrap">fcaj.vn/su-kien/</span><input id="slug" class="input !rounded-l-none" style="border-radius:0 12px 12px 0!important" value="deep-dive-llm-aws-bedrock"></div><div class="hint" id="slugH">Chỉ gồm chữ thường, số và dấu gạch ngang.</div></div>
+<div><label class="lbl" for="typeSel">Loại sự kiện</label><select id="typeSel" class="input"><option>Meetup</option><option>Workshop</option><option>Lab</option><option>Conference</option><option>Talk</option><option selected>Talk &amp; Lab</option></select><div class="hint">Hiển thị dạng nhãn trên thẻ sự kiện.</div></div>
 </div>
-<div><label class="lbl">Mô tả ngắn</label><textarea id="short" class="input" rows="2" maxlength="160">Khám phá cách xây dựng ứng dụng GenAI sản xuất với Amazon Bedrock qua phần talk và lab thực hành.</textarea><div class="hint flex justify-between"><span>Hiển thị trên thẻ sự kiện.</span><span id="shortCnt">95/160</span></div></div>
+<div><label class="lbl" for="short">Mô tả ngắn <span class="text-[#be123c]">*</span></label><textarea id="short" class="input" rows="2" maxlength="160">Khám phá cách xây dựng ứng dụng GenAI sản xuất với Amazon Bedrock qua phần talk và lab thực hành.</textarea><div class="hint flex justify-between"><span>Hiển thị trên thẻ sự kiện.</span><span id="shortCnt">95/160</span></div></div>
 <div>
-<label class="lbl">Mô tả chi tiết</label>
+<label class="lbl" id="lblRte">Mô tả chi tiết</label><div class="hint !mt-0 mb-1.5">Giới thiệu nội dung, đối tượng và những gì khách cần chuẩn bị.</div>
 <div class="rte-bar">
 <button type="button" data-cmd="bold" title="In đậm"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
 <button type="button" data-cmd="italic" title="In nghiêng"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
@@ -422,9 +423,9 @@ section[id^=s-]{scroll-margin-top:140px}
 <div class="rte" contenteditable="true" id="rte"><p>Buổi chia sẻ dành cho kỹ sư và sinh viên muốn đưa mô hình ngôn ngữ lớn vào sản phẩm thật. Chúng ta sẽ đi từ kiến trúc tổng quan đến demo trực tiếp trên <b>Amazon Bedrock</b>.</p><ul><li>Chọn foundation model phù hợp với bài toán</li><li>Xây dựng RAG với Knowledge Bases</li><li>Guardrails, chi phí và quan sát hệ thống</li></ul><p>Vui lòng mang theo laptop và tài khoản AWS để làm lab.</p></div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_170px] gap-4">
-<div><label class="lbl">Thẻ (tags)</label>
-<div class="input !flex flex-wrap items-center gap-2" id="tagBox" style="min-height:40px;padding:6px 10px!important;height:auto"><input id="tagIn" class="!bg-transparent !border-0 !shadow-none !outline-none text-sm flex-1 min-w-[60px]" placeholder="Thêm thẻ..."></div></div>
-<div><label class="lbl">Ngôn ngữ</label><select class="input"><option selected>Tiếng Việt</option><option>English</option><option>Song ngữ Việt - Anh</option></select></div>
+<div><label class="lbl" for="tagIn">Thẻ (tags)</label>
+<div class="input !flex flex-wrap items-center gap-2" id="tagBox" style="min-height:40px;padding:6px 10px!important;height:auto"><input id="tagIn" class="!bg-transparent !border-0 !shadow-none !outline-none text-sm flex-1 min-w-[60px]" placeholder="Thêm thẻ..."></div><div class="hint">Nhấn Enter để thêm, tối đa 8 thẻ.</div></div>
+<div><label class="lbl" for="lang">Ngôn ngữ</label><select id="lang" class="input"><option selected>Tiếng Việt</option><option>English</option><option>Song ngữ Việt - Anh</option></select></div>
 </div>
 </section>
 
@@ -432,45 +433,45 @@ section[id^=s-]{scroll-margin-top:140px}
 <section id="s-thoigian" class="card p-5 space-y-4">
 <div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">schedule</span></span>Thời gian &amp; địa điểm</div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 keep-cols">
-<div><label class="lbl">Ngày bắt đầu</label><input class="input" type="date" value="2026-11-18"></div>
-<div><label class="lbl">Giờ bắt đầu</label><input class="input" type="time" value="14:00"></div>
-<div><label class="lbl">Ngày kết thúc</label><input class="input" type="date" value="2026-11-18"></div>
-<div><label class="lbl">Giờ kết thúc</label><input class="input" type="time" value="17:30"></div>
-</div>
+<div><label class="lbl" for="dStart">Ngày bắt đầu <span class="text-[#be123c]">*</span></label><input id="dStart" class="input" type="date" value="2026-11-18"></div>
+<div><label class="lbl" for="tStart">Giờ bắt đầu <span class="text-[#be123c]">*</span></label><input id="tStart" class="input" type="time" value="08:30"></div>
+<div><label class="lbl" for="dEnd">Ngày kết thúc <span class="text-[#be123c]">*</span></label><input id="dEnd" class="input" type="date" value="2026-11-18"></div>
+<div><label class="lbl" for="tEnd">Giờ kết thúc <span class="text-[#be123c]">*</span></label><input id="tEnd" class="input" type="time" value="12:00"></div>
+<div class="hint !-mt-2 col-span-full" id="timeH">Kết thúc phải sau thời điểm bắt đầu.</div></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div><label class="lbl">Hạn đăng ký</label><input class="input" type="datetime-local" value="2026-11-17T23:59"></div>
-<div><label class="lbl">Múi giờ</label><select class="input"><option>(GMT+7) Hà Nội, Đà Nẵng</option></select></div>
+<div><label class="lbl" for="deadline">Hạn đăng ký</label><input id="deadline" class="input" type="datetime-local" value="2026-11-17T23:59"><div class="hint">Đã qua hạn: khách mới không thể đăng ký, khách đã có vé vẫn check-in được.</div></div>
+<div><label class="lbl" for="tz">Múi giờ</label><select class="input"><option>(GMT+7) Hà Nội, Đà Nẵng</option></select><div class="hint">Dùng cho giờ hiển thị trên vé.</div></div>
 </div>
 <div><label class="lbl">Hình thức</label><div class="seg" data-seg><button type="button" class="on">Trực tiếp</button><button type="button">Online</button><button type="button">Hybrid</button></div></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div><label class="lbl">Tên địa điểm</label><input class="input" value="Enouvo Space Đà Nẵng"></div>
-<div><label class="lbl">Link bản đồ</label><div class="relative"><span class="material-symbols-outlined text-[18px] text-muted absolute left-3 top-1/2 -translate-y-1/2">map</span><input class="input" style="padding-left:40px!important" value="https://maps.app.goo.gl/enouvo-danang"></div></div>
+<div><label class="lbl" for="venue">Tên địa điểm <span class="text-[#be123c]">*</span></label><input id="venue" class="input" value="Enouvo Space, Đà Nẵng"></div>
+<div><label class="lbl" for="map">Link bản đồ</label><div class="relative"><span class="material-symbols-outlined text-[18px] text-muted absolute left-3 top-1/2 -translate-y-1/2">map</span><input id="map" class="input" style="padding-left:40px!important" value="https://maps.app.goo.gl/enouvo-danang"></div><div class="hint">Dán liên kết chia sẻ từ Google Maps.</div></div>
 </div>
-<div><label class="lbl">Địa chỉ</label><input class="input" value="Tầng 4, 15 Nguyễn Văn Linh, Hải Châu, Đà Nẵng"></div>
-<div><label class="lbl">Hướng dẫn đến nơi</label><textarea class="input" rows="3">Gửi xe tại hầm B1 (miễn phí cho khách tham dự). Lên tầng 4 bằng thang máy, BTC đón tại quầy check-in. Mang theo mã QR vé để vào cửa.</textarea></div>
+<div><label class="lbl" for="addr">Địa chỉ</label><input id="addr" class="input" value="Tầng 4, 15 Tạ Mỹ Duật, Đà Nẵng"></div>
+<div><label class="lbl" for="guide">Hướng dẫn đến nơi</label><textarea id="guide" class="input" rows="3">Gửi xe tại hầm B1 (miễn phí cho khách tham dự). Lên tầng 4 bằng thang máy, BTC đón tại quầy check-in. Mang theo mã QR vé để vào cửa.</textarea><div class="hint">Gửi kèm trong tin nhắn nhắc trước sự kiện.</div></div>
 </section>
 
 <!-- 4 VÉ -->
 <section id="s-ve" class="card p-5 space-y-4">
 <div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">confirmation_number</span></span>Vé &amp; đăng ký</div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-<div><label class="lbl">Tổng số chỗ</label><input class="input" type="number" value="100"></div>
-<div><label class="lbl">Giữ chỗ diễn giả / khách mời</label><input class="input" type="number" value="10"><div class="hint">Không tính vào số chỗ đăng ký.</div></div>
-<div><label class="lbl">Giá vé (VND)</label><input id="price" class="input" type="number" value="0" disabled><div class="hint" id="priceHint">Sự kiện miễn phí.</div></div>
+<div><label class="lbl" for="cap">Tổng số chỗ <span class="text-[#be123c]">*</span></label><input id="cap" class="input" type="number" min="1" value="100"><div class="hint">Đã có 86 vé, không thể đặt thấp hơn.</div></div>
+<div><label class="lbl" for="resv">Giữ chỗ diễn giả / khách mời</label><input id="resv" class="input" type="number" min="0" value="10"><div class="hint">Không tính vào số chỗ đăng ký.</div></div>
+<div><label class="lbl" for="price">Giá vé (VND)</label><input id="price" class="input" type="number" value="0" disabled><div class="hint" id="priceHint">Sự kiện miễn phí.</div></div>
 </div>
 <div class="divide-y">
 <div class="flex items-center justify-between py-3"><div><div class="text-sm font-bold">Miễn phí</div><div class="hint !mt-0">Tắt để nhập giá vé.</div></div><button class="sw" id="swFree" role="switch" aria-checked="true" type="button"></button></div>
 <div class="flex items-center justify-between py-3"><div><div class="text-sm font-bold">Duyệt thủ công</div><div class="hint !mt-0" id="apprHint">Đang tắt: đăng ký được tự động xác nhận.</div></div><button class="sw" role="switch" aria-checked="false" type="button" id="swAppr"></button></div>
 </div>
-<div><label class="lbl">Khi hết chỗ hiển thị</label><select class="input"><option>Hiện "Đã hết chỗ"</option><option>Ẩn nút đăng ký</option></select></div>
+<div><label class="lbl" for="full">Khi hết chỗ hiển thị</label><select id="full" class="input"><option>Hiện "Đã hết chỗ"</option><option>Ẩn nút đăng ký</option></select></div>
 <div>
-<label class="lbl">Câu hỏi đăng ký</label>
+<label class="lbl">Câu hỏi đăng ký</label><div class="hint !mt-0 mb-2">Facebook là bắt buộc để BTC nhắn tin xác nhận. Thiếu liên kết Facebook, khách không thể hoàn tất đăng ký.</div>
 <div class="space-y-2">
 <div class="q-row bg-[#f8fafc]"><span class="material-symbols-outlined text-muted">lock</span><div class="flex-1"><div class="text-sm font-bold">Liên kết Facebook <span class="badge ml-1">Bắt buộc</span></div><div class="hint !mt-0">Khóa. BTC dùng để nhắn tin xác nhận và hỗ trợ.</div></div><button class="sw" role="switch" aria-checked="true" type="button" disabled></button></div>
 <div class="q-row"><span class="material-symbols-outlined text-muted">tune</span><div class="flex-1"><div class="text-sm font-bold">Trình độ AWS hiện tại</div><div class="hint !mt-0">Beginner / Intermediate / Advanced</div></div><label class="flex items-center gap-2 text-xs font-semibold text-muted"><input type="checkbox" checked> Bắt buộc</label><button class="sw" role="switch" aria-checked="true" type="button"></button></div>
 <div class="q-row"><span class="material-symbols-outlined text-muted">chat</span><div class="flex-1"><div class="text-sm font-bold">Lý do tham gia</div><div class="hint !mt-0">Văn bản ngắn, tối đa 300 ký tự</div></div><label class="flex items-center gap-2 text-xs font-semibold text-muted"><input type="checkbox"> Bắt buộc</label><button class="sw" role="switch" aria-checked="true" type="button"></button></div>
 </div></div>
-<div><label class="lbl">Điều khoản hủy</label><textarea class="input" rows="2">Khách có thể hủy vé miễn phí đến 24 giờ trước giờ bắt đầu. Hủy muộn hoặc vắng mặt không báo sẽ bị trừ Điểm đóng góp.</textarea></div>
+<div><label class="lbl" for="cancel">Điều khoản hủy</label><textarea id="cancel" class="input" rows="2" maxlength="300">Khách có thể hủy vé miễn phí đến 24 giờ trước giờ bắt đầu. Hủy muộn hoặc vắng mặt không báo sẽ bị trừ điểm đóng góp.</textarea><div class="hint flex justify-between gap-3"><span>Hiển thị ở bước xác nhận đăng ký.</span><span id="cancelCnt">0/300</span></div></div>
 </section>
 
 <!-- 5 LỊCH TRÌNH -->
@@ -484,7 +485,7 @@ section[id^=s-]{scroll-margin-top:140px}
 <section id="s-diengia" class="card p-5 space-y-4">
 <div class="flex items-center justify-between"><div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">record_voice_over</span></span>Diễn giả</div><button class="btn btn-ghost btn-sm" type="button" id="addSpk"><span class="material-symbols-outlined">person_add</span>Thêm diễn giả</button></div>
 <div id="spk" class="space-y-2"></div>
-<div class="hint">Chỉ gồm diễn giả đã duyệt ở mục Duyệt diễn giả.</div>
+<div class="hint">Chỉ gồm diễn giả đã duyệt ở mục <a class="text-secondary font-semibold hover:underline" href="../11-admin-duyet-dien-gia/code.html?event=1">Duyệt diễn giả</a>. 6/8 slot đã dùng, 3 đăng ký đang chờ duyệt.</div>
 </section>
 
 <!-- 7 ĐIỂM -->
@@ -511,12 +512,12 @@ section[id^=s-]{scroll-margin-top:140px}
 <!-- RIGHT -->
 <aside-col class="block sticky top-[132px] space-y-4" style="align-self:start">
 <div class="card overflow-hidden">
-<div id="pvCover" class="cover-prev h-[120px]"><span class="badge absolute left-3 top-3 z-[1]" style="background:rgba(255,255,255,.2)!important;border-color:rgba(255,255,255,.35)!important;color:#fff!important">Workshop</span></div>
+<div id="pvCover" class="cover-prev h-[120px]"><span class="badge absolute left-3 top-3 z-[1]" id="pvType" style="background:rgba(255,255,255,.2)!important;border-color:rgba(255,255,255,.35)!important;color:#fff!important">Talk &amp; Lab</span></div>
 <div class="p-4">
-<div class="text-xs font-bold text-slate-500">18 THG 11, 2026 · 14:00</div>
+<div class="text-xs font-bold text-slate-500" id="pvDate">18 THG 11, 2026 · 08:30</div>
 <div id="pvName" class="font-extrabold text-[#0f1b2a] text-[15px] leading-snug mt-1">Deep Dive LLM &amp; AWS Bedrock</div>
-<div class="text-xs text-muted mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span>Enouvo Space Đà Nẵng</div>
-<div class="mt-3 flex justify-between text-xs"><span>86 / 100 vé</span><span class="font-bold text-slate-600">86%</span></div>
+<div class="text-xs text-muted mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span><span id="pvVenue">Enouvo Space, Đà Nẵng</span></div>
+<div class="mt-3 flex justify-between text-xs"><span id="pvCnt">86 / 100 vé</span><span class="font-bold text-slate-600">86%</span></div>
 <div class="bar amber mt-1.5"><i style="width:86%"></i></div>
 <div class="mt-3 text-xs text-muted">Xem trước thẻ trên trang chủ</div>
 </div></div>
@@ -535,9 +536,9 @@ section[id^=s-]{scroll-margin-top:140px}
 </ul></div>
 
 <div class="card p-4 space-y-3 hidden md:block">
-<div class="flex items-center gap-2 text-xs text-muted"><span class="material-symbols-outlined text-[16px]">history</span>Lưu lần cuối 10:42 hôm nay bởi Tuấn Nguyễn</div>
-<button class="btn btn-primary w-full" type="button"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
-<button class="btn btn-ghost w-full" type="button"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
+<div class="flex items-center gap-2 text-xs text-muted"><span class="material-symbols-outlined text-[16px]">history</span><span id="lastSave">Lưu lần cuối 09:05 hôm nay bởi Tuấn Nguyễn</span></div>
+<button class="btn btn-primary w-full" type="button" data-act="pub"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
+<button class="btn btn-ghost w-full" type="button" data-act="draft"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
 </div>
 </aside-col>
 </div>
@@ -545,7 +546,7 @@ section[id^=s-]{scroll-margin-top:140px}
 </div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const dirty=()=>$('#dirty').classList.remove('hidden');
+const dirty=()=>{$('#dirty').classList.remove('hidden');$('#dirtyH').hidden=false;$('#lastSave').textContent='Có thay đổi chưa lưu';sync()};
 document.addEventListener('input',e=>{if(e.target.closest('#form'))dirty()});
 document.addEventListener('change',e=>{if(e.target.closest('#form'))dirty()});
 // toggles
@@ -597,18 +598,53 @@ function addTag(t){t=t.trim();if(!t)return;const c=document.createElement('span'
 ['GenAI','Amazon Bedrock','LLM','RAG','Lab'].forEach(addTag);
 tagIn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','){e.preventDefault();addTag(tagIn.value);tagIn.value='';dirty()}else if(e.key==='Backspace'&&!tagIn.value&&tagIn.previousElementSibling){tagIn.previousElementSibling.remove();dirty()}});
 // agenda
-const spkOpts=['Nguyễn Minh Khôi','Trần Thu Hà','Lê Quang Huy','Phạm Bảo Ngọc','— Chưa gán —'];
+const spkOpts=['Võ Minh Khôi','Nguyễn Thị Lan','Bùi Quang Hùng','Trịnh Hải Phong','Đỗ Thu Hà','Phan Anh Tuấn','— Chưa gán —'];
 const sel=v=>`<select class="input">${spkOpts.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('')}</select>`;
-const sessions=[['14:00','Đón khách & check-in','— Chưa gán —','Sảnh tầng 4'],['14:15','Foundation Models trên Amazon Bedrock','Nguyễn Minh Khôi','Phòng Aurora'],['15:15','Lab: RAG với Knowledge Bases','Trần Thu Hà','Phòng Aurora'],['16:45','Guardrails & Q&A cùng chuyên gia','Lê Quang Huy','Phòng Aurora']];
+const sessions=[['08:30','Đón khách & check-in','— Chưa gán —','Sảnh tầng 4'],['09:00','Amazon Bedrock Agents trong thực tế','Võ Minh Khôi','Phòng Aurora'],['10:00','Lab: Xây agent đa bước với Bedrock & Lambda','Phan Anh Tuấn','Phòng Aurora'],['11:15','Guardrails cho ứng dụng GenAI trên Bedrock','Nguyễn Thị Lan','Phòng Aurora']];
 function addSess(s){const d=document.createElement('div');d.className='row-edit !grid md:grid-cols-[24px_132px_minmax(0,1fr)_160px_120px_36px] gap-2 items-center';d.innerHTML=`<span class="material-symbols-outlined grip text-[20px]">drag_indicator</span><input class="input" type="time" value="${s[0]}"><input class="input" value="${s[1].replace(/"/g,'&quot;')}" placeholder="Tiêu đề phiên">${sel(s[2])}<input class="input" value="${s[3]}"><button type="button" class="ibtn" title="Xóa phiên"><span class="material-symbols-outlined text-[20px]">delete</span></button>`;d.querySelector('.ibtn').onclick=()=>{d.remove();dirty()};$('#agenda').appendChild(d)}
 sessions.forEach(addSess);
-$('#addSess').onclick=()=>{addSess(['17:30','Phiên mới','— Chưa gán —','Phòng Aurora']);dirty()};
+$('#addSess').onclick=()=>{addSess(['12:00','Phiên mới','— Chưa gán —','Phòng Aurora']);dirty()};
 // speakers
-const spks=[['NK','Nguyễn Minh Khôi','Foundation Models trên Amazon Bedrock','AWS Community Builder'],['TH','Trần Thu Hà','Lab: RAG với Knowledge Bases','Solutions Architect'],['LH','Lê Quang Huy','Guardrails & Q&A','ML Engineer, Enouvo']];
+const spks=[['MK','Võ Minh Khôi','Amazon Bedrock Agents trong thực tế','Solutions Architect, Danang IT Park'],['TA','Phan Anh Tuấn','Lab: Xây agent đa bước với Bedrock & Lambda','ML Engineer, Sun Asterisk'],['NL','Nguyễn Thị Lan','Guardrails cho ứng dụng GenAI trên Bedrock','Cloud Engineer, FPT Software'],['QH','Bùi Quang Hùng','Chưa gán phiên','AI Engineer, VNG Cloud'],['HP','Trịnh Hải Phong','Chưa gán phiên','SRE, Axon'],['TH','Đỗ Thu Hà','Chưa gán phiên','Data Engineer, Enouvo']];
 function addSpk(s){const d=document.createElement('div');d.className='row-edit';d.innerHTML=`<span class="material-symbols-outlined grip text-[20px]">drag_indicator</span><div class="avatar"></div><div class="flex-1 min-w-0"><div class="text-sm font-bold"></div><div class="text-xs text-muted"></div></div><span class="badge badge-green">Đã duyệt</span><button type="button" class="ibtn" title="Gỡ khỏi sự kiện"><span class="material-symbols-outlined text-[20px]">person_remove</span></button>`;d.querySelector('.avatar').textContent=s[0];d.querySelector('.text-sm').textContent=s[1];d.querySelector('.text-xs').textContent=s[3]+' · Phiên: '+s[2];d.querySelector('.ibtn').onclick=()=>{d.remove();dirty()};$('#spk').appendChild(d)}
 spks.forEach(addSpk);
-let extra=[['PN','Phạm Bảo Ngọc','Chưa gán phiên','DevOps Engineer']];
-$('#addSpk').onclick=()=>{const s=extra.shift();if(s){addSpk(s);dirty()}else{$('#addSpk').disabled=true;$('#addSpk').classList.add('opacity-50')}};
+let extra=[];
+$('#addSpk').onclick=()=>toast('Đã thêm tất cả diễn giả được duyệt của sự kiện (6/8 slot). Duyệt thêm tại mục Duyệt diễn giả.');
+</script>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+// xem trước, đếm ký tự, kiểm tra hợp lệ, lưu
+let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+const MON=['','THG 1','THG 2','THG 3','THG 4','THG 5','THG 6','THG 7','THG 8','THG 9','THG 10','THG 11','THG 12'];
+function sync(){
+ const d=$('#dStart').value.split('-'),t=$('#tStart').value;
+ if(d.length===3)$('#pvDate').textContent=(+d[2])+' '+MON[+d[1]]+', '+d[0]+' · '+t;
+ const v=$('#venue').value.trim()||'Chưa có địa điểm';$('#pvVenue').textContent=v;
+ const ty=$('#typeSel').value;$('#pvType').textContent=ty;$('#cvType').textContent=ty;
+ $('#cvName').textContent=$('#name').value||'Tên sự kiện';
+ if(d.length===3)$('#cvMeta').textContent=d[2]+'/'+d[1]+'/'+d[0].slice(2)+' · '+v;
+ const cap=Math.max(1,+$('#cap').value||1),p=Math.round(86/cap*100);
+ $('#pvCnt').textContent='86 / '+cap+' vé';document.querySelector('#pvCover').closest('.card').querySelector('.bar').className='bar '+(p>=100?'full':p>=80?'amber':'');
+ document.querySelector('#pvCover').closest('.card').querySelector('.bar i').style.width=Math.min(100,p)+'%';
+ document.querySelector('#pvCover').closest('.card').querySelector('.bar').previousElementSibling.lastElementChild.textContent=p+'%';
+ $('#nameCnt').textContent=$('#name').value.length+'/100';$('#cancelCnt').textContent=$('#cancel').value.length+'/300';
+ return validate()}
+function setErr(el,hintId,bad,msg,ok){el.style.borderColor=bad?'#fda4af':'';const h=document.getElementById(hintId);if(h){h.style.color=bad?'#be123c':'';h.textContent=bad?msg:ok}}
+function validate(){let n=0;
+ const nm=!$('#name').value.trim();setErr($('#name'),'nameH',nm,'Vui lòng nhập tên sự kiện.','Hiển thị ở danh sách, vé và tin nhắn Facebook.');n+=nm;
+ const sl=!/^[a-z0-9]+(-[a-z0-9]+)*$/.test($('#slug').value);setErr($('#slug'),'slugH',sl,'Slug chỉ gồm chữ thường, số và dấu gạch ngang.','Chỉ gồm chữ thường, số và dấu gạch ngang.');n+=sl;
+ const a=new Date($('#dStart').value+'T'+$('#tStart').value),b=new Date($('#dEnd').value+'T'+$('#tEnd').value),tb=!(b>a);
+ ['#dEnd','#tEnd'].forEach(x=>$(x).style.borderColor=tb?'#fda4af':'');const th=$('#timeH');th.style.color=tb?'#be123c':'';th.textContent=tb?'Thời điểm kết thúc phải sau thời điểm bắt đầu.':'Kết thúc phải sau thời điểm bắt đầu.';n+=tb;
+ const vn=!$('#venue').value.trim();$('#venue').style.borderColor=vn?'#fda4af':'';n+=vn;
+ const cp=(+$('#cap').value)<86;$('#cap').style.borderColor=cp?'#fda4af':'';n+=cp;
+ return n===0}
+['input','change'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest('#form'))sync()}));
+$('#sync')&&0;
+function doSave(kind){if(!sync()){toast('Còn trường chưa hợp lệ, kiểm tra các ô viền đỏ');return}
+ $('#dirty').classList.add('hidden');$('#dirtyH').hidden=true;$('#lastSave').textContent='Lưu lần cuối 09:'+String(14+new Date().getSeconds()%40).padStart(2,'0')+' hôm nay bởi Tuấn Nguyễn';
+ toast(kind==='pub'?'Đã xuất bản thay đổi lên trang công khai':'Đã lưu bản nháp')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(b)doSave(b.dataset.act)});
+sync();
 </script>
 <script id="adm-mobile">
 (function(){

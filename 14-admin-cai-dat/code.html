@@ -279,67 +279,117 @@ aside a:focus-visible,aside button:focus-visible{outline-color:#fff;outline-offs
 </div>
 </aside>
 
-
 <!-- MAIN -->
 <div class="flex-1 flex flex-col h-screen overflow-y-auto">
 <header class="h-16 px-8 bg-white border-b border-line flex items-center justify-between flex-shrink-0 sticky top-0 z-20">
-<h1 class="text-xl font-bold text-primary">Cài đặt</h1>
+<div class="flex items-center gap-3 min-w-0"><h1 class="text-xl font-bold text-primary">Cài đặt</h1><span class="badge badge-amber" id="dirtyB" hidden>Chưa lưu</span></div>
 <div class="flex items-center gap-3">
-<button class="btn btn-ghost" type="button">Hủy</button>
-<button class="btn btn-primary" type="button"><span class="material-symbols-outlined text-[18px]">save</span>Lưu thay đổi</button>
+<button class="btn btn-ghost" type="button" id="cancelTop">Hủy</button>
+<button class="btn btn-primary" type="button" id="saveTop"><span class="material-symbols-outlined">save</span>Lưu thay đổi</button>
 </div>
 </header>
 
 <main class="flex-1 p-8 space-y-6 max-w-[1080px] w-full mx-auto">
-<div class="flex" id="tabs" role="tablist">
-<button class="tab active" data-t="chung" type="button">Chung</button>
-<button class="tab" data-t="notif" type="button">Thông báo</button>
-<button class="tab" data-t="roles" type="button">Vai trò &amp; quyền</button>
-<button class="tab" data-t="integ" type="button">Tích hợp</button>
+<div class="flex" id="tabs" role="tablist" aria-label="Nhóm cài đặt">
+<button class="tab active" role="tab" data-t="chung" type="button">Chung</button>
+<button class="tab" role="tab" data-t="notif" type="button">Thông báo</button>
+<button class="tab" role="tab" data-t="roles" type="button">Vai trò &amp; quyền</button>
+<button class="tab" role="tab" data-t="integ" type="button">Tích hợp</button>
 </div>
+
+<!-- CHUNG -->
 <section class="card" data-tabs="chung">
-<div class="px-6 py-4 border-b border-line"><h2 class="text-base font-bold text-primary">Thông tin chapter</h2><p class="text-sm text-muted mt-0.5">Hiển thị trên trang công khai và email gửi đến thành viên.</p></div>
-<form class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="return false">
-<div><label class="lbl" for="a">Tên chapter</label><input id="a" class="input" value="FCAJ Đà Nẵng" type="text"></div>
-<div><label class="lbl" for="b">Email liên hệ</label><input id="b" class="input" value="danang@fcaj.vn" type="email"></div>
+<div class="px-6 py-4 border-b border-line"><h2 class="text-base font-bold text-primary">Thông tin chapter</h2><p class="text-sm text-muted mt-0.5">Hiển thị trên trang công khai, vé QR và tin nhắn gửi đến thành viên.</p></div>
+<form class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-5" onsubmit="return false" novalidate>
+<div><label class="lbl" for="a">Tên chapter <span class="text-[#be123c]">*</span></label><input id="a" class="input" value="FCAJ Đà Nẵng" type="text" maxlength="60"><div class="hint">Hiển thị ở đầu trang và trong vé.</div></div>
+<div><label class="lbl" for="b">Email liên hệ <span class="text-[#be123c]">*</span></label><input id="b" class="input" value="danang@fcaj.vn" type="email" data-v="email"><div class="hint" data-h>Dùng để nhận phản hồi khi khách không dùng Facebook.</div></div>
+<div class="md:col-span-2"><label class="lbl" for="fbp">Facebook Page <span class="text-[#be123c]">*</span></label><div class="relative"><span class="material-symbols-outlined text-[18px] text-muted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">forum</span><input id="fbp" class="input" style="padding-left:40px!important" value="https://facebook.com/fcaj.danang" type="text" data-v="fb"></div><div class="hint" data-h>Kênh liên hệ chính với khách và diễn giả. Phải có dạng facebook.com/tên-trang.</div></div>
 <div><label class="lbl" for="c">Website</label><input id="c" class="input" value="https://fcaj.vn/danang" type="text"></div>
 <div><label class="lbl" for="d1">Thành phố</label><input id="d1" class="input" value="Đà Nẵng, Việt Nam" type="text"></div>
 <div><label class="lbl" for="e">Múi giờ</label><select id="e" class="input"><option>(GMT+07:00) Hà Nội, Bangkok, Jakarta</option></select></div>
 <div><label class="lbl" for="f">Ngôn ngữ mặc định</label><select id="f" class="input"><option>Tiếng Việt</option><option>English</option></select></div>
-<div class="md:col-span-2"><label class="lbl" for="g">Mô tả</label><textarea id="g" rows="3" class="input">Cộng đồng AWS First Cloud AI Journey tại Đà Nẵng, tổ chức meetup, workshop và Community Day cho lập trình viên và sinh viên miền Trung.</textarea></div>
+<div class="md:col-span-2"><label class="lbl" for="g">Mô tả</label><textarea id="g" rows="3" maxlength="240" class="input">Cộng đồng AWS First Cloud AI Journey tại Đà Nẵng, tổ chức meetup, workshop và Community Day cho lập trình viên và sinh viên miền Trung.</textarea><div class="hint flex justify-between gap-3"><span>Hiển thị ở chân trang công khai.</span><span id="gC">0/240</span></div></div>
 </form>
 <div class="border-t border-line divide-y divide-line">
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Cho phép đăng ký diễn giả (CFP)</div><div class="text-sm text-muted mt-0.5">Thành viên có thể đăng ký diễn giả cho sự kiện đang mở.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Cho phép đăng ký diễn giả (CFP)" type="button"></button></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Tự động gửi email xác nhận vé</div><div class="text-sm text-muted mt-0.5">Gửi vé QR ngay sau khi đăng ký thành công.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Tự động gửi email xác nhận vé" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Cho phép đăng ký diễn giả (CFP)</div><div class="text-sm text-muted mt-0.5">Thành viên có thể đăng ký diễn giả cho sự kiện đang mở. Tắt để đóng mọi CFP cùng lúc.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Cho phép đăng ký diễn giả" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Tự động gửi vé xác nhận</div><div class="text-sm text-muted mt-0.5">Gửi vé QR qua Facebook Messenger và email ngay sau khi đăng ký thành công.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Tự động gửi vé xác nhận" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Bắt buộc liên kết Facebook khi đăng ký</div><div class="text-sm text-muted mt-0.5">Ban tổ chức dùng Facebook để nhắn tin xác nhận và hỗ trợ. Không thể tắt.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Bắt buộc liên kết Facebook" type="button" disabled></button></div>
 </div>
 </section>
+
+<!-- THÔNG BÁO -->
+<section class="card hidden" data-tabs="notif">
+<div class="px-6 py-4 border-b border-line"><h2 class="text-base font-bold text-primary">Thông báo</h2><p class="text-sm text-muted mt-0.5">Chọn sự kiện nào sẽ được gửi và qua kênh nào.</p></div>
+<div class="px-6 pt-4 pb-1 text-xs font-bold text-slate-500 uppercase tracking-wide">Cho ban tổ chức</div>
+<div class="divide-y divide-line">
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Đăng ký diễn giả mới</div><div class="text-sm text-muted mt-0.5">Báo ngay khi có đăng ký chờ duyệt, kèm liên kết Facebook của diễn giả.</div><div class="flex gap-1.5 mt-2"><span class="chip">Messenger</span><span class="chip">Email</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Đăng ký diễn giả mới" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Vé gần hết</div><div class="text-sm text-muted mt-0.5">Cảnh báo khi số vé đã đăng ký đạt 90% sức chứa.</div><div class="flex gap-1.5 mt-2"><span class="chip">Messenger</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Vé gần hết" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Báo cáo check-in</div><div class="text-sm text-muted mt-0.5">Gửi tổng kết lượt check-in sau khi sự kiện kết thúc.</div><div class="flex gap-1.5 mt-2"><span class="chip">Email</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Báo cáo check-in" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Bản tin hàng tuần</div><div class="text-sm text-muted mt-0.5">Tóm tắt hoạt động của chapter vào sáng thứ Hai.</div><div class="flex gap-1.5 mt-2"><span class="chip">Email</span></div></div><button class="sw" role="switch" aria-checked="false" aria-label="Bản tin hàng tuần" type="button"></button></div>
+</div>
+<div class="px-6 pt-5 pb-1 text-xs font-bold text-slate-500 uppercase tracking-wide border-t border-line">Cho khách và diễn giả</div>
+<div class="divide-y divide-line">
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Nhắc trước sự kiện 24 giờ</div><div class="text-sm text-muted mt-0.5">Nhắn vé QR và địa điểm cho khách qua Facebook Messenger.</div><div class="flex gap-1.5 mt-2"><span class="chip">Messenger</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Nhắc trước 24 giờ" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Kết quả duyệt diễn giả</div><div class="text-sm text-muted mt-0.5">Thông báo đã duyệt, từ chối hoặc yêu cầu chỉnh sửa kèm ghi chú.</div><div class="flex gap-1.5 mt-2"><span class="chip">Messenger</span><span class="chip">Email</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Kết quả duyệt diễn giả" type="button"></button></div>
+<div class="px-6 py-4 flex items-center justify-between gap-6"><div class="min-w-0"><div class="text-sm font-bold text-primary">Cảm ơn và khảo sát sau sự kiện</div><div class="text-sm text-muted mt-0.5">Gửi 2 giờ sau khi kết thúc; hoàn thành khảo sát được cộng điểm đóng góp.</div><div class="flex gap-1.5 mt-2"><span class="chip">Messenger</span></div></div><button class="sw" role="switch" aria-checked="true" aria-label="Khảo sát sau sự kiện" type="button"></button></div>
+</div>
+</section>
+
+<!-- VAI TRÒ -->
 <section class="card overflow-hidden hidden" data-tabs="roles">
-<div class="flex items-center justify-between px-6 py-4 border-b border-line"><div><h2 class="text-base font-bold text-primary">Vai trò &amp; quyền</h2><p class="text-sm text-muted mt-0.5">21 thành viên ban tổ chức</p></div><button class="btn btn-ghost btn-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span>Thêm vai trò</button></div>
-<div class="tbl-wrap" style="--mw:820px"><table class="w-full border-collapse"><thead><tr><th class="th">Vai trò</th><th class="th text-center">Thành viên</th><th class="th text-center">Sự kiện</th><th class="th text-center">Duyệt CFP</th><th class="th text-center">Check-in</th><th class="th text-center">Điểm</th><th class="th text-center">Cài đặt</th><th class="th text-right">Thao tác</th></tr></thead><tbody>
-<tr class="hover:bg-surface/60"><td class="td"><div class="font-bold text-primary">Lead Organizer</div><div class="text-xs text-muted mt-0.5">Toàn quyền quản trị chapter</div></td><td class="td text-center">2</td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td"><div class="flex justify-end"><button class="btn btn-ghost btn-sm" type="button">Sửa</button></div></td></tr>
-<tr class="hover:bg-surface/60"><td class="td"><div class="font-bold text-primary">Organizer</div><div class="text-xs text-muted mt-0.5">Tổ chức và vận hành sự kiện</div></td><td class="td text-center">5</td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td"><div class="flex justify-end"><button class="btn btn-ghost btn-sm" type="button">Sửa</button></div></td></tr>
-<tr class="hover:bg-surface/60"><td class="td"><div class="font-bold text-primary">Reviewer</div><div class="text-xs text-muted mt-0.5">Duyệt đăng ký diễn giả</div></td><td class="td text-center">4</td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td"><div class="flex justify-end"><button class="btn btn-ghost btn-sm" type="button">Sửa</button></div></td></tr>
-<tr class="hover:bg-surface/60"><td class="td"><div class="font-bold text-primary">Check-in Staff</div><div class="text-xs text-muted mt-0.5">Check-in khách tại sự kiện</div></td><td class="td text-center">8</td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td"><div class="flex justify-end"><button class="btn btn-ghost btn-sm" type="button">Sửa</button></div></td></tr>
-<tr class="hover:bg-surface/60"><td class="td"><div class="font-bold text-primary">Quản lý điểm</div><div class="text-xs text-muted mt-0.5">Quản lý điểm đóng góp</div></td><td class="td text-center">2</td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-secondary">check_circle</span></td><td class="td text-center"><span class="material-symbols-outlined text-[20px] text-[#aab7b8]">remove</span></td><td class="td"><div class="flex justify-end"><button class="btn btn-ghost btn-sm" type="button">Sửa</button></div></td></tr>
-</tbody></table></div></section>
-<section class="card divide-y divide-line hidden" data-tabs="notif">
-<div class="px-6 py-4"><h2 class="text-base font-bold text-primary">Thông báo cho ban tổ chức</h2></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Đăng ký diễn giả mới</div><div class="text-sm text-muted mt-0.5">Gửi email khi có đăng ký chờ duyệt.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Đăng ký diễn giả mới" type="button"></button></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Vé gần hết</div><div class="text-sm text-muted mt-0.5">Cảnh báo khi vé đã bán đạt 90%.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Vé gần hết" type="button"></button></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Báo cáo check-in</div><div class="text-sm text-muted mt-0.5">Gửi tổng kết sau khi sự kiện kết thúc.</div></div><button class="sw" role="switch" aria-checked="true" aria-label="Báo cáo check-in" type="button"></button></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Bản tin hàng tuần</div><div class="text-sm text-muted mt-0.5">Tóm tắt hoạt động của chapter vào thứ Hai.</div></div><button class="sw" role="switch" aria-checked="false" aria-label="Bản tin hàng tuần" type="button"></button></div>
+<div class="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-line"><div><h2 class="text-base font-bold text-primary">Vai trò &amp; quyền</h2><p class="text-sm text-muted mt-0.5">21 thành viên ban tổ chức · 4 vai trò</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Đã gửi lời mời qua Facebook"><span class="material-symbols-outlined">person_add</span>Mời thành viên</button></div>
+<div class="tbl-wrap" style="--mw:860px"><table class="w-full border-collapse" id="matrix"></table></div>
+<div class="px-6 py-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted border-t border-line"><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-[#047857]">check_circle</span>Toàn quyền</span><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-[#b45309]">adjust</span>Chỉ xem</span><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-[#94a3b8]">remove</span>Không có quyền</span></div>
+<div class="border-t border-line">
+<div class="flex items-center justify-between px-6 py-4"><h3 class="text-sm font-bold text-primary">Thành viên ban tổ chức</h3><button class="text-sm font-semibold text-secondary hover:underline" type="button" data-toast="Danh sách đầy đủ 21 thành viên">Xem tất cả 21</button></div>
+<div class="divide-y divide-line" id="mem"></div>
+</div>
 </section>
-<section class="card divide-y divide-line hidden" data-tabs="integ">
-<div class="px-6 py-4"><h2 class="text-base font-bold text-primary">Tích hợp</h2></div>
-<div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Slack</div><div class="text-sm text-muted mt-0.5">Nhận thông báo vào kênh #fcaj-danang</div></div><div class="flex items-center gap-3"><span class="badge badge-green">Đã kết nối</span><button class="btn btn-ghost btn-sm" type="button">Ngắt</button></div></div><div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Amazon SES</div><div class="text-sm text-muted mt-0.5">Gửi email vé và thông báo</div></div><div class="flex items-center gap-3"><span class="badge badge-green">Đã kết nối</span><button class="btn btn-ghost btn-sm" type="button">Ngắt</button></div></div><div class="px-6 py-4 flex items-center justify-between gap-6"><div><div class="text-sm font-bold text-primary">Google Calendar</div><div class="text-sm text-muted mt-0.5">Đồng bộ lịch sự kiện</div></div><button class="btn btn-primary btn-sm" type="button">Kết nối</button></div>
+
+<!-- TÍCH HỢP -->
+<section class="card hidden divide-y divide-line" data-tabs="integ">
+<div class="px-6 py-4"><h2 class="text-base font-bold text-primary">Tích hợp</h2><p class="text-sm text-muted mt-0.5">Kết nối kênh liên hệ và dịch vụ gửi vé.</p></div>
+<div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"><div class="flex items-start gap-4 min-w-0"><span class="av av-40" style="background:#1877f2"><span class="material-symbols-outlined text-[22px]">forum</span></span><div class="min-w-0"><div class="text-sm font-bold text-primary flex flex-wrap items-center gap-2">Facebook Page - FCAJ Đà Nẵng <span class="badge badge-green">Đã kết nối</span></div><div class="text-sm text-muted mt-0.5">Gửi vé QR, nhắc lịch và trao đổi với khách, diễn giả qua Messenger.</div><div class="sub">Quyền: pages_messaging · Token hết hạn 14/01/27 · Gửi 312 tin trong 7 ngày</div></div></div><div class="flex gap-2 flex-shrink-0"><button class="btn btn-ghost btn-sm" type="button" data-toast="Đã gửi tin nhắn thử tới Tuấn Nguyễn">Gửi tin thử</button><button class="btn btn-ghost btn-sm" type="button" data-toast="Đã làm mới token Facebook">Kết nối lại</button></div></div>
+<div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"><div class="flex items-start gap-4 min-w-0"><span class="av av-40" style="background:#ff9900"><span class="material-symbols-outlined text-[22px]">mail</span></span><div class="min-w-0"><div class="text-sm font-bold text-primary flex flex-wrap items-center gap-2">Amazon SES - email <span class="badge badge-green">Đã kết nối</span></div><div class="text-sm text-muted mt-0.5">Gửi email vé và báo cáo từ no-reply@fcaj.vn.</div><div class="sub">Miền đã xác thực · Hạn mức 50.000 email/ngày</div></div></div><div class="flex gap-2 flex-shrink-0"><button class="btn btn-ghost btn-sm" type="button" data-toast="Đã gửi email thử">Gửi email thử</button></div></div>
+<div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"><div class="flex items-start gap-4 min-w-0"><span class="av av-40" style="background:#475569"><span class="material-symbols-outlined text-[22px]">calendar_month</span></span><div class="min-w-0"><div class="text-sm font-bold text-primary flex flex-wrap items-center gap-2">Google Calendar <span class="badge badge-gray">Chưa kết nối</span></div><div class="text-sm text-muted mt-0.5">Thêm sự kiện vào lịch của khách bằng liên kết .ics.</div></div></div><div class="flex gap-2 flex-shrink-0"><button class="btn btn-primary btn-sm" type="button" data-toast="Đã mở cửa sổ kết nối Google">Kết nối</button></div></div>
 </section>
+
+<div class="dock" id="dock" hidden role="region" aria-label="Lưu thay đổi"><span class="material-symbols-outlined">edit_note</span><span>Có thay đổi chưa lưu</span><span class="flex-1"></span><button class="btn btn-ghost btn-sm" type="button" id="cancelDock">Hoàn tác</button><button class="btn btn-primary btn-sm" type="button" id="saveDock">Lưu thay đổi</button></div>
 </main>
 </div>
+<div id="toast" role="status" aria-live="polite"></div>
 <script>
-const tabs=document.querySelectorAll('#tabs .tab'),secs=document.querySelectorAll('[data-tabs]');
-function show(t){tabs.forEach(x=>x.classList.toggle('active',x.dataset.t===t));secs.forEach(s=>s.classList.toggle('hidden',!s.dataset.tabs.split(' ').includes(t)))}
-tabs.forEach(t=>t.onclick=()=>show(t.dataset.t));
-document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>s.setAttribute('aria-checked',s.getAttribute('aria-checked')!=='true'));
+const $=id=>document.getElementById(id);
+const tabs=[...document.querySelectorAll('#tabs .tab')],secs=[...document.querySelectorAll('[data-tabs]')];
+function show(t){tabs.forEach(x=>{x.classList.toggle('active',x.dataset.t===t);x.setAttribute('aria-selected',x.dataset.t===t)});secs.forEach(s=>s.classList.toggle('hidden',s.dataset.tabs!==t))}
+tabs.forEach(t=>t.onclick=()=>{show(t.dataset.t);history.replaceState(null,'','#'+t.dataset.t)});
+const h0=location.hash.slice(1);if(tabs.some(t=>t.dataset.t===h0))show(h0);
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+document.querySelectorAll('[data-toast]').forEach(b=>b.addEventListener('click',()=>toast(b.dataset.toast)));
+// ma trận quyền: 2 = toàn quyền, 1 = chỉ xem, 0 = không
+const PERM=["Sự kiện","Duyệt diễn giả","Khách tham dự","Check-in QR","Điểm đóng góp","Cài đặt"];
+const ROLES=[["Chủ nhiệm","Toàn quyền quản trị chapter",2,[2,2,2,2,2,2]],["Điều hành","Tổ chức, vận hành sự kiện và duyệt diễn giả",6,[2,2,2,2,1,0]],["Check-in staff","Check-in khách tại sự kiện",8,[1,0,1,2,0,0]],["Biên tập","Soạn nội dung sự kiện và quản lý điểm",5,[2,1,1,0,2,0]]];
+const ic=v=>v===2?'<span class="material-symbols-outlined text-[20px] text-[#047857]" aria-label="Toàn quyền">check_circle</span>':v===1?'<span class="material-symbols-outlined text-[20px] text-[#b45309]" aria-label="Chỉ xem">adjust</span>':'<span class="material-symbols-outlined text-[20px] text-[#94a3b8]" aria-label="Không có quyền">remove</span>';
+$('matrix').innerHTML='<thead><tr><th class="th">Vai trò</th><th class="th num">Thành viên</th>'+PERM.map(p=>'<th class="th text-center" style="text-align:center">'+p+'</th>').join('')+'</tr></thead><tbody>'+ROLES.map(r=>'<tr><td class="td"><div class="font-bold text-primary">'+r[0]+'</div><div class="sub">'+r[1]+'</div></td><td class="td num font-bold text-primary">'+r[2]+'</td>'+r[3].map(v=>'<td class="td text-center" style="text-align:center">'+ic(v)+'</td>').join('')+'</tr>').join('')+'</tbody>';
+const MEM=[["Tuấn Nguyễn","tuan.nguyen","Chủ nhiệm"],["Lê Hoài Phương","hoaiphuong.le","Điều hành"],["Nguyễn Bảo Châu","baochau.nguyen","Điều hành"],["Trần Gia Khánh","giakhanh.tran","Check-in staff"],["Phạm Thu Thảo","thuthao.pham","Biên tập"]];
+const ini=n=>n.split(' ').slice(-2).map(w=>w[0]).join('');
+$('mem').innerHTML=MEM.map((m,i)=>'<div class="px-6 py-3 flex items-center gap-3"><span class="av av-36">'+ini(m[0])+'</span><div class="min-w-0 flex-1"><div class="text-sm font-bold text-primary trunc">'+m[0]+'</div><a class="fb" href="https://facebook.com/'+m[1]+'" target="_blank" rel="noopener"><span class="material-symbols-outlined">forum</span>facebook.com/'+m[1]+'</a></div><select class="input !w-40" aria-label="Vai trò của '+m[0]+'">'+ROLES.map(r=>'<option'+(r[0]===m[2]?' selected':'')+'>'+r[0]+'</option>').join('')+'</select></div>').join('');
+// sw + dirty + undo
+const initSw=new Map(),initIn=new Map();
+const fields=()=>[...document.querySelectorAll('main input:not([type=checkbox]),main select,main textarea')].filter(x=>!x.closest('#dock'));
+function snap(){initSw.clear();initIn.clear();document.querySelectorAll('.sw').forEach(s=>initSw.set(s,s.getAttribute('aria-checked')));fields().forEach(f=>initIn.set(f,f.value))}
+function isDirty(){let d=false;initSw.forEach((v,s)=>{if(s.getAttribute('aria-checked')!==v)d=true});initIn.forEach((v,f)=>{if(f.value!==v)d=true});return d}
+function upd(){const d=isDirty();$('dirtyB').hidden=!d;$('dock').hidden=!d}
+document.addEventListener('click',e=>{const s=e.target.closest('.sw');if(s&&!s.disabled){s.setAttribute('aria-checked',s.getAttribute('aria-checked')!=='true');upd()}});
+document.addEventListener('input',e=>{if(e.target.closest('main'))upd();if(e.target.id==='g')$('gC').textContent=e.target.value.length+'/240'});
+document.addEventListener('change',()=>upd());
+function validate(){let ok=true;document.querySelectorAll('[data-v]').forEach(i=>{const v=i.value.trim(),h=i.parentElement.parentElement.querySelector('[data-h]')||i.parentElement.querySelector('[data-h]');
+ const bad=i.dataset.v==='email'?!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v):!/^https?:\/\/(www\.)?facebook\.com\/[\w.\-]+/i.test(v);
+ i.style.borderColor=bad?'#fda4af':'';if(h)h.style.color=bad?'#be123c':'';if(bad)ok=false});return ok}
+function save(){if(!validate()){toast('Kiểm tra lại email và liên kết Facebook Page');show('chung');return}snap();upd();toast('Đã lưu cài đặt')}
+function undo(){initSw.forEach((v,s)=>s.setAttribute('aria-checked',v));initIn.forEach((v,f)=>f.value=v);validate();$('gC').textContent=$('g').value.length+'/240';upd();toast('Đã hoàn tác thay đổi')}
+['saveTop','saveDock'].forEach(x=>$(x).onclick=save);['cancelTop','cancelDock'].forEach(x=>$(x).onclick=undo);
+$('gC').textContent=$('g').value.length+'/240';snap();
 </script>
 <script id="adm-mobile">
 (function(){

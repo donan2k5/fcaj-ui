@@ -369,10 +369,10 @@ function save(){if(!dirty()){toast('Không có thay đổi để lưu');return}R
 $('saveTop').onclick=save;$('saveDock').onclick=save;
 $('undo').onclick=()=>{R=R0.map(r=>r.slice());rules();dirty();toast('Đã hoàn tác thay đổi')};
 function hist(){const f=$('hf').value,a=H.filter(h=>!f||(f==='auto'?h[4]==='Tự động':h[4]!=='Tự động'));
- $('hist').innerHTML=a.map(h=>`<tr class="hover:bg-surface/60"><td class="td text-muted whitespace-nowrap">${h[0]}</td><td class="td"><span class="font-bold text-primary trunc block">${h[1]}</span></td><td class="td"><span class="trunc block">${h[2]}</span></td><td class="td num font-bold ${h[3]>0?'pos':'neg'}">${h[3]>0?'+':'−'}${Math.abs(h[3])}</td><td class="td text-muted whitespace-nowrap">${h[4]}</td></tr>`).join('');
+ $('hist').innerHTML=a.map(h=>`<tr class="hover:bg-surface/60"><td class="td text-muted whitespace-nowrap">${h[0]}</td><td class="td"><span class="font-bold text-primary trunc block">${h[1]}</span></td><td class="td" style="height:auto;padding-top:10px;padding-bottom:10px">${h[2]}</td><td class="td num font-bold ${h[3]>0?'pos':'neg'}">${h[3]>0?'+':'−'}${Math.abs(h[3])}</td><td class="td text-muted whitespace-nowrap">${h[4]}</td></tr>`).join('');
  $('hEmpty').hidden=a.length>0}
 $('hf').onchange=hist;$('seeAll').onclick=()=>toast('Đã tải toàn bộ lịch sử điểm (312 thành viên)');$('exp').onclick=()=>toast('Đã xuất lịch sử điểm (CSV)');
-function top(){$('top').innerHTML=[...TOP].sort((a,b)=>b[2]-a[2]).map((t,i)=>`<li class="px-6 py-3 flex items-center gap-3"><span class="rk ${i<3?'r'+(i+1):''}">${i+1}</span><span class="av av-36">${ini(t[0])}</span><div class="min-w-0 flex-1"><div class="text-sm font-bold text-primary trunc">${t[0]}</div><div class="sub !mt-0 trunc">${t[1]}</div></div><span class="font-bold text-primary tabular-nums">${fmt(t[2])}</span></li>`).join('')}
+function drawTop(){$('top').innerHTML=[...TOP].sort((a,b)=>b[2]-a[2]).map((t,i)=>`<li class="px-6 py-3 flex items-center gap-3"><span class="rk ${i<3?'r'+(i+1):''}">${i+1}</span><span class="av av-36">${ini(t[0])}</span><div class="min-w-0 flex-1"><div class="text-sm font-bold text-primary trunc">${t[0]}</div><div class="sub !mt-0 trunc">${t[1]}</div></div><span class="font-bold text-primary tabular-nums">${fmt(t[2])}</span></li>`).join('')}
 $('mem').innerHTML=TOP.map(t=>`<option value="${t[0]}">`).join('')+['Phạm Gia Huy','Hoàng Thu Trang','Lê Mai Anh'].map(n=>`<option value="${n}">`).join('');
 // form
 function chk(show){const m=$('m').value.trim(),p=+$('p').value,r=$('r').value.trim(),t=+$('t').value;
@@ -385,9 +385,9 @@ function chk(show){const m=$('m').value.trim(),p=+$('p').value,r=$('r').value.tr
 $('adj').addEventListener('submit',e=>{e.preventDefault();if(!chk(true))return;const m=$('m').value.trim(),p=+$('p').value*+$('t').value,r=$('r').value.trim();
  const d=new Date(),tm='18/11/26 09:'+String(14+(d.getSeconds()%40)).padStart(2,'0');H.unshift([tm,m,'Điều chỉnh thủ công: '+r,p,'Tuấn Nguyễn']);
  const tp=TOP.find(x=>x[0]===m);if(tp)tp[2]=Math.max(0,tp[2]+p);$('kAdj').textContent=+$('kAdj').textContent+1;
- hist();top();$('adj').reset();chk(false);toast((p>0?'Đã cộng ':'Đã trừ ')+Math.abs(p)+' điểm cho '+m)});
+ hist();drawTop();$('adj').reset();chk(false);toast((p>0?'Đã cộng ':'Đã trừ ')+Math.abs(p)+' điểm cho '+m)});
 $('ap').addEventListener('pointerdown',()=>chk(true));
-rules();hist();top();chk(false);
+rules();hist();drawTop();chk(false);
 </script>
 <script id="adm-mobile">
 (function(){
