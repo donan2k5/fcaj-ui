@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FCAJ - Tổng hợp các màn hình</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#f1f3f5;color:#16202c}
+header{padding:14px 24px;background:#16202c;color:#fff;position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+header h1{margin:0;font-size:18px}
+nav{display:flex;gap:16px;font-size:13px;flex:1}
+nav a{color:#a7c8ff;text-decoration:none}
+.sw{display:flex;background:#2a3a4d;border-radius:10px;padding:3px}
+.sw button{border:0;background:none;color:#cbd5e1;padding:6px 14px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer}
+.sw button.on{background:#fff;color:#16202c}
+h2.sec{margin:28px 24px 0;font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:#44474c}
+.grid{display:grid;gap:20px;padding:14px 24px;align-items:start}
+body.web .grid{grid-template-columns:repeat(auto-fill,minmax(min(520px,100%),1fr))}
+body.live .grid{grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr))}
+body.live .card{max-width:430px}
+.live-wrap{border-top:1px solid #e3e6ea;background:#e5e7eb;padding:12px;display:flex;justify-content:center}
+.live-wrap iframe{width:390px;max-width:100%;height:760px;border:0;border-radius:14px;background:#fff;box-shadow:0 2px 10px #0003}
+body.mob .grid{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
+.card{background:#fff;border-radius:10px;box-shadow:0 1px 4px #0002;overflow:hidden}
+.card h3{margin:0;padding:10px 14px;font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card a{font-size:12px;color:#0b6fb8;text-decoration:none;white-space:nowrap}
+.card img{width:100%;display:block;border-top:1px solid #e3e6ea;cursor:zoom-in}
+.na{padding:40px 14px;text-align:center;color:#94a3b8;font-size:13px;border-top:1px solid #e3e6ea}
+#lb{position:fixed;inset:0;background:#000d;display:none;overflow:auto;cursor:zoom-out;z-index:9}
+#lb img{display:block;margin:0 auto;max-width:100%}
+</style></head><body class="web">
+<header><h1>FCAJ Đà Nẵng – Các màn hình</h1>
+<nav><a href="#pub">Công khai</a><a href="#me">Tài khoản</a><a href="#adm">Admin</a><a href="#mob">Check-in</a></nav>
+<div class="sw"><button class="on" data-m="web">Web</button><button data-m="mob">Mobile (ảnh)</button><button data-m="live">Mobile (chạy thật)</button></div></header>
+<div id="app"></div><div id="lb"><img></div>
+<script>
+const S=[["pub","Công khai",[{"n":"01 · Trang chủ","d":"01-trang-chu","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"02 · Chi tiết sự kiện","d":"02-chi-tiet-su-kien","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"03 · Popup đăng ký tham gia","d":"03-modal-dang-ky-tham-gia-su-kien","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"04 · Popup đăng ký diễn giả (CFP)","d":"04-modal-dang-ky-dien-gia-cfp","dk":"screen.png","m":"screen-mobile.png","q":"#modal"},{"n":"05 · Bảng xếp hạng","d":"05-bang-xep-hang-leaderboard","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"18 · Về FCAJ","d":"18-ve-fcaj","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"17a · Hết chỗ","d":"17-het-cho-tu-choi-dang-ky","dk":"screen.png","m":"screen-mobile.png","q":"?state=full"},{"n":"17b · Hết slot diễn giả","d":"17-het-cho-tu-choi-dang-ky","dk":"screen-cfp-full.png","m":"screen-mobile-cfp-full.png","q":"?state=cfp-full"},{"n":"17c · Đã đóng đăng ký","d":"17-het-cho-tu-choi-dang-ky","dk":"screen-closed.png","m":"screen-mobile-closed.png","q":"?state=closed"},{"n":"17d · Sự kiện hoãn","d":"17-het-cho-tu-choi-dang-ky","dk":"screen-cancelled.png","m":"screen-mobile-cancelled.png","q":"?state=cancelled"}]],["me","Tài khoản của tôi (bấm avatar)",[{"n":"07 · Hồ sơ + menu avatar (Facebook)","d":"07-ho-so-cua-toi","dk":"screen.png","m":"screen-mobile.png","q":"#menu"},{"n":"08 · Sự kiện của tôi (tab trạng thái)","d":"08-su-kien-cua-toi","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"09a · Chi tiết – Đã duyệt (QR) – Tham dự","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen.png","m":"screen-mobile.png","q":"?role=attendee"},{"n":"09b · Chi tiết – Đã duyệt – Diễn giả","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-speaker.png","m":"screen-mobile-speaker.png","q":"?role=speaker"},{"n":"09c · Chi tiết – Chờ duyệt – Tham dự","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-pending-attendee.png","m":"screen-mobile-pending.png","q":"?role=attendee&state=pending"},{"n":"09d · Chi tiết – Chờ duyệt – Diễn giả","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-pending-speaker.png","m":null,"q":"?role=speaker&state=pending"},{"n":"09e · Chi tiết – Bị từ chối – Tham dự","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-rejected.png","m":"screen-mobile-rejected.png","q":"?role=attendee&state=rejected"},{"n":"09f · Chi tiết – Bị từ chối – Diễn giả","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-rejected-speaker.png","m":null,"q":"?role=speaker&state=rejected"},{"n":"09g · Chi tiết – Đã check-in","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-checkedin.png","m":"screen-mobile-checkedin.png","q":"?role=attendee&state=checkedin"},{"n":"09h · Chi tiết – Vắng mặt","d":"09-chi-tiet-su-kien-cua-toi","dk":"screen-absent.png","m":"screen-mobile-absent.png","q":"?role=attendee&state=absent"}]],["adm","Admin",[{"n":"06 · Tổng quan","d":"06-quan-tri-duyet-cfp","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"10 · Quản lý sự kiện","d":"10-admin-quan-ly-su-kien","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"11a · Duyệt diễn giả – tất cả sự kiện","d":"11-admin-duyet-dien-gia","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"11b · Duyệt diễn giả – theo sự kiện (slot)","d":"11-admin-duyet-dien-gia","dk":"screen-event.png","m":"screen-mobile-event.png","q":"?event=1"},{"n":"12 · Khách tham dự","d":"12-admin-khach-tham-du","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"15 · Chỉnh sửa sự kiện","d":"15-admin-sua-su-kien","dk":"screen-full.png","m":"screen-mobile-full.png","q":""},{"n":"13 · Điểm đóng góp","d":"13-admin-karma-diem","dk":"screen.png","m":"screen-mobile.png","q":""},{"n":"14 · Cài đặt","d":"14-admin-cai-dat","dk":"screen.png","m":"screen-mobile.png","q":""}]],["mob","Check-in QR (điện thoại)",[{"n":"16a · Chờ quét","d":"16-admin-checkin-qr","dk":"screen.png","m":"screen.png","q":""},{"n":"16b · Thành công","d":"16-admin-checkin-qr","dk":"screen-success.png","m":"screen-success.png","q":"?state=success"},{"n":"16c · Đã check-in rồi","d":"16-admin-checkin-qr","dk":"screen-already.png","m":"screen-already.png","q":"?state=already"},{"n":"16d · Sai mã","d":"16-admin-checkin-qr","dk":"screen-invalid.png","m":"screen-invalid.png","q":"?state=invalid"}]]];
+let mode='web';
+function render(){document.getElementById('app').innerHTML=S.map(([id,t,items])=>'<h2 class="sec" id="'+id+'">'+t+'</h2><div class="grid">'+items.map(i=>{
+ if(mode==='live')return '<div class="card"><h3>'+i.n+'<a href="'+i.d+'/code.html'+i.q+'" target="_blank">mở tab mới ↗</a></h3><div class="live-wrap"><iframe loading="lazy" src="'+i.d+'/code.html'+i.q+'"></iframe></div></div>';
+ const img=mode==='web'?i.dk:i.m;
+ const body=img?'<img src="'+i.d+'/'+img+'" loading="lazy">':'<div class="na">Chưa có ảnh mobile cho màn này</div>';
+ return '<div class="card"><h3>'+i.n+'<a href="'+i.d+'/code.html'+i.q+'" target="_blank">mở code.html ↗</a></h3>'+body+'</div>'}).join('')+'</div>').join('')}
+document.querySelectorAll('.sw button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.body.className=mode;document.querySelectorAll('.sw button').forEach(x=>x.classList.toggle('on',x===b));render()});
+const lb=document.getElementById('lb'),li=lb.querySelector('img');
+document.addEventListener('click',e=>{if(e.target.matches('.card img')){li.src=e.target.src;li.style.maxWidth=mode==='mob'?'430px':'100%';lb.style.display='block'}});
+lb.onclick=()=>lb.style.display='none';
+render();
+</script></body></html>

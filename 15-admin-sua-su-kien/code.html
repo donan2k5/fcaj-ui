@@ -1,0 +1,634 @@
+<!DOCTYPE html><html class="h-full" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FCAJ Đà Nẵng - Sửa sự kiện</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0}
+  body{overscroll-behavior:none;-webkit-font-smoothing:antialiased}
+  ::-webkit-scrollbar{display:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 20px;border-radius:4px;font-size:14px;font-weight:600;line-height:20px;transition:background .15s,border-color .15s;cursor:pointer;white-space:nowrap}
+  .btn:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+  .btn-primary{background:#0972d3;color:#fff}.btn-primary:hover{background:#005aab}
+  .btn-ghost{background:transparent;color:#232f3e;border:1px solid #232f3e}.btn-ghost:hover{background:#f2f3f3}
+  .btn-danger{background:transparent;color:#ba1a1a;border:1px solid #ba1a1a}.btn-danger:hover{background:#ffdad6}
+  .btn-sm{padding:6px 14px;font-size:13px}
+  .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;background:#f2f3f3;border:1px solid #d5dbdb;color:#232f3e;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:14px;white-space:nowrap}
+  .card{background:#fff;border:1px solid #d5dbdb;border-radius:8px}
+
+  .btn-primary{border:1px solid #0972d3}.btn-primary:hover{border-color:#005aab}
+  .input{font-size:14px!important;line-height:20px!important;padding:8px 12px!important;width:100%;background-color:#fff;border:1px solid #aab7b8;border-radius:4px;color:#16191f;outline:none}
+  .input::placeholder{color:#545b64}
+  .input:focus{border-color:#0972d3;box-shadow:0 0 0 1px #0972d3}
+  select.input{padding-right:32px!important}
+  .lbl{display:block;font-size:12px;font-weight:600;color:#232f3e;margin-bottom:6px;line-height:16px}
+  .tab{padding:12px 4px;margin-right:24px;font-size:14px;font-weight:600;color:#545b64;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;background:none}
+  .tab:hover{color:#232f3e}
+  .tab.active{color:#0972d3;border-bottom-color:#0972d3}
+  .th{padding:10px 16px;text-align:left;font-size:12px;font-weight:600;color:#545b64;background:#f8f9fa;border-bottom:1px solid #e9ebed;white-space:nowrap}
+  .td{padding:12px 16px;font-size:14px;border-bottom:1px solid #e9ebed;vertical-align:middle}
+  tr:last-child .td{border-bottom:0}
+  .sw{position:relative;width:36px;height:20px;border-radius:10px;background:#aab7b8;flex-shrink:0;cursor:pointer;transition:background .15s;border:0;padding:0}
+  .sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+  .sw[aria-checked=true]{background:#0972d3}.sw[aria-checked=true]::after{left:18px}
+  .sw:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+  input[type=checkbox]{accent-color:#0972d3;width:16px;height:16px;border-radius:4px}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config={theme:{extend:{colors:{primary:"#232f3e",tertiary:"#0f1b2a",secondary:"#0972d3",surface:"#f8f9fa",ink:"#16191f",muted:"#545b64",line:"#e9ebed"},fontFamily:{sans:["Open Sans","sans-serif"]}}}};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="theme-home">
+
+/* Admin theme v4 - dùng chung cho 06, 10-15 (giữ giống hệt nhau). Slate + xanh #0972d3, Plus Jakarta Sans. */
+html,body,button,input,select,textarea{font-family:'Plus Jakarta Sans',sans-serif!important}
+.material-symbols-outlined{font-family:'Material Symbols Outlined'!important}
+body{background:#f8f9fa!important;color:#16191f}
+/* sidebar */
+aside{background:#0f1b2a!important;border-right:1px solid #1a2433}
+aside>div:first-child>div:first-child{border-bottom-color:rgba(255,255,255,.08)!important}
+aside nav{padding:12px!important}
+aside nav a{border-radius:12px!important;border-left-width:0!important;padding:10px 14px!important;min-height:44px;color:#bbc7db!important;transition:background .15s,color .15s}
+aside nav a:hover{background:rgba(255,255,255,.07)!important;color:#fff!important}
+aside nav a[class*="bg-white/10"]{background:#0972d3!important;color:#fff!important;box-shadow:none}
+aside nav a[class*="bg-white/10"] .material-symbols-outlined{color:#fff}
+aside [class*="rounded-lg"]{border-radius:12px!important}
+/* header 64px */
+header{background:rgba(255,255,255,.92)!important;backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0!important;height:64px!important}
+header h1{font-weight:800!important;letter-spacing:-.01em;font-size:20px!important;line-height:28px}
+/* card */
+.card{background:#fff;border:1px solid #e2e8f0!important;border-radius:16px!important;box-shadow:0 1px 2px rgba(15,27,42,.04)}
+.card.overflow-hidden{overflow:clip!important}
+.rounded{border-radius:12px!important}
+.rounded-lg{border-radius:12px!important}
+.card .border-b,.card .divide-y>*,.divide-y>:not([hidden])~:not([hidden]),.border-line,.border-b{border-color:#eef1f4!important}
+h2{font-weight:800}
+article.card.p-5{padding:16px 20px}
+/* buttons: h-10, sm h-8 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:12px!important;font-size:14px;font-weight:700;line-height:20px;white-space:nowrap;box-shadow:none;transition:background .15s,border-color .15s,color .15s;cursor:pointer}
+.btn-sm{height:34px;padding:0 14px;font-size:13px}
+.btn .material-symbols-outlined{font-size:18px!important;line-height:1}
+.btn-primary{background:#0972d3;color:#fff;border:1px solid #0972d3!important;box-shadow:0 1px 3px rgba(9,114,211,.35),0 1px 2px rgba(15,27,42,.12);font-weight:700}
+.btn-primary:hover{background:#005eb2;border-color:#005eb2!important}
+.btn-ghost{background:#fff;color:#0f172a;border:1.5px solid #cbd5e1!important;font-weight:700;box-shadow:0 1px 2px rgba(15,27,42,.06)}
+.btn-ghost:hover{background:#f8fafc;border-color:#94a3b8!important}
+.btn-danger{background:#fff;color:#be123c;border:1.5px solid #fda4af!important;font-weight:700}
+.btn-danger:hover{background:#fff1f2;border-color:#fb7185!important}
+.btn:disabled,.btn[disabled]{background:#f1f5f9!important;color:#64748b!important;border:1.5px solid #e2e8f0!important;box-shadow:none;cursor:not-allowed;opacity:1}
+.btn:disabled:not(:has(.material-symbols-outlined))::before,.btn[disabled]:not(:has(.material-symbols-outlined))::before{content:"block";font-family:'Material Symbols Outlined'!important;font-size:18px;line-height:1;font-weight:400}
+.btn.opacity-50{opacity:1!important}
+/* badges: pill 12px, nền nhạt + viền + chấm đặc */
+.badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px!important;background:#f1f5f9;border:1px solid #cbd5e1;color:#334155;font-size:12px;font-weight:700;line-height:1;letter-spacing:0;text-transform:none;white-space:nowrap}
+.badge .material-symbols-outlined{font-size:14px!important;margin:0!important}
+.badge-blue,.badge-green,.badge-amber,.badge-red,.badge-gray{background:var(--bg)!important;border-color:var(--bd)!important;color:var(--fg)!important}
+.badge-blue::before,.badge-green::before,.badge-amber::before,.badge-red::before,.badge-gray::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--d);flex-shrink:0}
+.badge-blue{--bg:#eff6ff;--bd:#93c5fd;--fg:#1e40af;--d:#0972d3}
+.badge-green{--bg:#ecfdf5;--bd:#6ee7b7;--fg:#065f46;--d:#10b981}
+.badge-amber{--bg:#fffbeb;--bd:#fcd34d;--fg:#78350f;--d:#f59e0b}
+.badge-red{--bg:#fff1f2;--bd:#fda4af;--fg:#9f1239;--d:#f43f5e}
+.badge-gray{--bg:#f1f5f9;--bd:#cbd5e1;--fg:#334155;--d:#94a3b8}
+/* số đếm trên sidebar: pill đặc rose-600 */
+aside nav a .rounded-full{background:#e11d48!important;color:#fff!important;font-size:12px!important;font-weight:800;min-width:24px;padding:2px 8px!important;line-height:16px}
+/* cảnh báo: thẻ nền nhạt + vạch trái 4px + icon 20px + tiêu đề đậm */
+.note{display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid #64748b;border-radius:12px;padding:12px 16px;font-size:14px;line-height:20px;color:#1e293b}
+.note>.material-symbols-outlined{font-size:20px!important;line-height:20px;color:#64748b;flex-shrink:0;margin-top:0}
+.note .nt{font-weight:800;color:#0f172a}
+.note.rose{background:#fff1f2;border-color:#fda4af;border-left-color:#e11d48}.note.rose>.material-symbols-outlined,.note.rose .nt{color:#be123c}
+.note.amber{background:#fffbeb;border-color:#fcd34d;border-left-color:#f59e0b}.note.amber>.material-symbols-outlined,.note.amber .nt{color:#b45309}
+.note.blue{background:#eff6ff;border-color:#93c5fd;border-left-color:#0972d3}.note.blue>.material-symbols-outlined,.note.blue .nt{color:#1d4ed8}
+/* inputs: h-10, rounded-xl */
+.input,input.input,select.input,textarea.input{width:100%;font-size:14px!important;line-height:20px!important;padding:9px 14px!important;border:1px solid #dbe2ea;border-radius:12px!important;background-color:#fff;color:#16191f;box-shadow:none;outline:none}
+input.input,select.input{height:40px}
+textarea.input{height:auto;min-height:40px}
+select.input{padding-right:36px!important}
+.input::placeholder{color:#94a3b8}
+.input:hover:not(:focus){border-color:#cbd5e1}
+.input:focus,input.input:focus,select.input:focus,textarea.input:focus{background-color:#fff;border-color:#0972d3;box-shadow:0 0 0 3px rgba(9,114,211,.15)}
+.lbl{display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:6px;line-height:16px}
+.hint{font-size:12px;color:#64748b;margin-top:6px;line-height:16px}
+input[type=checkbox]{accent-color:#0972d3;width:16px;height:16px;border-radius:4px}
+/* tabs: pill, scroll ngang */
+#tabs,[role=tablist]{overflow-x:auto;gap:2px}
+.tab{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px!important;margin:0!important;border:1.5px solid #cbd5e1!important;border-radius:999px;font-size:13px;font-weight:700;color:#334155;background:#fff;flex-shrink:0;white-space:nowrap;cursor:pointer}
+#tabs,[role=tablist]{gap:8px;padding:2px}
+.tab:hover{background:#f8fafc;border-color:#94a3b8!important;color:#0f172a}
+.tab.active{background:#232f3e;border-color:#232f3e!important;color:#fff}
+/* tables: header dính, 14px, hàng ~56px */
+table.border-collapse{border-collapse:separate!important;border-spacing:0}
+.th{position:sticky;top:64px;z-index:5;height:44px;padding:0 16px;text-align:left;background:#f8fafc;color:#64748b;font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;border-bottom:1px solid #e2e8f0;white-space:nowrap}
+.td{height:56px;padding:8px 16px;font-size:14px;line-height:20px;border-bottom:1px solid #eef1f4;vertical-align:middle}
+tr:last-child>.td{border-bottom:0}
+tbody tr{transition:background .12s}tbody tr:hover{background:#f8fafc}
+/* switch */
+.sw{position:relative;width:40px;height:22px;border-radius:999px;background:#cbd5e1;flex-shrink:0;cursor:pointer;transition:background .15s;border:0;padding:0}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+.sw::before{content:"";position:absolute;inset:-11px -4px}
+.sw[aria-checked=true]{background:#0972d3}.sw[aria-checked=true]::after{left:20px}
+.sw:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+.sw[disabled]{opacity:.6;cursor:not-allowed}
+/* progress bar (xanh = bình thường, vàng = gần đầy, hồng = đầy, xám = đã kết thúc) */
+.bar{height:8px;border-radius:999px;background:#dbe3ec;overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px;background:#0972d3}
+.bar.amber>i{background:#f59e0b}.bar.full>i,.bar.rose>i{background:#e11d48}.bar.grey>i{background:#94a3b8}
+.text-secondary{color:#0972d3}
+img.rounded-full{border:2px solid #fff;box-shadow:0 0 0 1px #e2e8f0}
+/* chip thông tin */
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155}
+.chip .material-symbols-outlined{font-size:16px;color:#64748b}
+main>style+*{margin-top:0!important}
+
+[hidden]{display:none!important}
+/* focus */
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+aside a:focus-visible,aside button:focus-visible{outline-color:#fff;outline-offset:-2px}
+.input:focus-visible,.rte:focus-visible{outline:none}
+.card .border-t{border-color:#eef1f4!important}
+/* avatar chữ cái */
+.av{width:36px;height:36px;border-radius:999px;background:#0f1b2a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;line-height:1;letter-spacing:.01em}
+.av-32{width:32px;height:32px;font-size:11px}.av-40{width:40px;height:40px}.av-48{width:48px;height:48px;font-size:14px}
+/* số căn phải, chữ số đều nhau */
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.th.num{text-align:right}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;font-size:12.5px;letter-spacing:.01em}
+.sub{font-size:12px;line-height:16px;color:#64748b;margin-top:2px}
+.fb{display:inline-flex;align-items:center;gap:4px;color:#0972d3;font-weight:700;font-size:13px;white-space:nowrap}.fb:hover{text-decoration:underline}.fb .material-symbols-outlined{font-size:16px}
+.trunc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+/* trạng thái rỗng */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:40px 24px;text-align:center;color:#64748b;font-size:14px}
+.empty .material-symbols-outlined{font-size:36px;color:#94a3b8}
+.empty b{color:#0f172a;font-size:15px;font-weight:800}
+/* menu thao tác (vị trí fixed, không bị cắt bởi card) */
+.pop{position:fixed;z-index:80;min-width:208px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(15,27,42,.16);padding:6px;display:none}
+.pop.on{display:block}
+.pop button,.pop a{display:flex;align-items:center;gap:10px;width:100%;height:40px;padding:0 10px;border-radius:8px;font-size:13px;font-weight:600;color:#1e293b;text-align:left;white-space:nowrap}
+.pop button:hover,.pop a:hover{background:#f1f5f9}
+.pop .material-symbols-outlined{font-size:18px;color:#64748b}
+.pop .dg,.pop .dg .material-symbols-outlined{color:#be123c}
+.pop hr{border:0;border-top:1px solid #eef1f4;margin:4px 0}
+.ibtn2{width:36px;height:34px;border-radius:12px;border:1.5px solid #cbd5e1;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#334155;flex-shrink:0;cursor:pointer}
+.ibtn2:hover{background:#f8fafc;border-color:#94a3b8}.ibtn2 .material-symbols-outlined{font-size:18px}
+/* thanh lưu / thanh chọn nhiều */
+.dock{position:sticky;bottom:16px;z-index:30;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px 10px 16px;background:#0f1b2a;color:#fff;border-radius:16px;box-shadow:0 12px 32px rgba(15,27,42,.28);font-size:14px;font-weight:700}
+.dock .btn{height:36px}
+.dock .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)!important;color:#fff}.dock .btn-ghost:hover{background:rgba(255,255,255,.16)}
+.dock[hidden]{display:none}
+#toast{position:fixed;right:24px;bottom:24px;background:#0f1b2a;color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:90;max-width:calc(100vw - 32px)}#toast.on{opacity:1;transform:none}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 24px;border-top:1px solid #eef1f4;font-size:14px;color:#64748b}
+.pg{min-width:34px;height:34px;padding:0 10px;border-radius:12px;border:1.5px solid #cbd5e1;background:#fff;color:#0f172a;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.pg:hover:not(:disabled){background:#f8fafc;border-color:#94a3b8}
+.pg.on{background:#ebf5fb;border-color:#0972d3;color:#0972d3}
+.pg:disabled{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0;cursor:not-allowed}
+.pg .material-symbols-outlined{font-size:18px}
+.kpi{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.kpi .ic{width:40px;height:40px;border-radius:12px;background:#f1f5f9;color:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kpi .v{font-size:28px;line-height:36px;font-weight:800;color:#232f3e;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:13px;color:#64748b;margin-top:2px;line-height:18px}
+/* thanh trên cùng + drawer: hiện khi ≤1023px */
+#admBar,#admScrim{display:none}
+.tbl-wrap{overflow:visible}
+@media (min-width:1024px){aside{overflow-y:auto}}
+@media (max-width:1279px){
+ .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .tbl-wrap>table{min-width:var(--mw,720px)}
+ .th{position:static}
+}
+@media (max-width:1023px){
+ html,body{overflow-x:hidden}
+ body{display:block!important;height:auto!important;min-height:100vh;overflow:visible!important;padding-top:56px}
+ html.nav-open body{overflow:hidden!important}
+ body>div.flex-1{display:block!important;height:auto!important;overflow:visible!important}
+ #admBar{display:flex;position:fixed;top:0;left:0;right:0;height:56px;z-index:40;align-items:center;gap:12px;padding:0 8px 0 16px;background:#0f1b2a;color:#fff}
+ #admBar .adm-logo{width:32px;height:32px;flex-shrink:0;border-radius:10px!important}
+ #admBar .adm-logo .material-symbols-outlined{font-size:20px!important}
+ #admBar .adm-title{flex:1;min-width:0;font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #admMenu{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+ #admMenu .material-symbols-outlined{font-size:24px}
+ aside{position:fixed!important;top:0;left:0;bottom:0;width:288px!important;z-index:60;transform:translateX(-100%);transition:transform .2s,visibility .2s;overflow-y:auto;visibility:hidden}
+ html.nav-open aside{transform:none;visibility:visible}
+ #admScrim{display:block;position:fixed;inset:0;z-index:50;background:rgba(15,27,42,.55);opacity:0;pointer-events:none;transition:opacity .2s}
+ html.nav-open #admScrim{opacity:1;pointer-events:auto}
+ header{position:static!important;height:auto!important;min-height:64px;padding:12px 24px!important;flex-wrap:wrap;gap:10px;backdrop-filter:none}
+ header:not(.keep-h1) h1{display:none}
+ header:not(.keep-h1):not(:has(.btn)){display:none}
+ header>div:last-child:not(:first-child){display:flex;gap:8px;flex-wrap:wrap}
+ main{padding:24px!important}
+ .pager{padding:12px 16px}
+}
+@media (max-width:767px){
+ header{padding:12px 16px!important}
+ header>div:last-child:not(:first-child){width:100%}
+ header>div:last-child:not(:first-child) .btn{flex:1 1 0;padding:0 10px}
+ main{padding:16px!important}
+ main.space-y-6>*+*{margin-top:16px!important}
+ main .grid:not(.keep-cols){grid-template-columns:minmax(0,1fr)!important}
+ main .gap-6{gap:16px}
+ .card .px-6{padding-left:16px!important;padding-right:16px!important}
+ .card.p-6{padding:16px}
+ .btn,.btn-sm{height:44px}
+ input.input,select.input{height:44px}
+ .tab{height:44px}
+ .tbl-wrap .td{white-space:nowrap}
+ article.card.p-5{padding:12px 14px}
+ article.card.p-5 .w-10.h-10{display:none}
+ table.stack{min-width:0!important;display:block}
+ table.stack thead{display:none}
+ table.stack tbody{display:block}
+ table.stack tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:14px 16px;border-bottom:1px solid #eef1f4}
+ table.stack tr:last-child{border-bottom:0}
+ table.stack td{display:block;height:auto;padding:0!important;border:0!important;width:auto!important;white-space:normal!important}
+ .toolbar-m{flex-direction:column;align-items:stretch!important}
+ .toolbar-m>*{width:100%!important}
+ #toast{left:16px;right:16px;bottom:16px}
+ .dock{bottom:12px}
+ .pager{flex-direction:column;align-items:stretch;text-align:center}
+ .pager>div{justify-content:center}
+}
+</style>
+</head>
+<body data-title="Sửa sự kiện" class="bg-surface font-sans text-ink flex h-screen overflow-hidden">
+
+<!-- SIDEBAR -->
+<aside class="w-64 bg-tertiary text-white flex flex-col justify-between flex-shrink-0 select-none" aria-label="Điều hướng quản trị">
+<div>
+<div class="h-16 px-5 flex items-center gap-3 border-b border-white/10">
+<div class="relative w-10 h-10 rounded-lg bg-tertiary border border-primary flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-[#509cff] text-[22px]">cloud</span><img alt="FCAJ" class="absolute inset-0 h-full w-full object-contain p-1.5 bg-tertiary" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida/ALJJyrCsHVf_6xHvbc6KxDszQRu-ELiUZH48ZLYBFWwLDED6pTulYfxZclhrK5p1lHD0AUvtBWeM1Ktg-cKEjxVfCkMS3KOMPBk9y2ZjRJKiTU5obpX8A08b_QM_V0BvT_R7IL-DJluwnK6jtPsQZxHrU7cir4CSm1esVRv-qNQmaIrDnCVXG5dbljNzCMG6IGGRnB5kIRDJqmhnZBlqIrhD_nqX4fi8_Wr8EaHtxZP7kg"></div>
+<div class="leading-tight">
+<div class="flex items-center gap-2"><span class="font-bold text-base">FCAJ</span><span class="px-1.5 py-0.5 rounded bg-white/10 text-[11px] font-semibold uppercase tracking-wide text-[#a7c8ff]">Admin</span></div>
+<span class="text-xs text-[#bbc7db]">Đà Nẵng Chapter</span>
+</div>
+</div>
+<nav class="p-3 space-y-1">
+<a href="../06-quan-tri-duyet-cfp/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">dashboard</span>Tổng quan</span></a>
+<a href="../10-admin-quan-ly-su-kien/code.html" aria-current="page" class="flex items-center justify-between px-3 py-2.5 rounded bg-white/10 text-white text-sm font-semibold border-l-[3px] border-secondary"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">calendar_month</span>Sự kiện</span></a>
+<a href="../11-admin-duyet-dien-gia/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">rate_review</span>Duyệt diễn giả</span><span class="min-w-[22px] text-center px-1.5 py-0.5 rounded-full bg-[#ba1a1a] text-white text-[11px] font-bold">9</span></a>
+<a href="../12-admin-khach-tham-du/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">groups</span>Khách tham dự</span></a>
+<a href="../13-admin-karma-diem/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">emoji_events</span>Điểm đóng góp</span></a>
+<a href="../14-admin-cai-dat/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">settings</span>Cài đặt</span></a>
+</nav>
+</div>
+<div class="p-4 border-t border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary border border-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">TN</div>
+<div class="min-w-0 leading-tight"><div class="text-sm font-semibold truncate">Tuấn Nguyễn</div><div class="text-xs text-[#bbc7db] truncate">Chủ nhiệm</div></div>
+</div>
+<button class="p-1.5 rounded text-[#bbc7db] hover:text-white hover:bg-white/10" title="Đăng xuất" aria-label="Đăng xuất" type="button"><span class="material-symbols-outlined text-[20px]">logout</span></button>
+</div>
+</aside>
+
+
+<div class="flex-1 flex flex-col h-screen overflow-y-auto">
+<header class="keep-h1 h-16 px-8 bg-white border-b border-line flex items-center justify-between flex-shrink-0 sticky top-0 z-20">
+<div class="min-w-0"><div class="flex items-center gap-1 text-xs text-muted font-semibold"><a href="../10-admin-quan-ly-su-kien/code.html" class="hover:text-secondary">Quản lý sự kiện</a><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-ink">Chỉnh sửa</span></div>
+<div class="flex items-center gap-3"><h1 class="text-xl font-bold text-primary truncate max-w-[520px]">Deep Dive LLM &amp; AWS Bedrock</h1><span class="badge badge-green">Đang mở đăng ký</span></div></div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<button class="btn btn-ghost" type="button"><span class="material-symbols-outlined">open_in_new</span>Xem trang</button>
+<button class="btn btn-ghost" type="button"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
+<button class="btn btn-primary" type="button"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
+</div></header>
+<style>
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;gap:2px}
+.seg button{height:30px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:700;color:#64748b;white-space:nowrap}
+.seg button.on{background:#fff;color:#0972d3;box-shadow:0 1px 2px rgba(15,27,42,.1)}
+.tag{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 6px 0 10px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;color:#334155;font-size:12px;font-weight:600}
+.tag button{display:inline-flex;border-radius:999px;padding:1px}.tag button:hover{background:#e2e8f0}
+.sec-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;color:#0f1b2a}
+.sec-ico{display:flex;color:#0972d3}
+.drop{border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc;transition:all .15s}
+.drop.over{background:#ebf5fb;border-color:#0972d3}
+.cover-prev{background:linear-gradient(135deg,#0f1b2a 0%,#0b4f8f 55%,#0972d3 100%);position:relative;background-size:cover;background-position:center}
+.cover-prev.has-img::before{display:none}
+.slot{aspect-ratio:16/10;border-radius:12px;position:relative;overflow:hidden;border:1px solid #e2e8f0;background-size:cover;background-position:center}
+.slot .tools{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,27,42,.35),transparent 40%,rgba(15,27,42,.5));display:flex;justify-content:space-between;align-items:flex-start;padding:6px;opacity:0;transition:opacity .15s}
+.slot:hover .tools{opacity:1}
+.slot .tools span.mi{color:#fff;background:rgba(15,27,42,.5);border-radius:8px;padding:3px;cursor:pointer}
+.slot-add{aspect-ratio:16/10;border-radius:12px;border:1px dashed #cbd5e1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#64748b;font-size:12px;font-weight:700;cursor:pointer;background:#f8fafc}
+.slot-add:hover{border-color:#0972d3;color:#0972d3}
+.rte-bar{display:flex;gap:2px;padding:4px;border:1px solid #dbe2ea;border-bottom:0;border-radius:12px 12px 0 0;background:#f8fafc}
+.rte-bar button{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#475569}
+.rte-bar button:hover{background:#fff;color:#0972d3}
+.rte{min-height:130px;padding:10px 14px;border:1px solid #dbe2ea;border-radius:0 0 12px 12px;background:#fff;font-size:14px;line-height:22px;outline:none}
+.rte:focus{border-color:#0972d3;box-shadow:0 0 0 3px rgba(9,114,211,.15)}
+.rte ul{list-style:disc;padding-left:20px}.rte a{color:#0972d3;text-decoration:underline}
+.subnav a{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:700;color:#64748b;margin-right:2px;white-space:nowrap}
+.subnav a:hover{background:#f1f5f9;color:#16191f}.subnav a.active{background:#ebf5fb;color:#0972d3}
+.row-edit{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:12px;background:#fff}
+.grip{color:#94a3b8;cursor:grab;flex-shrink:0}
+.ibtn{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#64748b;flex-shrink:0}
+.ibtn:hover{background:#f1f5f9;color:#e11d48}
+.avatar{width:36px;height:36px;border-radius:999px;background:#0f1b2a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.q-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid #e2e8f0;border-radius:12px}
+section[id^=s-]{scroll-margin-top:140px}
+.row-edit .input{padding:9px 8px!important}
+.ck-ok{color:#0f6b3a}.ck-no{color:#cbd5e1}
+@media (max-width:767px){
+ .subnav{top:56px!important;margin-left:-16px!important;margin-right:-16px!important;padding-left:16px!important;padding-right:16px!important}
+ aside-col{position:static!important}
+ #nav-hide{display:none}
+ section[id^=s-]{scroll-margin-top:72px}
+ #agenda .row-edit{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:8px}
+ #agenda .row-edit>:nth-child(1){display:none}
+ #agenda .row-edit>:nth-child(2){order:1}
+ #agenda .row-edit>:nth-child(6){order:2;justify-self:end}
+ #agenda .row-edit>:nth-child(3){order:3;grid-column:1/-1}
+ #agenda .row-edit>:nth-child(4){order:4}
+ #agenda .row-edit>:nth-child(5){order:5}
+ #spk .row-edit .badge,#spk .row-edit .grip{display:none}
+ #s-thoigian .grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #s-diem .grid-cols-3{grid-template-columns:minmax(0,1fr)!important}
+ #gallery{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}
+ .q-row{flex-wrap:wrap}
+ .row-edit .ibtn,.ibtn{width:44px;height:44px}
+ .slot-add{font-size:0}
+ #s-anh .drop{flex-wrap:wrap}
+}
+</style>
+
+<main class="flex-1 p-8 pt-2 max-w-[1280px] w-full mx-auto">
+<!-- sub nav -->
+<div class="subnav sticky top-16 z-10 -mx-2 px-2 py-3 mb-2 bg-[#f8f9fa]/95 backdrop-blur flex items-center justify-between gap-4">
+<nav id="subnav" class="flex overflow-x-auto min-w-0">
+<a href="#s-anh" class="active">Ảnh</a><a href="#s-thongtin">Thông tin</a><a href="#s-thoigian">Thời gian</a><a href="#s-ve">Vé</a><a href="#s-lich">Lịch trình</a><a href="#s-diengia">Diễn giả</a><a href="#s-diem">Điểm đóng góp</a>
+</nav>
+<span id="dirty" class="badge badge-amber hidden flex-shrink-0">Chưa lưu</span>
+</div>
+
+<div class="grid grid-cols-[minmax(0,1fr)_320px] gap-5 items-start">
+<!-- LEFT -->
+<div class="space-y-5" id="form">
+
+<!-- 1 ẢNH -->
+<section id="s-anh" class="card p-5 space-y-5">
+<div class="flex items-center justify-between"><div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">image</span></span>Hình ảnh</div><span class="text-xs text-muted">Đã dùng 3/8 ảnh thư viện</span></div>
+
+<div>
+<label class="lbl">Ảnh bìa (banner)</label>
+<div id="cover" class="cover-prev rounded-xl h-[180px] flex items-end overflow-hidden">
+<div class="relative z-[1] p-4 text-white w-full flex items-end justify-between">
+<div><span class="badge" style="background:rgba(255,255,255,.18)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important">Talk &amp; Lab</span><div class="text-xl font-extrabold mt-2 leading-tight">Deep Dive LLM &amp; AWS Bedrock</div><div class="text-sm text-[#d5e6f8] mt-1">18/11/26 · Enouvo Space Đà Nẵng</div></div>
+<span id="coverName" class="hidden sm:inline text-xs bg-black/30 rounded-full px-3 py-1 font-semibold whitespace-nowrap">cover-default.jpg · 1600x900</span>
+</div></div>
+<div id="drop" class="drop mt-3 p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-[24px] text-slate-400">cloud_upload</span>
+<div class="flex-1 min-w-0"><div class="text-sm font-bold text-[#0f1b2a]">Kéo thả ảnh hoặc chọn từ máy</div><div class="hint !mt-0.5">1600x900 (16:9), JPG/PNG/WebP, tối đa 5MB.</div></div>
+<input id="coverFile" type="file" accept="image/*" class="hidden">
+<div class="flex gap-2 flex-shrink-0">
+<button class="btn btn-primary btn-sm" type="button" id="btnReplace"><span class="material-symbols-outlined">swap_horiz</span>Thay ảnh</button>
+<button class="btn btn-ghost btn-sm" type="button" id="btnCrop"><span class="material-symbols-outlined">crop</span>Cắt</button>
+<button class="btn btn-ghost btn-sm" type="button" id="btnRemove"><span class="material-symbols-outlined">delete</span>Xóa</button>
+</div></div>
+<div id="coverErr" class="hint !text-[#be123c] hidden"></div>
+</div>
+
+<div class="grid grid-cols-[120px_minmax(0,1fr)] gap-5 keep-cols">
+<div>
+<label class="lbl">Ảnh đại diện (1:1)</label>
+<div id="thumb" class="cover-prev rounded-xl w-[120px] h-[120px] flex items-center justify-center text-white overflow-hidden"><span class="material-symbols-outlined text-[44px] relative z-[1]" style="font-variation-settings:'FILL' 1">smart_toy</span></div>
+</div>
+<div class="flex flex-col justify-center">
+<div class="text-sm font-bold text-[#0f1b2a]">Hiển thị ở danh sách và khi chia sẻ</div>
+<div class="hint">800x800, tối đa 2MB, tự cắt giữa khung vuông.</div>
+<input id="thumbFile" type="file" accept="image/*" class="hidden">
+<div class="flex gap-2 mt-3"><button class="btn btn-ghost btn-sm" type="button" id="btnThumb"><span class="material-symbols-outlined">upload</span>Tải lên</button><button class="btn btn-ghost btn-sm" type="button" id="btnThumbRm"><span class="material-symbols-outlined">delete</span>Xóa</button></div>
+</div></div>
+
+<div>
+<div class="flex items-center justify-between mb-1.5"><label class="lbl !mb-0">Thư viện ảnh (tối đa 8)</label><span class="text-xs text-muted hidden sm:inline">Kéo để sắp xếp</span></div>
+<div id="gallery" class="grid grid-cols-4 gap-3 keep-cols"></div>
+<input id="galFile" type="file" accept="image/*" multiple class="hidden">
+</div>
+</section>
+
+<!-- 2 THÔNG TIN -->
+<section id="s-thongtin" class="card p-5 space-y-4">
+<div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">info</span></span>Thông tin chung</div>
+<div><label class="lbl" for="name">Tên sự kiện</label><input id="name" class="input" value="Deep Dive LLM &amp; AWS Bedrock"></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div><label class="lbl">Slug (đường dẫn)</label><div class="flex"><span class="inline-flex items-center px-3 text-xs text-muted bg-[#f1f5f9] border border-r-0 border-[#e2e8f0] rounded-l-xl whitespace-nowrap">fcaj.vn/su-kien/</span><input id="slug" class="input !rounded-l-none" style="border-radius:0 12px 12px 0!important" value="deep-dive-llm-aws-bedrock"></div></div>
+<div><label class="lbl">Loại sự kiện</label><select class="input"><option>Meetup</option><option selected>Workshop</option><option>Lab</option><option>Conference</option><option>Talk</option></select></div>
+</div>
+<div><label class="lbl">Mô tả ngắn</label><textarea id="short" class="input" rows="2" maxlength="160">Khám phá cách xây dựng ứng dụng GenAI sản xuất với Amazon Bedrock qua phần talk và lab thực hành.</textarea><div class="hint flex justify-between"><span>Hiển thị trên thẻ sự kiện.</span><span id="shortCnt">95/160</span></div></div>
+<div>
+<label class="lbl">Mô tả chi tiết</label>
+<div class="rte-bar">
+<button type="button" data-cmd="bold" title="In đậm"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button type="button" data-cmd="italic" title="In nghiêng"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button type="button" data-cmd="insertUnorderedList" title="Danh sách"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<button type="button" data-cmd="createLink" title="Chèn liên kết"><span class="material-symbols-outlined text-[20px]">link</span></button>
+</div>
+<div class="rte" contenteditable="true" id="rte"><p>Buổi chia sẻ dành cho kỹ sư và sinh viên muốn đưa mô hình ngôn ngữ lớn vào sản phẩm thật. Chúng ta sẽ đi từ kiến trúc tổng quan đến demo trực tiếp trên <b>Amazon Bedrock</b>.</p><ul><li>Chọn foundation model phù hợp với bài toán</li><li>Xây dựng RAG với Knowledge Bases</li><li>Guardrails, chi phí và quan sát hệ thống</li></ul><p>Vui lòng mang theo laptop và tài khoản AWS để làm lab.</p></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_170px] gap-4">
+<div><label class="lbl">Thẻ (tags)</label>
+<div class="input !flex flex-wrap items-center gap-2" id="tagBox" style="min-height:40px;padding:6px 10px!important;height:auto"><input id="tagIn" class="!bg-transparent !border-0 !shadow-none !outline-none text-sm flex-1 min-w-[60px]" placeholder="Thêm thẻ..."></div></div>
+<div><label class="lbl">Ngôn ngữ</label><select class="input"><option selected>Tiếng Việt</option><option>English</option><option>Song ngữ Việt - Anh</option></select></div>
+</div>
+</section>
+
+<!-- 3 THỜI GIAN -->
+<section id="s-thoigian" class="card p-5 space-y-4">
+<div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">schedule</span></span>Thời gian &amp; địa điểm</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 keep-cols">
+<div><label class="lbl">Ngày bắt đầu</label><input class="input" type="date" value="2026-11-18"></div>
+<div><label class="lbl">Giờ bắt đầu</label><input class="input" type="time" value="14:00"></div>
+<div><label class="lbl">Ngày kết thúc</label><input class="input" type="date" value="2026-11-18"></div>
+<div><label class="lbl">Giờ kết thúc</label><input class="input" type="time" value="17:30"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div><label class="lbl">Hạn đăng ký</label><input class="input" type="datetime-local" value="2026-11-17T23:59"></div>
+<div><label class="lbl">Múi giờ</label><select class="input"><option>(GMT+7) Hà Nội, Đà Nẵng</option></select></div>
+</div>
+<div><label class="lbl">Hình thức</label><div class="seg" data-seg><button type="button" class="on">Trực tiếp</button><button type="button">Online</button><button type="button">Hybrid</button></div></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div><label class="lbl">Tên địa điểm</label><input class="input" value="Enouvo Space Đà Nẵng"></div>
+<div><label class="lbl">Link bản đồ</label><div class="relative"><span class="material-symbols-outlined text-[18px] text-muted absolute left-3 top-1/2 -translate-y-1/2">map</span><input class="input" style="padding-left:40px!important" value="https://maps.app.goo.gl/enouvo-danang"></div></div>
+</div>
+<div><label class="lbl">Địa chỉ</label><input class="input" value="Tầng 4, 15 Nguyễn Văn Linh, Hải Châu, Đà Nẵng"></div>
+<div><label class="lbl">Hướng dẫn đến nơi</label><textarea class="input" rows="3">Gửi xe tại hầm B1 (miễn phí cho khách tham dự). Lên tầng 4 bằng thang máy, BTC đón tại quầy check-in. Mang theo mã QR vé để vào cửa.</textarea></div>
+</section>
+
+<!-- 4 VÉ -->
+<section id="s-ve" class="card p-5 space-y-4">
+<div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">confirmation_number</span></span>Vé &amp; đăng ký</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div><label class="lbl">Tổng số chỗ</label><input class="input" type="number" value="100"></div>
+<div><label class="lbl">Giữ chỗ diễn giả / khách mời</label><input class="input" type="number" value="10"><div class="hint">Không tính vào số chỗ đăng ký.</div></div>
+<div><label class="lbl">Giá vé (VND)</label><input id="price" class="input" type="number" value="0" disabled><div class="hint" id="priceHint">Sự kiện miễn phí.</div></div>
+</div>
+<div class="divide-y">
+<div class="flex items-center justify-between py-3"><div><div class="text-sm font-bold">Miễn phí</div><div class="hint !mt-0">Tắt để nhập giá vé.</div></div><button class="sw" id="swFree" role="switch" aria-checked="true" type="button"></button></div>
+<div class="flex items-center justify-between py-3"><div><div class="text-sm font-bold">Duyệt thủ công</div><div class="hint !mt-0" id="apprHint">Đang tắt: đăng ký được tự động xác nhận.</div></div><button class="sw" role="switch" aria-checked="false" type="button" id="swAppr"></button></div>
+</div>
+<div><label class="lbl">Khi hết chỗ hiển thị</label><select class="input"><option>Hiện "Đã hết chỗ"</option><option>Ẩn nút đăng ký</option></select></div>
+<div>
+<label class="lbl">Câu hỏi đăng ký</label>
+<div class="space-y-2">
+<div class="q-row bg-[#f8fafc]"><span class="material-symbols-outlined text-muted">lock</span><div class="flex-1"><div class="text-sm font-bold">Liên kết Facebook <span class="badge ml-1">Bắt buộc</span></div><div class="hint !mt-0">Khóa. BTC dùng để nhắn tin xác nhận và hỗ trợ.</div></div><button class="sw" role="switch" aria-checked="true" type="button" disabled></button></div>
+<div class="q-row"><span class="material-symbols-outlined text-muted">tune</span><div class="flex-1"><div class="text-sm font-bold">Trình độ AWS hiện tại</div><div class="hint !mt-0">Beginner / Intermediate / Advanced</div></div><label class="flex items-center gap-2 text-xs font-semibold text-muted"><input type="checkbox" checked> Bắt buộc</label><button class="sw" role="switch" aria-checked="true" type="button"></button></div>
+<div class="q-row"><span class="material-symbols-outlined text-muted">chat</span><div class="flex-1"><div class="text-sm font-bold">Lý do tham gia</div><div class="hint !mt-0">Văn bản ngắn, tối đa 300 ký tự</div></div><label class="flex items-center gap-2 text-xs font-semibold text-muted"><input type="checkbox"> Bắt buộc</label><button class="sw" role="switch" aria-checked="true" type="button"></button></div>
+</div></div>
+<div><label class="lbl">Điều khoản hủy</label><textarea class="input" rows="2">Khách có thể hủy vé miễn phí đến 24 giờ trước giờ bắt đầu. Hủy muộn hoặc vắng mặt không báo sẽ bị trừ Điểm đóng góp.</textarea></div>
+</section>
+
+<!-- 5 LỊCH TRÌNH -->
+<section id="s-lich" class="card p-5 space-y-4">
+<div class="flex items-center justify-between"><div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">view_timeline</span></span>Lịch trình (Agenda)</div><button class="btn btn-ghost btn-sm" type="button" id="addSess"><span class="material-symbols-outlined">add</span>Thêm phiên</button></div>
+<div class="hidden md:grid grid-cols-[24px_132px_minmax(0,1fr)_160px_120px_36px] gap-2 px-3 text-xs font-bold text-[#64748b]"><span></span><span>Giờ</span><span>Tiêu đề</span><span>Diễn giả</span><span>Phòng</span><span></span></div>
+<div id="agenda" class="space-y-2"></div>
+</section>
+
+<!-- 6 DIỄN GIẢ -->
+<section id="s-diengia" class="card p-5 space-y-4">
+<div class="flex items-center justify-between"><div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">record_voice_over</span></span>Diễn giả</div><button class="btn btn-ghost btn-sm" type="button" id="addSpk"><span class="material-symbols-outlined">person_add</span>Thêm diễn giả</button></div>
+<div id="spk" class="space-y-2"></div>
+<div class="hint">Chỉ gồm diễn giả đã duyệt ở mục Duyệt diễn giả.</div>
+</section>
+
+<!-- 7 ĐIỂM -->
+<section id="s-diem" class="card p-5 space-y-4">
+<div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">emoji_events</span></span>Điểm đóng góp</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="rounded-xl border border-[#e2e8f0] p-3"><div class="flex items-center gap-2 text-xs font-bold text-muted uppercase tracking-wider"><span class="material-symbols-outlined text-[18px] text-slate-500">how_to_reg</span>Đăng ký</div><div class="flex items-center gap-2 mt-2"><input class="input" type="number" value="5"><span class="text-sm font-bold text-muted">điểm</span></div></div>
+<div class="rounded-xl border border-[#e2e8f0] p-3"><div class="flex items-center gap-2 text-xs font-bold text-muted uppercase tracking-wider"><span class="material-symbols-outlined text-[18px] text-slate-500">qr_code_scanner</span>Check-in</div><div class="flex items-center gap-2 mt-2"><input class="input" type="number" value="20"><span class="text-sm font-bold text-muted">điểm</span></div></div>
+<div class="rounded-xl border border-[#e2e8f0] p-3"><div class="flex items-center gap-2 text-xs font-bold text-muted uppercase tracking-wider"><span class="material-symbols-outlined text-[18px] text-slate-500">mic</span>Diễn giả</div><div class="flex items-center gap-2 mt-2"><input class="input" type="number" value="100"><span class="text-sm font-bold text-muted">điểm</span></div></div>
+</div>
+</section>
+
+<!-- 8 NGUY HIỂM -->
+<section id="s-nguyhiem" class="card p-5 space-y-3">
+<div class="sec-title"><span class="sec-ico"><span class="material-symbols-outlined text-[20px]">warning</span></span>Vùng nguy hiểm</div>
+<div class="divide-y">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-3 gap-3"><div><div class="text-sm font-bold">Hủy sự kiện</div><div class="hint !mt-0">Gửi thông báo hủy tới 86 khách đã đăng ký.</div></div><button class="btn btn-danger" type="button"><span class="material-symbols-outlined">event_busy</span>Hủy sự kiện</button></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-3 gap-3"><div><div class="text-sm font-bold">Nhân bản sự kiện</div><div class="hint !mt-0">Tạo bản nháp mới, không sao chép khách.</div></div><button class="btn btn-ghost" type="button"><span class="material-symbols-outlined">content_copy</span>Nhân bản</button></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-3 gap-3"><div><div class="text-sm font-bold">Xóa sự kiện</div><div class="hint !mt-0">Xóa vĩnh viễn, không thể hoàn tác.</div></div><button class="btn btn-danger" type="button"><span class="material-symbols-outlined">delete_forever</span>Xóa sự kiện</button></div>
+</div>
+</section>
+</div>
+
+<!-- RIGHT -->
+<aside-col class="block sticky top-[132px] space-y-4" style="align-self:start">
+<div class="card overflow-hidden">
+<div id="pvCover" class="cover-prev h-[120px]"><span class="badge absolute left-3 top-3 z-[1]" style="background:rgba(255,255,255,.2)!important;border-color:rgba(255,255,255,.35)!important;color:#fff!important">Workshop</span></div>
+<div class="p-4">
+<div class="text-xs font-bold text-slate-500">18 THG 11, 2026 · 14:00</div>
+<div id="pvName" class="font-extrabold text-[#0f1b2a] text-[15px] leading-snug mt-1">Deep Dive LLM &amp; AWS Bedrock</div>
+<div class="text-xs text-muted mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span>Enouvo Space Đà Nẵng</div>
+<div class="mt-3 flex justify-between text-xs"><span>86 / 100 vé</span><span class="font-bold text-slate-600">86%</span></div>
+<div class="bar amber mt-1.5"><i style="width:86%"></i></div>
+<div class="mt-3 text-xs text-muted">Xem trước thẻ trên trang chủ</div>
+</div></div>
+
+<div class="card p-4">
+<div class="flex items-center justify-between"><div class="text-sm font-extrabold text-[#0f1b2a]">Sẵn sàng xuất bản</div><span class="badge" id="ckCnt">5/7</span></div>
+<div class="bar mt-3"><i style="width:71%"></i></div>
+<ul class="mt-3 space-y-2 text-[13px]" id="ck">
+<li class="flex items-center gap-2 ck-ok"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-ink">Tên &amp; mô tả</span></li>
+<li class="flex items-center gap-2 ck-ok"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-ink">Ảnh bìa</span></li>
+<li class="flex items-center gap-2 ck-ok"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-ink">Thời gian &amp; địa điểm</span></li>
+<li class="flex items-center gap-2 ck-ok"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-ink">Vé &amp; đăng ký</span></li>
+<li class="flex items-center gap-2 ck-ok"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-ink">Lịch trình (4 phiên)</span></li>
+<li class="flex items-center gap-2 ck-no"><span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span><span class="text-muted">Ảnh thư viện (cần tối thiểu 4)</span></li>
+<li class="flex items-center gap-2 ck-no"><span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span><span class="text-muted">Diễn giả đã xác nhận phiên</span></li>
+</ul></div>
+
+<div class="card p-4 space-y-3 hidden md:block">
+<div class="flex items-center gap-2 text-xs text-muted"><span class="material-symbols-outlined text-[16px]">history</span>Lưu lần cuối 10:42 hôm nay bởi Tuấn Nguyễn</div>
+<button class="btn btn-primary w-full" type="button"><span class="material-symbols-outlined">publish</span>Xuất bản</button>
+<button class="btn btn-ghost w-full" type="button"><span class="material-symbols-outlined">save</span>Lưu nháp</button>
+</div>
+</aside-col>
+</div>
+</main>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const dirty=()=>$('#dirty').classList.remove('hidden');
+document.addEventListener('input',e=>{if(e.target.closest('#form'))dirty()});
+document.addEventListener('change',e=>{if(e.target.closest('#form'))dirty()});
+// toggles
+document.addEventListener('click',e=>{const sw=e.target.closest('.sw');if(sw&&!sw.disabled){sw.setAttribute('aria-checked',sw.getAttribute('aria-checked')!=='true');dirty();
+ if(sw.id==='swFree'){const f=sw.getAttribute('aria-checked')==='true';$('#price').disabled=f;if(f)$('#price').value=0;$('#priceHint').textContent=f?'Sự kiện miễn phí.':'Nhập giá vé mỗi người.'}
+ if(sw.id==='swAppr'){$('#apprHint').textContent=sw.getAttribute('aria-checked')==='true'?'Đang bật: BTC duyệt từng đăng ký.':'Đang tắt: đăng ký được tự động xác nhận.'}}
+ const sg=e.target.closest('[data-seg] button');if(sg){sg.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));sg.classList.add('on');dirty()}});
+// sub nav
+const links=$$('#subnav a');
+links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}));
+const scroller=document.querySelector('.overflow-y-auto');
+const onScroll=()=>{let cur=links[0];links.forEach(a=>{const t=$(a.getAttribute('href'));if(t.getBoundingClientRect().top<200)cur=a});links.forEach(a=>a.classList.toggle('active',a===cur))};scroller.addEventListener('scroll',onScroll);window.addEventListener('scroll',onScroll);
+// cover
+const cover=$('#cover'),pv=$('#pvCover');
+function setCover(file){const err=$('#coverErr');err.classList.add('hidden');
+ if(!file)return;if(!file.type.startsWith('image/')){err.textContent='Tệp không phải ảnh.';err.classList.remove('hidden');return}
+ if(file.size>5*1024*1024){err.textContent='Ảnh vượt quá 5MB.';err.classList.remove('hidden');return}
+ const r=new FileReader();r.onload=()=>{[cover,pv].forEach(el=>{el.style.backgroundImage=`url(${r.result})`;el.classList.add('has-img')});$('#coverName').textContent=file.name;dirty()};r.readAsDataURL(file)}
+$('#btnReplace').onclick=()=>$('#coverFile').click();
+$('#coverFile').onchange=e=>setCover(e.target.files[0]);
+$('#btnRemove').onclick=()=>{[cover,pv].forEach(el=>{el.style.backgroundImage='';el.classList.remove('has-img')});$('#coverName').textContent='Chưa có ảnh bìa';dirty()};
+$('#btnCrop').onclick=()=>{cover.style.backgroundPosition=cover.style.backgroundPosition==='top'?'center':'top';dirty()};
+const dz=$('#drop');['dragenter','dragover'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.add('over')}));
+['dragleave','drop'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.remove('over')}));
+dz.addEventListener('drop',e=>setCover(e.dataTransfer.files[0]));
+// thumb
+$('#btnThumb').onclick=()=>$('#thumbFile').click();
+$('#thumbFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const t=$('#thumb');t.style.backgroundImage=`url(${r.result})`;t.classList.add('has-img');t.innerHTML='';dirty()};r.readAsDataURL(f)};
+$('#btnThumbRm').onclick=()=>{const t=$('#thumb');t.style.backgroundImage='';t.classList.remove('has-img');t.innerHTML='<span class="material-symbols-outlined text-[56px] relative z-[1]" style="font-variation-settings:\'FILL\' 1">smart_toy</span>';dirty()};
+// gallery
+const grads=['linear-gradient(135deg,#0f1b2a,#0972d3)','linear-gradient(135deg,#0b4f8f,#509cff)','linear-gradient(135deg,#1e293b,#475569)'];
+let gal=grads.map(g=>({bg:g}));
+function renderGal(){const g=$('#gallery');g.innerHTML='';
+ gal.forEach((it,i)=>{const d=document.createElement('div');d.className='slot';d.style.background=it.bg.startsWith('data')?`url(${it.bg}) center/cover`:it.bg;d.innerHTML=`<div class="tools"><span class="material-symbols-outlined text-[18px] mi" style="cursor:grab">drag_indicator</span><span class="material-symbols-outlined text-[18px] mi" data-rm="${i}">close</span></div><span class="absolute left-2 bottom-2 text-[11px] font-bold text-white bg-black/35 rounded-full px-2 py-0.5">${i+1}</span>`;g.appendChild(d)});
+ for(let k=gal.length;k<8&&k<gal.length+1;k++){const a=document.createElement('div');a.className='slot-add';a.innerHTML='<span class="material-symbols-outlined text-[24px]">add_photo_alternate</span>Thêm ảnh';a.onclick=()=>$('#galFile').click();g.appendChild(a)}
+ for(let k=gal.length+1;k<8;k++){const e=document.createElement('div');e.className='slot';e.style.background='#f1f5f9';e.innerHTML='<div class="h-full flex items-center justify-center text-[#cbd5e1]"><span class="material-symbols-outlined text-[28px]">image</span></div>';g.appendChild(e)}
+ document.querySelector('#s-anh .text-xs.text-muted').textContent=`Đã dùng ${gal.length}/8 ảnh thư viện`}
+$('#gallery').addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){gal.splice(+r.dataset.rm,1);renderGal();dirty()}});
+$('#galFile').onchange=e=>{[...e.target.files].forEach(f=>{if(gal.length>=8)return;const r=new FileReader();r.onload=()=>{gal.push({bg:r.result});renderGal();dirty()};r.readAsDataURL(f)});e.target.value=''};
+renderGal();
+// short desc counter, name preview
+$('#short').addEventListener('input',e=>$('#shortCnt').textContent=e.target.value.length+'/160');
+$('#name').addEventListener('input',e=>$('#pvName').textContent=e.target.value||'Tên sự kiện');
+// rte
+$$('.rte-bar button').forEach(b=>b.addEventListener('mousedown',e=>{e.preventDefault();let v=null;if(b.dataset.cmd==='createLink'){v=prompt('Nhập URL','https://');if(!v)return}document.execCommand(b.dataset.cmd,false,v);dirty()}));
+// tags
+const tagBox=$('#tagBox'),tagIn=$('#tagIn');
+function addTag(t){t=t.trim();if(!t)return;const c=document.createElement('span');c.className='tag';c.innerHTML=`<span></span><button type="button" title="Xóa"><span class="material-symbols-outlined text-[14px]">close</span></button>`;c.firstChild.textContent=t;c.querySelector('button').onclick=()=>{c.remove();dirty()};tagBox.insertBefore(c,tagIn)}
+['GenAI','Amazon Bedrock','LLM','RAG','Lab'].forEach(addTag);
+tagIn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','){e.preventDefault();addTag(tagIn.value);tagIn.value='';dirty()}else if(e.key==='Backspace'&&!tagIn.value&&tagIn.previousElementSibling){tagIn.previousElementSibling.remove();dirty()}});
+// agenda
+const spkOpts=['Nguyễn Minh Khôi','Trần Thu Hà','Lê Quang Huy','Phạm Bảo Ngọc','— Chưa gán —'];
+const sel=v=>`<select class="input">${spkOpts.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('')}</select>`;
+const sessions=[['14:00','Đón khách & check-in','— Chưa gán —','Sảnh tầng 4'],['14:15','Foundation Models trên Amazon Bedrock','Nguyễn Minh Khôi','Phòng Aurora'],['15:15','Lab: RAG với Knowledge Bases','Trần Thu Hà','Phòng Aurora'],['16:45','Guardrails & Q&A cùng chuyên gia','Lê Quang Huy','Phòng Aurora']];
+function addSess(s){const d=document.createElement('div');d.className='row-edit !grid md:grid-cols-[24px_132px_minmax(0,1fr)_160px_120px_36px] gap-2 items-center';d.innerHTML=`<span class="material-symbols-outlined grip text-[20px]">drag_indicator</span><input class="input" type="time" value="${s[0]}"><input class="input" value="${s[1].replace(/"/g,'&quot;')}" placeholder="Tiêu đề phiên">${sel(s[2])}<input class="input" value="${s[3]}"><button type="button" class="ibtn" title="Xóa phiên"><span class="material-symbols-outlined text-[20px]">delete</span></button>`;d.querySelector('.ibtn').onclick=()=>{d.remove();dirty()};$('#agenda').appendChild(d)}
+sessions.forEach(addSess);
+$('#addSess').onclick=()=>{addSess(['17:30','Phiên mới','— Chưa gán —','Phòng Aurora']);dirty()};
+// speakers
+const spks=[['NK','Nguyễn Minh Khôi','Foundation Models trên Amazon Bedrock','AWS Community Builder'],['TH','Trần Thu Hà','Lab: RAG với Knowledge Bases','Solutions Architect'],['LH','Lê Quang Huy','Guardrails & Q&A','ML Engineer, Enouvo']];
+function addSpk(s){const d=document.createElement('div');d.className='row-edit';d.innerHTML=`<span class="material-symbols-outlined grip text-[20px]">drag_indicator</span><div class="avatar"></div><div class="flex-1 min-w-0"><div class="text-sm font-bold"></div><div class="text-xs text-muted"></div></div><span class="badge badge-green">Đã duyệt</span><button type="button" class="ibtn" title="Gỡ khỏi sự kiện"><span class="material-symbols-outlined text-[20px]">person_remove</span></button>`;d.querySelector('.avatar').textContent=s[0];d.querySelector('.text-sm').textContent=s[1];d.querySelector('.text-xs').textContent=s[3]+' · Phiên: '+s[2];d.querySelector('.ibtn').onclick=()=>{d.remove();dirty()};$('#spk').appendChild(d)}
+spks.forEach(addSpk);
+let extra=[['PN','Phạm Bảo Ngọc','Chưa gán phiên','DevOps Engineer']];
+$('#addSpk').onclick=()=>{const s=extra.shift();if(s){addSpk(s);dirty()}else{$('#addSpk').disabled=true;$('#addSpk').classList.add('opacity-50')}};
+</script>
+<script id="adm-mobile">
+(function(){
+var a=document.querySelector('aside');if(!a)return;
+var root=document.documentElement,h1=document.querySelector('header h1');
+var title=document.body.getAttribute('data-title')||(h1?h1.textContent.trim():'Admin');
+var bar=document.createElement('div');bar.id='admBar';
+bar.innerHTML='<div class="adm-logo"></div><div class="adm-title"></div><button type="button" id="admMenu" aria-label="Mở menu" aria-expanded="false"><span class="material-symbols-outlined">menu</span></button>';
+bar.querySelector('.adm-title').textContent=title;
+var lg=a.querySelector('.relative');if(lg){var c=lg.cloneNode(true);c.className=lg.className+' adm-logo';bar.replaceChild(c,bar.querySelector('.adm-logo'))}
+var sc=document.createElement('div');sc.id='admScrim';
+document.body.insertBefore(bar,document.body.firstChild);document.body.appendChild(sc);
+var b=bar.querySelector('#admMenu'),mq=matchMedia('(max-width:1023px)');
+function set(o){root.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o);b.firstChild.textContent=o?'close':'menu';b.setAttribute('aria-label',o?'Đóng menu':'Mở menu');if('inert' in a)a.inert=mq.matches&&!o}
+b.addEventListener('click',function(){set(!root.classList.contains('nav-open'))});
+sc.addEventListener('click',function(){set(false)});
+a.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&root.classList.contains('nav-open')){set(false);b.focus()}});
+(mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){set(false)});
+set(false);
+})();
+</script>
+</body></html>

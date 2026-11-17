@@ -1,0 +1,82 @@
+<!DOCTYPE html><html class="h-full scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FCAJ - Đăng ký không thể tiếp tục</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>html,body{margin:0}body{-webkit-font-smoothing:antialiased}::-webkit-scrollbar{display:none}.fill{font-variation-settings:'FILL' 1}</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:["Plus Jakarta Sans","sans-serif"],mono:["JetBrains Mono","monospace"]}}}};</script>
+</head><body class="min-h-full bg-[#f8f9fa] text-[#16191f] font-sans antialiased selection:bg-blue-100 selection:text-[#0972d3]"><header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/80">
+<div class="h-20 max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
+<a class="flex items-center gap-3.5 group" href="../01-trang-chu/code.html">
+<div class="relative w-10 h-10 rounded-2xl bg-[#0f1b2a] border border-[#232f3e] flex items-center justify-center overflow-hidden shadow-sm"><span class="material-symbols-outlined text-[#509cff] text-[22px]">cloud</span><img alt="FCAJ" class="absolute inset-0 w-full h-full object-contain p-1.5 bg-[#0f1b2a]" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida/ALJJyrCsHVf_6xHvbc6KxDszQRu-ELiUZH48ZLYBFWwLDED6pTulYfxZclhrK5p1lHD0AUvtBWeM1Ktg-cKEjxVfCkMS3KOMPBk9y2ZjRJKiTU5obpX8A08b_QM_V0BvT_R7IL-DJluwnK6jtPsQZxHrU7cir4CSm1esVRv-qNQmaIrDnCVXG5dbljNzCMG6IGGRnB5kIRDJqmhnZBlqIrhD_nqX4fi8_Wr8EaHtxZP7kg"></div>
+<div class="flex flex-col"><span class="text-[19px] font-extrabold text-[#16191f] tracking-tight leading-none group-hover:text-[#0972d3] transition-colors">FCAJ</span><span class="text-xs font-medium text-slate-500 tracking-wide mt-0.5">Tech Community Đà Nẵng</span></div>
+</a>
+<nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200 text-sm">
+<a aria-current="page" class="px-4 py-1.5 rounded-full bg-[#16191f] text-white font-semibold transition-all" href="../01-trang-chu/code.html">Sự kiện</a>
+<a class="px-4 py-1.5 rounded-full text-slate-600 hover:text-[#0972d3] font-medium transition-colors" href="../05-bang-xep-hang-leaderboard/code.html">Bảng xếp hạng</a>
+<a class="px-4 py-1.5 rounded-full text-slate-600 hover:text-[#0972d3] font-medium transition-colors" href="../18-ve-fcaj/code.html">Về FCAJ</a>
+</nav>
+<div class="flex items-center gap-2">
+<button id="navBtn" class="md:hidden w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+<div class="relative" id="userMenuWrap">
+<button id="userBtn" type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-slate-400 transition-colors cursor-pointer">
+<span class="relative w-7 h-7 text-xs rounded-full bg-[#232f3e] text-white font-bold flex items-center justify-center overflow-hidden flex-shrink-0">TN<img alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnTU0gxjY_WFwpav4VNaXEY3KvSMlQg997PfogEuQ3FVHZT6JPGMDRtrbBw9JgyWAry04ZlZrSQd-XwfvhAwTROlnmQSxyNsmcFJIvLkqPzRplUMSvw22F2Ocko_ig_5Yw3l0zzyEnr_flNqjHunAXLTMTRFjzAQTlQFlaOpQeqW810X-yWzngXCgImX-Hpv-9Fmnrian9AOI7HJoUQ2dzx_zU8ca4ao_OCdM3AQ"></span>
+<span class="text-xs font-medium text-slate-700 hidden lg:inline">Tuấn Nguyễn</span>
+<span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#0972d3] border border-blue-100 hidden lg:inline">850 pts</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">expand_more</span>
+</button>
+<div id="userMenu" class="hidden absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+<div class="p-4 flex items-center gap-3 bg-slate-50 border-b border-slate-100">
+<span class="relative w-11 h-11 text-sm rounded-full bg-[#232f3e] text-white font-bold flex items-center justify-center overflow-hidden flex-shrink-0">TN<img alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnTU0gxjY_WFwpav4VNaXEY3KvSMlQg997PfogEuQ3FVHZT6JPGMDRtrbBw9JgyWAry04ZlZrSQd-XwfvhAwTROlnmQSxyNsmcFJIvLkqPzRplUMSvw22F2Ocko_ig_5Yw3l0zzyEnr_flNqjHunAXLTMTRFjzAQTlQFlaOpQeqW810X-yWzngXCgImX-Hpv-9Fmnrian9AOI7HJoUQ2dzx_zU8ca4ao_OCdM3AQ"></span>
+<div class="min-w-0"><div class="text-sm font-bold text-[#16191f] truncate">Tuấn Nguyễn</div><div class="text-xs text-slate-500 truncate">tuan.nguyen@company.com</div><span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-blue-50 text-[#0972d3] border border-blue-100 text-xs font-bold">850 điểm · #42</span></div>
+</div>
+<div class="p-2 text-sm">
+<a href="../07-ho-so-cua-toi/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 bg-blue-50 text-[#0972d3] font-semibold"><span class="material-symbols-outlined text-[20px] ">person</span>Hồ sơ của tôi</a>
+<a href="../08-su-kien-cua-toi/code.html" class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-50 text-[#16191f] font-medium"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-slate-400">event_available</span>Sự kiện của tôi</span><span class="px-2 py-0.5 rounded-full bg-[#0972d3] text-white text-xs font-bold">6</span></a>
+<div class="my-2 border-t border-slate-100"></div>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-rose-50 text-rose-600 font-medium"><span class="material-symbols-outlined text-[20px]">logout</span>Đăng xuất</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="navPanel" class="hidden md:hidden border-t border-slate-100 bg-white px-6 py-2 flex flex-col text-sm font-semibold">
+<a class="py-3 text-[#0972d3]" href="../01-trang-chu/code.html">Sự kiện</a>
+<a class="py-3 text-slate-700" href="../05-bang-xep-hang-leaderboard/code.html">Bảng xếp hạng</a>
+<a class="py-3 text-slate-700" href="../18-ve-fcaj/code.html">Về FCAJ</a>
+</div></header>
+<script>
+(function(){const b=document.getElementById('userBtn'),m=document.getElementById('userMenu'),nb=document.getElementById('navBtn'),np=document.getElementById('navPanel');
+function set(o){m.classList.toggle('hidden',!o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',e=>{e.stopPropagation();set(m.classList.contains('hidden'))});
+nb.addEventListener('click',e=>{e.stopPropagation();np.classList.toggle('hidden')});
+document.addEventListener('click',e=>{if(!m.contains(e.target))set(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+if(location.hash==='#menu')set(true);})();
+</script>
+<main class="pt-20 pb-16 select-none lg:min-h-[1920px]" aria-hidden="true"><div class="max-w-6xl mx-auto px-4 sm:px-8 pt-6">
+<div class="h-10"></div><div class="rounded-2xl bg-slate-200 aspect-[16/9] md:aspect-[21/8]"></div>
+<div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"><div class="lg:col-span-8 flex flex-col gap-4"><div class="h-6 w-40 rounded-full bg-slate-200"></div><div class="h-8 w-3/4 rounded-lg bg-slate-300"></div><div class="h-4 w-full rounded bg-slate-200"></div><div class="grid grid-cols-2 gap-3"><div class="h-16 rounded-2xl bg-white border border-slate-200"></div><div class="h-16 rounded-2xl bg-white border border-slate-200"></div></div><div class="h-56 rounded-2xl bg-white border border-slate-200"></div><div class="h-64 rounded-2xl bg-white border border-slate-200"></div><div class="h-64 rounded-2xl bg-white border border-slate-200"></div><div class="h-40 rounded-2xl bg-white border border-slate-200"></div></div>
+<div class="lg:col-span-4"><div class="h-64 rounded-2xl bg-white border border-slate-200"></div></div></div></div></main>
+<footer class="border-t border-slate-200 bg-white"><div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 text-center sm:text-left"><span class="font-bold text-[#16191f]">FCAJ Đà Nẵng · AWS, Cloud &amp; AI Community</span><span>© 2026 FCAJ Đà Nẵng. Made with heart for engineers in Da Nang &amp; Central Vietnam.</span></div></footer>
+<div class="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-slate-900/50 md:p-4" id="overlay" onclick="if(event.target===this)closeIt()"><div class="relative w-full md:max-w-md bg-white rounded-t-2xl md:rounded-2xl border border-slate-200 shadow-xl flex flex-col max-h-[90vh] overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div></div><script>
+const P='inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-[#0972d3] hover:bg-[#005eb2] text-white shadow-sm text-sm font-bold transition-colors',S='inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-white hover:bg-slate-50 border-[1.5px] border-slate-300 text-slate-900 text-sm font-bold transition-colors',Dg='inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl bg-white hover:bg-rose-50 border-[1.5px] border-rose-300 text-rose-700 text-sm font-bold transition-colors';
+const TN={rose:['border-l-rose-500','bg-rose-50 border-rose-200','text-rose-600','text-rose-800','bg-rose-50 text-rose-800 border-rose-300','bg-rose-500'],amber:['border-l-amber-500','bg-amber-50 border-amber-200','text-amber-600','text-amber-900','bg-amber-50 text-amber-900 border-amber-300','bg-amber-500'],slate:['border-l-slate-400','bg-slate-100 border-slate-200','text-slate-500','text-slate-800','bg-slate-100 text-slate-700 border-slate-300','bg-slate-400']};
+const pill=(k,t)=>'<span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-bold whitespace-nowrap '+TN[k][4]+'"><span class="w-2 h-2 rounded-full '+TN[k][5]+'"></span>'+t+'</span>';
+const bar=(a,b,l)=>'<div class="rounded-xl bg-slate-50 border border-slate-200 p-4"><div class="flex justify-between text-sm mb-2"><span class="text-slate-600">'+l+'</span><span class="font-bold">'+a+'/'+b+'</span></div><div class="h-2 rounded-full bg-slate-200"><div class="h-2 rounded-full bg-rose-500" style="width:100%"></div></div></div>';
+const fact=(ic,l,v)=>'<div class="rounded-xl bg-slate-50 border border-slate-200 p-4 flex items-center gap-3"><span class="material-symbols-outlined text-slate-500">'+ic+'</span><div><div class="text-xs text-slate-500">'+l+'</div><div class="text-sm font-bold">'+v+'</div></div></div>';
+const more='<a href="../01-trang-chu/code.html" class="'+P+' flex-1">Xem sự kiện khác</a>';
+const closeB='<button type="button" onclick="closeIt()" class="'+S+' w-28 flex-shrink-0">Đóng</button>';
+const dlg=(k,ic,p,title,desc,info,foot)=>'<div class="flex flex-col border-l-4 '+TN[k][0]+' min-h-0 flex-1"><div class="flex items-start gap-3 pl-4 pr-3 py-3 border-b '+TN[k][1]+'"><span class="material-symbols-outlined fill text-[20px] mt-2.5 '+TN[k][2]+'">'+ic+'</span><div class="min-w-0 flex-1 flex flex-col gap-1.5 items-start py-1.5"><h3 id="mTitle" class="text-lg font-bold tracking-tight '+TN[k][3]+'">'+title+'</h3>'+p+'</div><button type="button" onclick="closeIt()" aria-label="Đóng" title="Đóng" class="w-11 h-11 rounded-xl text-slate-600 hover:bg-white/70 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined">close</span></button></div><div class="px-5 py-4 flex flex-col gap-4 overflow-y-auto"><p class="text-sm leading-relaxed text-slate-700">'+desc+'</p>'+info+'</div><div class="flex items-center gap-3 px-5 py-4 border-t border-slate-100">'+foot+'</div></div>';
+const S2={
+full:()=>dlg('rose','block',pill('rose','Hết chỗ'),'Sự kiện đã hết chỗ','Tất cả vé của Deep Dive into LLM Fine-tuning đã được đăng ký. Bạn có thể xem các sự kiện khác đang mở.',bar(100,100,'Vé đã đăng ký'),closeB+more),
+'cfp-full':()=>dlg('rose','block',pill('rose','Đủ diễn giả'),'Đã đủ diễn giả','Tất cả vị trí diễn giả của sự kiện này đã có người nhận. Bạn có thể gửi chủ đề cho sự kiện khác.',bar(8,8,'Vị trí diễn giả'),closeB+more),
+closed:()=>dlg('slate','event_busy',pill('slate','Đã đóng'),'Đã đóng đăng ký','Thời gian đăng ký cho sự kiện này đã kết thúc. Bạn vẫn có thể xem các sự kiện khác.',fact('event_busy','Hạn đăng ký','16/11/2026'),closeB+more),
+cancelled:()=>dlg('amber','event_repeat',pill('amber','Hoãn lịch'),'Sự kiện đã hoãn','Ban tổ chức đã dời lịch sự kiện. Vé của bạn vẫn còn hiệu lực cho ngày mới nếu bạn muốn giữ.',fact('event_repeat','Lịch mới','05/12/2026'),'<button type="button" class="'+Dg+' w-28 flex-shrink-0">Hủy vé</button><button type="button" class="'+P+' flex-1">Giữ vé</button>')
+};
+const st=new URLSearchParams(location.search).get('state');
+document.getElementById('modal').innerHTML=S2[S2[st]?st:'full']();
+function closeIt(){document.getElementById('overlay').classList.add('hidden')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeIt()});</script></body></html>

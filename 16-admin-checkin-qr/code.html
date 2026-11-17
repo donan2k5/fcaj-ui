@@ -1,0 +1,95 @@
+<!DOCTYPE html><html class="h-full" lang="vi"><head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>FCAJ - Check-in QR</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0}body{-webkit-font-smoothing:antialiased}::-webkit-scrollbar{display:none}
+.fill{font-variation-settings:'FILL' 1}
+.corner{position:absolute;width:30px;height:30px;border:4px solid var(--cc,#fff);transition:border-color .15s}
+#cam[data-s=ok]{--cc:#34d399}#cam[data-s=warn]{--cc:#fbbf24}#cam[data-s=bad]{--cc:#fb7185}
+.c1{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:12px}
+.c2{top:0;right:0;border-left:0;border-bottom:0;border-top-right-radius:12px}
+.c3{bottom:0;left:0;border-right:0;border-top:0;border-bottom-left-radius:12px}
+.c4{bottom:0;right:0;border-left:0;border-top:0;border-bottom-right-radius:12px}
+.scanline{position:absolute;left:6px;right:6px;height:2px;border-radius:2px;background:#509cff;animation:sl 2.2s ease-in-out infinite alternate}
+@keyframes sl{from{top:4%}to{top:96%}}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(8px)}to{opacity:1;transform:none}}
+@keyframes drain{from{width:100%}to{width:0}}
+@keyframes ping{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
+#ov{animation:fadeIn .12s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#pop{animation:pop .18s ease-out}
+#ovCard{animation:pop .18s ease-out}
+.dot{animation:ping 1.2s ease-in-out infinite}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:["Plus Jakarta Sans","sans-serif"],mono:["JetBrains Mono","monospace"]}}}};</script>
+</head>
+<body class="min-h-full bg-[#f8f9fa] text-[#16191f] font-sans antialiased">
+<div class="max-w-md mx-auto min-h-screen bg-[#f8f9fa] md:border-x md:border-slate-200">
+
+<header class="sticky top-0 z-30 bg-white border-b border-slate-200">
+  <div class="h-14 px-4 flex items-center gap-3">
+    <a href="../12-admin-khach-tham-du/code.html" aria-label="Quay lại" class="rounded-xl border-[1.5px] border-slate-300 bg-white flex items-center justify-center text-slate-900 hover:bg-slate-50 flex-shrink-0 w-11 h-11"><span class="material-symbols-outlined text-[22px]">arrow_back</span></a>
+    <div class="min-w-0 flex-1">
+      <div class="text-xs font-semibold text-slate-400 leading-none">Check-in</div>
+      <div class="text-sm font-bold truncate mt-1">Deep Dive LLM &amp; AWS Bedrock</div>
+    </div>
+    <span class="px-2.5 py-1 rounded-full bg-blue-100 text-[#0b5cad] border border-blue-300 text-sm font-bold flex-shrink-0"><span id="cnt">52</span>/86</span>
+  </div>
+  <div class="h-1 bg-slate-100"><div id="bar" class="h-1 bg-[#0972d3] transition-all" style="width:60%"></div></div>
+</header>
+
+<main class="px-4 py-5 flex flex-col gap-4">
+
+  <!-- Camera: quét liên tục, không cần bấm -->
+  <section class="flex flex-col items-center">
+    <div id="cam" class="relative w-full aspect-square rounded-2xl bg-[#0f1b2a] border border-[#232f3e] overflow-hidden">
+      <div class="absolute inset-[14%]"><i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i><div class="scanline"></div></div>
+      <button id="flash" type="button" aria-label="Đèn flash" class="absolute top-3 right-3 w-11 h-11 rounded-xl bg-white border-[1.5px] border-slate-300 text-slate-900 flex items-center justify-center hover:bg-slate-50"><span class="material-symbols-outlined text-[22px]">flash_on</span></button>
+      <button id="flip" type="button" aria-label="Đổi camera" class="absolute top-3 left-3 w-11 h-11 rounded-xl bg-white border-[1.5px] border-slate-300 text-slate-900 flex items-center justify-center hover:bg-slate-50"><span class="material-symbols-outlined text-[22px]">cameraswitch</span></button>
+    </div>
+    <div id="msg" class="w-full mt-3 min-h-[44px] flex items-center justify-center"></div>
+  </section>
+
+  <!-- Nhập mã thủ công (dự phòng) -->
+  <section>
+    <button id="manBtn" type="button" class="w-full h-11 rounded-xl bg-white border-[1.5px] border-slate-300 text-slate-900 text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-50"><span class="material-symbols-outlined text-[20px]">keyboard</span>Nhập mã thủ công</button>
+    <form id="man" class="hidden mt-3 gap-2" onsubmit="event.preventDefault();manual()">
+      <input id="code" type="text" autocomplete="off" placeholder="Mã vé, ví dụ TN042" class="flex-1 min-w-0 h-12 px-4 bg-white border-[1.5px] border-slate-300 rounded-xl text-base font-mono font-semibold uppercase placeholder:normal-case placeholder:font-sans placeholder:font-normal placeholder:text-slate-400 focus:outline-none focus:border-[#0972d3] focus:ring-2 focus:ring-[#0972d3]/20">
+      <button type="submit" class="h-12 px-5 rounded-xl bg-[#0972d3] hover:bg-[#005eb2] text-white text-base font-bold shadow-sm">OK</button>
+    </form>
+  </section>
+</main>
+</div>
+
+<script>
+const R={
+ success:{s:'ok',i:'check_circle',t:'Check-in thành công',who:'Tuấn Nguyễn',sub:'Khách tham dự · TN042'},
+ speaker:{s:'ok',i:'check_circle',t:'Check-in thành công',who:'Lê Mai Anh',sub:'Diễn giả · SP007'},
+ already:{s:'warn',i:'history',t:'Đã check-in lúc 08:42',who:'Tuấn Nguyễn',sub:'Khách tham dự · TN042'},
+ invalid:{s:'bad',i:'cancel',t:'Mã QR không hợp lệ',who:'',sub:'Không tìm thấy vé'}
+};
+const TONE={ok:['text-emerald-800','text-emerald-600','bg-emerald-50','border-emerald-300'],warn:['text-amber-900','text-amber-600','bg-amber-50','border-amber-300'],bad:['text-rose-800','text-rose-600','bg-rose-50','border-rose-300']};
+const $=id=>document.getElementById(id);
+let n=52,timer=null;
+function idle(){$('cam').dataset.s='';$('msg').innerHTML='<span class="text-sm font-semibold text-slate-600 flex items-center gap-2"><span class="dot w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Đang quét</span>'}
+function show(k,keep){const r=R[k];if(!r)return;clearTimeout(timer);const t=TONE[r.s];
+ $('cam').dataset.s=r.s;
+ $('msg').innerHTML='<div id="pop" class="w-full rounded-xl border '+t[2]+' '+t[3]+' px-3 py-2 flex flex-wrap items-center gap-x-2.5 gap-y-2"><span class="material-symbols-outlined fill '+t[1]+'" style="font-size:24px">'+r.i+'</span><div class="min-w-0 flex-1 leading-tight"><div class="text-sm font-extrabold '+t[0]+'">'+r.t+'</div><div class="text-sm text-slate-600 mt-0.5 truncate">'+(r.who?'<span class="font-bold text-slate-900">'+r.who+'</span> · ':'')+r.sub+'</div></div>'+
+  (r.act?'<div class="basis-full flex gap-2 pl-[34px]"><a href="https://facebook.com/fcaj.danang" target="_blank" class="h-9 px-4 rounded-lg bg-white border-[1.5px] border-slate-300 text-slate-900 text-sm font-bold flex items-center">Nhắn Facebook</a><button type="button" onclick="idle()" class="h-9 px-4 rounded-lg bg-[#0972d3] text-white text-sm font-bold">Duyệt nhanh</button></div>':'')+'</div>';
+ if((k==='success'||k==='speaker')&&!keep){n++;$('cnt').textContent=n;$('bar').style.width=(n/86*100)+'%';if(navigator.vibrate)navigator.vibrate(60)}
+ if(!r.act&&!keep)timer=setTimeout(idle,r.s==='ok'?1500:2200)}
+function manual(){show($('code').value.trim()?'success':'invalid');$('code').value=''}
+$('manBtn').onclick=()=>{const f=$('man');f.classList.toggle('hidden');f.classList.toggle('flex');if(!f.classList.contains('hidden'))$('code').focus()};
+$('flash').onclick=e=>e.currentTarget.classList.toggle('bg-amber-100');
+const q=new URLSearchParams(location.search),st=q.get('state');
+if(q.get('manual')){$('man').classList.remove('hidden');$('man').classList.add('flex')}
+idle();
+if(st&&R[st]){show(st,true)}
+else if(!q.get('static')){ // demo: camera tự phát hiện mã liên tục, không cần bấm nút
+ const seq=['success','speaker','already','success','invalid'];let i=0;
+ setInterval(()=>{if(!$('pop'))show(seq[i++%seq.length])},4200)}
+</script></body></html>

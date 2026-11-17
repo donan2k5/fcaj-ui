@@ -1,0 +1,200 @@
+<!DOCTYPE html><html class="h-full scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FCAJ - Sự kiện của tôi</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>html,body{margin:0}body{-webkit-font-smoothing:antialiased}::-webkit-scrollbar{display:none}.fill{font-variation-settings:'FILL' 1}</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:["Plus Jakarta Sans","sans-serif"],mono:["JetBrains Mono","monospace"]}}}};</script>
+</head><body class="min-h-full bg-[#f8f9fa] text-[#16191f] font-sans antialiased selection:bg-blue-100 selection:text-[#0972d3]"><header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/80">
+<div class="h-20 max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
+<a class="flex items-center gap-3.5 group" href="../01-trang-chu/code.html">
+<div class="relative w-10 h-10 rounded-2xl bg-[#0f1b2a] border border-[#232f3e] flex items-center justify-center overflow-hidden shadow-sm"><span class="material-symbols-outlined text-[#509cff] text-[22px]">cloud</span><img alt="FCAJ" class="absolute inset-0 w-full h-full object-contain p-1.5 bg-[#0f1b2a]" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida/ALJJyrCsHVf_6xHvbc6KxDszQRu-ELiUZH48ZLYBFWwLDED6pTulYfxZclhrK5p1lHD0AUvtBWeM1Ktg-cKEjxVfCkMS3KOMPBk9y2ZjRJKiTU5obpX8A08b_QM_V0BvT_R7IL-DJluwnK6jtPsQZxHrU7cir4CSm1esVRv-qNQmaIrDnCVXG5dbljNzCMG6IGGRnB5kIRDJqmhnZBlqIrhD_nqX4fi8_Wr8EaHtxZP7kg"></div>
+<div class="flex flex-col"><span class="text-[19px] font-extrabold text-[#16191f] tracking-tight leading-none group-hover:text-[#0972d3] transition-colors">FCAJ</span><span class="text-xs font-medium text-slate-500 tracking-wide mt-0.5">Tech Community Đà Nẵng</span></div>
+</a>
+<nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200 text-sm">
+<a class="px-4 py-1.5 rounded-full text-slate-600 hover:text-[#0972d3] font-medium transition-colors" href="../01-trang-chu/code.html">Sự kiện</a>
+<a class="px-4 py-1.5 rounded-full text-slate-600 hover:text-[#0972d3] font-medium transition-colors" href="../05-bang-xep-hang-leaderboard/code.html">Bảng xếp hạng</a>
+<a class="px-4 py-1.5 rounded-full text-slate-600 hover:text-[#0972d3] font-medium transition-colors" href="../18-ve-fcaj/code.html">Về FCAJ</a>
+</nav>
+<div class="flex items-center gap-2">
+<button id="navBtn" class="md:hidden w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+<div class="relative" id="userMenuWrap">
+<button id="userBtn" type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-slate-400 transition-colors cursor-pointer">
+<span class="relative w-7 h-7 text-xs rounded-full bg-[#232f3e] text-white font-bold flex items-center justify-center overflow-hidden flex-shrink-0">TN<img alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnTU0gxjY_WFwpav4VNaXEY3KvSMlQg997PfogEuQ3FVHZT6JPGMDRtrbBw9JgyWAry04ZlZrSQd-XwfvhAwTROlnmQSxyNsmcFJIvLkqPzRplUMSvw22F2Ocko_ig_5Yw3l0zzyEnr_flNqjHunAXLTMTRFjzAQTlQFlaOpQeqW810X-yWzngXCgImX-Hpv-9Fmnrian9AOI7HJoUQ2dzx_zU8ca4ao_OCdM3AQ"></span>
+<span class="text-xs font-medium text-slate-700 hidden lg:inline">Tuấn Nguyễn</span>
+<span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#0972d3] border border-blue-100 hidden lg:inline">850 pts</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">expand_more</span>
+</button>
+<div id="userMenu" class="hidden absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+<div class="p-4 flex items-center gap-3 bg-slate-50 border-b border-slate-100">
+<span class="relative w-11 h-11 text-sm rounded-full bg-[#232f3e] text-white font-bold flex items-center justify-center overflow-hidden flex-shrink-0">TN<img alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnTU0gxjY_WFwpav4VNaXEY3KvSMlQg997PfogEuQ3FVHZT6JPGMDRtrbBw9JgyWAry04ZlZrSQd-XwfvhAwTROlnmQSxyNsmcFJIvLkqPzRplUMSvw22F2Ocko_ig_5Yw3l0zzyEnr_flNqjHunAXLTMTRFjzAQTlQFlaOpQeqW810X-yWzngXCgImX-Hpv-9Fmnrian9AOI7HJoUQ2dzx_zU8ca4ao_OCdM3AQ"></span>
+<div class="min-w-0"><div class="text-sm font-bold text-[#16191f] truncate">Tuấn Nguyễn</div><div class="text-xs text-slate-500 truncate">tuan.nguyen@company.com</div><span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-blue-50 text-[#0972d3] border border-blue-100 text-xs font-bold">850 điểm · #42</span></div>
+</div>
+<div class="p-2 text-sm">
+<a href="../07-ho-so-cua-toi/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-[#16191f] font-medium"><span class="material-symbols-outlined text-[20px] text-slate-400">person</span>Hồ sơ của tôi</a>
+<a href="../08-su-kien-cua-toi/code.html" class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-50 bg-blue-50 text-[#0972d3] font-semibold"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] ">event_available</span>Sự kiện của tôi</span><span class="px-2 py-0.5 rounded-full bg-[#0972d3] text-white text-xs font-bold">6</span></a>
+<div class="my-2 border-t border-slate-100"></div>
+<a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-rose-50 text-rose-600 font-medium"><span class="material-symbols-outlined text-[20px]">logout</span>Đăng xuất</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="navPanel" class="hidden md:hidden border-t border-slate-100 bg-white px-6 py-2 flex flex-col text-sm font-semibold">
+<a class="py-3 text-slate-700" href="../01-trang-chu/code.html">Sự kiện</a>
+<a class="py-3 text-slate-700" href="../05-bang-xep-hang-leaderboard/code.html">Bảng xếp hạng</a>
+<a class="py-3 text-slate-700" href="../18-ve-fcaj/code.html">Về FCAJ</a>
+</div></header>
+<script>
+(function(){const b=document.getElementById('userBtn'),m=document.getElementById('userMenu'),nb=document.getElementById('navBtn'),np=document.getElementById('navPanel');
+function set(o){m.classList.toggle('hidden',!o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',e=>{e.stopPropagation();set(m.classList.contains('hidden'))});
+nb.addEventListener('click',e=>{e.stopPropagation();np.classList.toggle('hidden')});
+document.addEventListener('click',e=>{if(!m.contains(e.target))set(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+if(location.hash==='#menu')set(true);})();
+</script>
+<main class="pt-20 pb-16"><div class="max-w-6xl mx-auto px-4 sm:px-8 pt-8">
+<nav class="flex items-center gap-1.5 text-xs font-semibold text-slate-400 mb-4"><a class="hover:text-[#0972d3]" href="../01-trang-chu/code.html">Trang chủ</a><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-[#16191f]">Sự kiện của tôi</span></nav>
+<div class="mb-6"><h1 class="text-[22px] sm:text-[28px] leading-tight font-extrabold tracking-tight">Sự kiện của tôi</h1><p class="text-sm text-slate-500 mt-1">Vé tham dự, vai trò diễn giả và lịch sử tham gia của bạn.</p></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-5">
+<div class="flex items-center gap-1 bg-white border-[1.5px] border-slate-300 p-1 rounded-xl self-start" id="roleTabs"><button type="button" data-role-tab="all" class="rt shrink-0 whitespace-nowrap">Tất cả</button><button type="button" data-role-tab="attendee" class="rt shrink-0 whitespace-nowrap">Tham dự</button><button type="button" data-role-tab="speaker" class="rt shrink-0 whitespace-nowrap">Diễn giả</button></div>
+<div class="flex items-center gap-1.5 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-0.5" id="stTabs"><button data-st-tab="all" type="button" class="st shrink-0 whitespace-nowrap">Tất cả <span class="opacity-70">0</span></button><button data-st-tab="pending" type="button" class="st shrink-0 whitespace-nowrap">Chờ duyệt <span class="opacity-70">0</span></button><button data-st-tab="approved" type="button" class="st shrink-0 whitespace-nowrap">Đã duyệt <span class="opacity-70">0</span></button><button data-st-tab="checkedin" type="button" class="st shrink-0 whitespace-nowrap">Đã check-in <span class="opacity-70">0</span></button><button data-st-tab="rejected" type="button" class="st shrink-0 whitespace-nowrap">Bị từ chối <span class="opacity-70">0</span></button><button data-st-tab="past" type="button" class="st shrink-0 whitespace-nowrap">Đã qua <span class="opacity-70">0</span></button></div>
+</div>
+<div class="flex flex-col gap-3" id="evList">
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee" data-role="attendee" data-st="approved" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T11</span><span class="text-xl font-extrabold leading-none mt-0.5">18</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 text-emerald-800 border-emerald-300"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Đã duyệt</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">Deep Dive into LLM Fine-tuning with Local Hardware &amp; AWS Bedrock</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">08:30 - 12:00</span><span class="text-slate-300">·</span><span>Enouvo Space Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem vé QR</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=speaker" data-role="speaker" data-st="approved" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T12</span><span class="text-xl font-extrabold leading-none mt-0.5">12</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#232f3e] text-white border-[#232f3e]">Diễn giả</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 text-emerald-800 border-emerald-300"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Đã duyệt</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">AWS Community Day Central 2026 - "Serverless với Rust trên Lambda"</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">09:00 - 09:40</span><span class="text-slate-300">·</span><span>Sheraton Grand Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem phiên</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=pending" data-role="attendee" data-st="pending" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T12</span><span class="text-xl font-extrabold leading-none mt-0.5">20</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 text-amber-900 border-amber-300"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Chờ duyệt</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">Kubernetes Multi-Cluster GitOps với ArgoCD &amp; EKS</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">13:30 - 17:30</span><span class="text-slate-300">·</span><span>Hội trường FPT Software Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem trạng thái</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=speaker&state=pending" data-role="speaker" data-st="pending" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T01</span><span class="text-xl font-extrabold leading-none mt-0.5">15</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#232f3e] text-white border-[#232f3e]">Diễn giả</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 text-amber-900 border-amber-300"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Chờ duyệt</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">FCAJ Meetup Q1/2027 - "Agentic AI với Bedrock AgentCore"</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">Chưa xếp lịch</span><span class="text-slate-300">·</span><span>Chờ Ban tổ chức xếp phiên</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem trạng thái</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=checkedin" data-role="attendee" data-st="checkedin" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T11</span><span class="text-xl font-extrabold leading-none mt-0.5">16</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 text-emerald-800 border-emerald-300"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Đã check-in</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">AWS Builders Day Đà Nẵng - Hands-on Serverless</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">08:30 - 12:00 · hôm nay</span><span class="text-slate-300">·</span><span>Enouvo Space Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=speaker&state=checkedin" data-role="speaker" data-st="checkedin" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T11</span><span class="text-xl font-extrabold leading-none mt-0.5">16</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#232f3e] text-white border-[#232f3e]">Diễn giả</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 text-emerald-800 border-emerald-300"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Đã check-in</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">AWS Builders Day Đà Nẵng - "Lambda Powertools trong thực tế"</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">10:00 - 10:40 · hôm nay</span><span class="text-slate-300">·</span><span>Enouvo Space Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=rejected" data-role="attendee" data-st="rejected" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T12</span><span class="text-xl font-extrabold leading-none mt-0.5">05</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-rose-50 text-rose-800 border-rose-300"><span class="w-2 h-2 rounded-full bg-rose-500"></span>Bị từ chối</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">Cloud Security Workshop: IAM &amp; GuardDuty</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="text-rose-700">Lý do: Sự kiện ưu tiên thành viên đã hoàn thiện hồ sơ</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem lý do</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=speaker&state=rejected" data-role="speaker" data-st="rejected" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-[#0f1b2a] text-white flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-[#509cff]">T12</span><span class="text-xl font-extrabold leading-none mt-0.5">28</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#232f3e] text-white border-[#232f3e]">Diễn giả</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-rose-50 text-rose-800 border-rose-300"><span class="w-2 h-2 rounded-full bg-rose-500"></span>Bị từ chối</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">"Observability với OpenTelemetry"</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="text-rose-700">Lý do: Chủ đề trùng với một phiên đã được xếp lịch</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem lý do</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=done" data-role="attendee" data-st="past" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-slate-400">T10</span><span class="text-xl font-extrabold leading-none mt-0.5">12</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-slate-100 text-slate-700 border-slate-300"><span class="w-2 h-2 rounded-full bg-slate-400"></span>Hoàn thành</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">AWS Community Day Central 2026 - Day 1</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">08:00 - 17:00</span><span class="text-slate-300">·</span><span>Sheraton Grand Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=speaker&state=done" data-role="speaker" data-st="past" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-slate-400">T09</span><span class="text-xl font-extrabold leading-none mt-0.5">28</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#232f3e] text-white border-[#232f3e]">Diễn giả</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-slate-100 text-slate-700 border-slate-300"><span class="w-2 h-2 rounded-full bg-slate-400"></span>Hoàn thành</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">Serverless Night - "Lambda cold start và Rust"</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">18:30 - 21:00</span><span class="text-slate-300">·</span><span>Enouvo Space Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=absent" data-role="attendee" data-st="past" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-slate-400">T10</span><span class="text-xl font-extrabold leading-none mt-0.5">05</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-slate-100 text-slate-700 border-slate-300"><span class="w-2 h-2 rounded-full bg-slate-400"></span>Vắng mặt</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">DevOps Day Đà Nẵng 2026</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">08:00 - 16:30</span><span class="text-slate-300">·</span><span>Hội trường FPT Software Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+<a href="../09-chi-tiet-su-kien-cua-toi/code.html?role=attendee&state=cancelled" data-role="attendee" data-st="past" class="ev bg-white rounded-2xl border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-[#0972d3] transition-colors group">
+<div class="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+<div class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex flex-col items-center justify-center flex-shrink-0"><span class="text-xs font-bold uppercase tracking-wider text-slate-400">T09</span><span class="text-xl font-extrabold leading-none mt-0.5">14</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5"><span class="px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 text-blue-800 border-blue-300">Tham dự</span><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-slate-100 text-slate-700 border-slate-300"><span class="w-2 h-2 rounded-full bg-slate-400"></span>Đã hủy</span></div>
+<h3 class="text-[15px] font-bold leading-snug group-hover:text-[#0972d3] transition-colors">FCAJ Meetup Q3 - Data &amp; Analytics trên AWS</h3>
+<div class="flex flex-wrap items-center gap-x-1.5 text-xs text-slate-500 mt-1 min-w-0"><span class="whitespace-nowrap">18:30 - 21:00</span><span class="text-slate-300">·</span><span>Enouvo Space Đà Nẵng</span></div>
+</div></div>
+<span class="h-11 px-5 rounded-xl border text-sm font-bold flex items-center justify-center whitespace-nowrap sm:flex-shrink-0 bg-[#0972d3] group-hover:bg-[#005eb2] text-white shadow-sm border-transparent">Xem chi tiết</span>
+</a>
+</div>
+<div id="empty" class="hidden bg-white rounded-2xl border border-slate-200 py-12 px-4 text-center"><span class="material-symbols-outlined text-[36px] text-slate-300">event_busy</span><p class="text-sm text-slate-500 mt-2">Chưa có sự kiện phù hợp với bộ lọc.</p><a href="../01-trang-chu/code.html" class="inline-flex items-center justify-center h-11 mt-4 px-5 rounded-xl bg-[#0972d3] hover:bg-[#005eb2] shadow-sm text-white text-sm font-bold">Khám phá sự kiện</a></div>
+</div></main><footer class="border-t border-slate-200 bg-white"><div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 text-center sm:text-left"><span class="font-bold text-[#16191f]">FCAJ Đà Nẵng · AWS, Cloud &amp; AI Community</span><span>© 2026 FCAJ Đà Nẵng. Made with heart for engineers in Da Nang &amp; Central Vietnam.</span></div></footer>
+<script>
+let role='all',st='all';const RC={all:0,attendee:0,speaker:0};document.querySelectorAll('.ev').forEach(e=>{RC.all++;RC[e.dataset.role]++});
+function apply(){let n=0;const c={all:0,pending:0,approved:0,checkedin:0,rejected:0,past:0};
+document.querySelectorAll('.ev').forEach(e=>{const r=role==='all'||e.dataset.role===role;if(r){c.all++;c[e.dataset.st]++}const ok=r&&(st==='all'||e.dataset.st===st);e.style.display=ok?'':'none';if(ok)n++});
+document.getElementById('empty').classList.toggle('hidden',n>0);
+document.querySelectorAll('.rt').forEach(b=>{const k=b.dataset.roleTab,a=k===role;b.className='rt h-11 sm:h-9 px-4 rounded-lg text-[13px] shrink-0 whitespace-nowrap transition-colors '+(a?'font-bold bg-[#232f3e] text-white':'font-semibold text-slate-700 hover:bg-slate-100');b.innerHTML=b.textContent.replace(/\s*\d+$/,'')+' <span class="ml-1 text-xs '+(a?'text-[#0972d3]':'text-slate-400')+'">'+RC[k]+'</span>'});
+document.querySelectorAll('.st').forEach(b=>{const k=b.dataset.stTab,a=k===st;b.className='st h-11 sm:h-9 px-4 rounded-full text-[13px] shrink-0 whitespace-nowrap transition-colors border-[1.5px] '+(a?'bg-[#232f3e] border-[#232f3e] text-white font-bold':'bg-white border-slate-300 text-slate-800 font-semibold hover:bg-slate-50');b.querySelector('span').textContent=c[k]})}
+document.querySelectorAll('.rt').forEach(b=>b.onclick=()=>{role=b.dataset.roleTab;apply()});
+document.querySelectorAll('.st').forEach(b=>b.onclick=()=>{st=b.dataset.stTab;apply()});
+apply();
+</script></body></html>

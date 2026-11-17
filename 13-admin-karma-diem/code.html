@@ -1,0 +1,413 @@
+<!DOCTYPE html><html class="h-full" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FCAJ Đà Nẵng - Điểm đóng góp</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0}
+  body{overscroll-behavior:none;-webkit-font-smoothing:antialiased}
+  ::-webkit-scrollbar{display:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 20px;border-radius:4px;font-size:14px;font-weight:600;line-height:20px;transition:background .15s,border-color .15s;cursor:pointer;white-space:nowrap}
+  .btn:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+  .btn-primary{background:#0972d3;color:#fff}.btn-primary:hover{background:#005aab}
+  .btn-ghost{background:transparent;color:#232f3e;border:1px solid #232f3e}.btn-ghost:hover{background:#f2f3f3}
+  .btn-danger{background:transparent;color:#ba1a1a;border:1px solid #ba1a1a}.btn-danger:hover{background:#ffdad6}
+  .btn-sm{padding:6px 14px;font-size:13px}
+  .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;background:#f2f3f3;border:1px solid #d5dbdb;color:#232f3e;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:14px;white-space:nowrap}
+  .card{background:#fff;border:1px solid #d5dbdb;border-radius:8px}
+
+  .btn-primary{border:1px solid #0972d3}.btn-primary:hover{border-color:#005aab}
+  .input{font-size:14px!important;line-height:20px!important;padding:8px 12px!important;width:100%;background-color:#fff;border:1px solid #aab7b8;border-radius:4px;color:#16191f;outline:none}
+  .input::placeholder{color:#545b64}
+  .input:focus{border-color:#0972d3;box-shadow:0 0 0 1px #0972d3}
+  select.input{padding-right:32px!important}
+  .lbl{display:block;font-size:12px;font-weight:600;color:#232f3e;margin-bottom:6px;line-height:16px}
+  .tab{padding:12px 4px;margin-right:24px;font-size:14px;font-weight:600;color:#545b64;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;background:none}
+  .tab:hover{color:#232f3e}
+  .tab.active{color:#0972d3;border-bottom-color:#0972d3}
+  .th{padding:10px 16px;text-align:left;font-size:12px;font-weight:600;color:#545b64;background:#f8f9fa;border-bottom:1px solid #e9ebed;white-space:nowrap}
+  .td{padding:12px 16px;font-size:14px;border-bottom:1px solid #e9ebed;vertical-align:middle}
+  tr:last-child .td{border-bottom:0}
+  .sw{position:relative;width:36px;height:20px;border-radius:10px;background:#aab7b8;flex-shrink:0;cursor:pointer;transition:background .15s;border:0;padding:0}
+  .sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+  .sw[aria-checked=true]{background:#0972d3}.sw[aria-checked=true]::after{left:18px}
+  .sw:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+  input[type=checkbox]{accent-color:#0972d3;width:16px;height:16px;border-radius:4px}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config={theme:{extend:{colors:{primary:"#232f3e",tertiary:"#0f1b2a",secondary:"#0972d3",surface:"#f8f9fa",ink:"#16191f",muted:"#545b64",line:"#e9ebed"},fontFamily:{sans:["Open Sans","sans-serif"]}}}};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="theme-home">
+
+/* Admin theme v4 - dùng chung cho 06, 10-15 (giữ giống hệt nhau). Slate + xanh #0972d3, Plus Jakarta Sans. */
+html,body,button,input,select,textarea{font-family:'Plus Jakarta Sans',sans-serif!important}
+.material-symbols-outlined{font-family:'Material Symbols Outlined'!important}
+body{background:#f8f9fa!important;color:#16191f}
+/* sidebar */
+aside{background:#0f1b2a!important;border-right:1px solid #1a2433}
+aside>div:first-child>div:first-child{border-bottom-color:rgba(255,255,255,.08)!important}
+aside nav{padding:12px!important}
+aside nav a{border-radius:12px!important;border-left-width:0!important;padding:10px 14px!important;min-height:44px;color:#bbc7db!important;transition:background .15s,color .15s}
+aside nav a:hover{background:rgba(255,255,255,.07)!important;color:#fff!important}
+aside nav a[class*="bg-white/10"]{background:#0972d3!important;color:#fff!important;box-shadow:none}
+aside nav a[class*="bg-white/10"] .material-symbols-outlined{color:#fff}
+aside [class*="rounded-lg"]{border-radius:12px!important}
+/* header 64px */
+header{background:rgba(255,255,255,.92)!important;backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0!important;height:64px!important}
+header h1{font-weight:800!important;letter-spacing:-.01em;font-size:20px!important;line-height:28px}
+/* card */
+.card{background:#fff;border:1px solid #e2e8f0!important;border-radius:16px!important;box-shadow:0 1px 2px rgba(15,27,42,.04)}
+.card.overflow-hidden{overflow:clip!important}
+.rounded{border-radius:12px!important}
+.rounded-lg{border-radius:12px!important}
+.card .border-b,.card .divide-y>*,.divide-y>:not([hidden])~:not([hidden]),.border-line,.border-b{border-color:#eef1f4!important}
+h2{font-weight:800}
+article.card.p-5{padding:16px 20px}
+/* buttons: h-10, sm h-8 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:12px!important;font-size:14px;font-weight:700;line-height:20px;white-space:nowrap;box-shadow:none;transition:background .15s,border-color .15s,color .15s;cursor:pointer}
+.btn-sm{height:34px;padding:0 14px;font-size:13px}
+.btn .material-symbols-outlined{font-size:18px!important;line-height:1}
+.btn-primary{background:#0972d3;color:#fff;border:1px solid #0972d3!important;box-shadow:0 1px 3px rgba(9,114,211,.35),0 1px 2px rgba(15,27,42,.12);font-weight:700}
+.btn-primary:hover{background:#005eb2;border-color:#005eb2!important}
+.btn-ghost{background:#fff;color:#0f172a;border:1.5px solid #cbd5e1!important;font-weight:700;box-shadow:0 1px 2px rgba(15,27,42,.06)}
+.btn-ghost:hover{background:#f8fafc;border-color:#94a3b8!important}
+.btn-danger{background:#fff;color:#be123c;border:1.5px solid #fda4af!important;font-weight:700}
+.btn-danger:hover{background:#fff1f2;border-color:#fb7185!important}
+.btn:disabled,.btn[disabled]{background:#f1f5f9!important;color:#64748b!important;border:1.5px solid #e2e8f0!important;box-shadow:none;cursor:not-allowed;opacity:1}
+.btn:disabled:not(:has(.material-symbols-outlined))::before,.btn[disabled]:not(:has(.material-symbols-outlined))::before{content:"block";font-family:'Material Symbols Outlined'!important;font-size:18px;line-height:1;font-weight:400}
+.btn.opacity-50{opacity:1!important}
+/* badges: pill 12px, nền nhạt + viền + chấm đặc */
+.badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px!important;background:#f1f5f9;border:1px solid #cbd5e1;color:#334155;font-size:12px;font-weight:700;line-height:1;letter-spacing:0;text-transform:none;white-space:nowrap}
+.badge .material-symbols-outlined{font-size:14px!important;margin:0!important}
+.badge-blue,.badge-green,.badge-amber,.badge-red,.badge-gray{background:var(--bg)!important;border-color:var(--bd)!important;color:var(--fg)!important}
+.badge-blue::before,.badge-green::before,.badge-amber::before,.badge-red::before,.badge-gray::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--d);flex-shrink:0}
+.badge-blue{--bg:#eff6ff;--bd:#93c5fd;--fg:#1e40af;--d:#0972d3}
+.badge-green{--bg:#ecfdf5;--bd:#6ee7b7;--fg:#065f46;--d:#10b981}
+.badge-amber{--bg:#fffbeb;--bd:#fcd34d;--fg:#78350f;--d:#f59e0b}
+.badge-red{--bg:#fff1f2;--bd:#fda4af;--fg:#9f1239;--d:#f43f5e}
+.badge-gray{--bg:#f1f5f9;--bd:#cbd5e1;--fg:#334155;--d:#94a3b8}
+/* số đếm trên sidebar: pill đặc rose-600 */
+aside nav a .rounded-full{background:#e11d48!important;color:#fff!important;font-size:12px!important;font-weight:800;min-width:24px;padding:2px 8px!important;line-height:16px}
+/* cảnh báo: thẻ nền nhạt + vạch trái 4px + icon 20px + tiêu đề đậm */
+.note{display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid #64748b;border-radius:12px;padding:12px 16px;font-size:14px;line-height:20px;color:#1e293b}
+.note>.material-symbols-outlined{font-size:20px!important;line-height:20px;color:#64748b;flex-shrink:0;margin-top:0}
+.note .nt{font-weight:800;color:#0f172a}
+.note.rose{background:#fff1f2;border-color:#fda4af;border-left-color:#e11d48}.note.rose>.material-symbols-outlined,.note.rose .nt{color:#be123c}
+.note.amber{background:#fffbeb;border-color:#fcd34d;border-left-color:#f59e0b}.note.amber>.material-symbols-outlined,.note.amber .nt{color:#b45309}
+.note.blue{background:#eff6ff;border-color:#93c5fd;border-left-color:#0972d3}.note.blue>.material-symbols-outlined,.note.blue .nt{color:#1d4ed8}
+/* inputs: h-10, rounded-xl */
+.input,input.input,select.input,textarea.input{width:100%;font-size:14px!important;line-height:20px!important;padding:9px 14px!important;border:1px solid #dbe2ea;border-radius:12px!important;background-color:#fff;color:#16191f;box-shadow:none;outline:none}
+input.input,select.input{height:40px}
+textarea.input{height:auto;min-height:40px}
+select.input{padding-right:36px!important}
+.input::placeholder{color:#94a3b8}
+.input:hover:not(:focus){border-color:#cbd5e1}
+.input:focus,input.input:focus,select.input:focus,textarea.input:focus{background-color:#fff;border-color:#0972d3;box-shadow:0 0 0 3px rgba(9,114,211,.15)}
+.lbl{display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:6px;line-height:16px}
+.hint{font-size:12px;color:#64748b;margin-top:6px;line-height:16px}
+input[type=checkbox]{accent-color:#0972d3;width:16px;height:16px;border-radius:4px}
+/* tabs: pill, scroll ngang */
+#tabs,[role=tablist]{overflow-x:auto;gap:2px}
+.tab{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px!important;margin:0!important;border:1.5px solid #cbd5e1!important;border-radius:999px;font-size:13px;font-weight:700;color:#334155;background:#fff;flex-shrink:0;white-space:nowrap;cursor:pointer}
+#tabs,[role=tablist]{gap:8px;padding:2px}
+.tab:hover{background:#f8fafc;border-color:#94a3b8!important;color:#0f172a}
+.tab.active{background:#232f3e;border-color:#232f3e!important;color:#fff}
+/* tables: header dính, 14px, hàng ~56px */
+table.border-collapse{border-collapse:separate!important;border-spacing:0}
+.th{position:sticky;top:64px;z-index:5;height:44px;padding:0 16px;text-align:left;background:#f8fafc;color:#64748b;font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;border-bottom:1px solid #e2e8f0;white-space:nowrap}
+.td{height:56px;padding:8px 16px;font-size:14px;line-height:20px;border-bottom:1px solid #eef1f4;vertical-align:middle}
+tr:last-child>.td{border-bottom:0}
+tbody tr{transition:background .12s}tbody tr:hover{background:#f8fafc}
+/* switch */
+.sw{position:relative;width:40px;height:22px;border-radius:999px;background:#cbd5e1;flex-shrink:0;cursor:pointer;transition:background .15s;border:0;padding:0}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+.sw::before{content:"";position:absolute;inset:-11px -4px}
+.sw[aria-checked=true]{background:#0972d3}.sw[aria-checked=true]::after{left:20px}
+.sw:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+.sw[disabled]{opacity:.6;cursor:not-allowed}
+/* progress bar (xanh = bình thường, vàng = gần đầy, hồng = đầy, xám = đã kết thúc) */
+.bar{height:8px;border-radius:999px;background:#dbe3ec;overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px;background:#0972d3}
+.bar.amber>i{background:#f59e0b}.bar.full>i,.bar.rose>i{background:#e11d48}.bar.grey>i{background:#94a3b8}
+.text-secondary{color:#0972d3}
+img.rounded-full{border:2px solid #fff;box-shadow:0 0 0 1px #e2e8f0}
+/* chip thông tin */
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;font-size:12px;font-weight:600;color:#334155}
+.chip .material-symbols-outlined{font-size:16px;color:#64748b}
+main>style+*{margin-top:0!important}
+
+[hidden]{display:none!important}
+/* focus */
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid #0972d3;outline-offset:2px}
+aside a:focus-visible,aside button:focus-visible{outline-color:#fff;outline-offset:-2px}
+.input:focus-visible,.rte:focus-visible{outline:none}
+.card .border-t{border-color:#eef1f4!important}
+/* avatar chữ cái */
+.av{width:36px;height:36px;border-radius:999px;background:#0f1b2a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;line-height:1;letter-spacing:.01em}
+.av-32{width:32px;height:32px;font-size:11px}.av-40{width:40px;height:40px}.av-48{width:48px;height:48px;font-size:14px}
+/* số căn phải, chữ số đều nhau */
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.th.num{text-align:right}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;font-size:12.5px;letter-spacing:.01em}
+.sub{font-size:12px;line-height:16px;color:#64748b;margin-top:2px}
+.fb{display:inline-flex;align-items:center;gap:4px;color:#0972d3;font-weight:700;font-size:13px;white-space:nowrap}.fb:hover{text-decoration:underline}.fb .material-symbols-outlined{font-size:16px}
+.trunc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+/* trạng thái rỗng */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:40px 24px;text-align:center;color:#64748b;font-size:14px}
+.empty .material-symbols-outlined{font-size:36px;color:#94a3b8}
+.empty b{color:#0f172a;font-size:15px;font-weight:800}
+/* menu thao tác (vị trí fixed, không bị cắt bởi card) */
+.pop{position:fixed;z-index:80;min-width:208px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(15,27,42,.16);padding:6px;display:none}
+.pop.on{display:block}
+.pop button,.pop a{display:flex;align-items:center;gap:10px;width:100%;height:40px;padding:0 10px;border-radius:8px;font-size:13px;font-weight:600;color:#1e293b;text-align:left;white-space:nowrap}
+.pop button:hover,.pop a:hover{background:#f1f5f9}
+.pop .material-symbols-outlined{font-size:18px;color:#64748b}
+.pop .dg,.pop .dg .material-symbols-outlined{color:#be123c}
+.pop hr{border:0;border-top:1px solid #eef1f4;margin:4px 0}
+.ibtn2{width:36px;height:34px;border-radius:12px;border:1.5px solid #cbd5e1;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#334155;flex-shrink:0;cursor:pointer}
+.ibtn2:hover{background:#f8fafc;border-color:#94a3b8}.ibtn2 .material-symbols-outlined{font-size:18px}
+/* thanh lưu / thanh chọn nhiều */
+.dock{position:sticky;bottom:16px;z-index:30;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px 10px 16px;background:#0f1b2a;color:#fff;border-radius:16px;box-shadow:0 12px 32px rgba(15,27,42,.28);font-size:14px;font-weight:700}
+.dock .btn{height:36px}
+.dock .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)!important;color:#fff}.dock .btn-ghost:hover{background:rgba(255,255,255,.16)}
+.dock[hidden]{display:none}
+#toast{position:fixed;right:24px;bottom:24px;background:#0f1b2a;color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:90;max-width:calc(100vw - 32px)}#toast.on{opacity:1;transform:none}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 24px;border-top:1px solid #eef1f4;font-size:14px;color:#64748b}
+.pg{min-width:34px;height:34px;padding:0 10px;border-radius:12px;border:1.5px solid #cbd5e1;background:#fff;color:#0f172a;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.pg:hover:not(:disabled){background:#f8fafc;border-color:#94a3b8}
+.pg.on{background:#ebf5fb;border-color:#0972d3;color:#0972d3}
+.pg:disabled{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0;cursor:not-allowed}
+.pg .material-symbols-outlined{font-size:18px}
+.kpi{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.kpi .ic{width:40px;height:40px;border-radius:12px;background:#f1f5f9;color:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kpi .v{font-size:28px;line-height:36px;font-weight:800;color:#232f3e;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:13px;color:#64748b;margin-top:2px;line-height:18px}
+/* thanh trên cùng + drawer: hiện khi ≤1023px */
+#admBar,#admScrim{display:none}
+.tbl-wrap{overflow:visible}
+@media (min-width:1024px){aside{overflow-y:auto}}
+@media (max-width:1279px){
+ .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .tbl-wrap>table{min-width:var(--mw,720px)}
+ .th{position:static}
+}
+@media (max-width:1023px){
+ html,body{overflow-x:hidden}
+ body{display:block!important;height:auto!important;min-height:100vh;overflow:visible!important;padding-top:56px}
+ html.nav-open body{overflow:hidden!important}
+ body>div.flex-1{display:block!important;height:auto!important;overflow:visible!important}
+ #admBar{display:flex;position:fixed;top:0;left:0;right:0;height:56px;z-index:40;align-items:center;gap:12px;padding:0 8px 0 16px;background:#0f1b2a;color:#fff}
+ #admBar .adm-logo{width:32px;height:32px;flex-shrink:0;border-radius:10px!important}
+ #admBar .adm-logo .material-symbols-outlined{font-size:20px!important}
+ #admBar .adm-title{flex:1;min-width:0;font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #admMenu{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+ #admMenu .material-symbols-outlined{font-size:24px}
+ aside{position:fixed!important;top:0;left:0;bottom:0;width:288px!important;z-index:60;transform:translateX(-100%);transition:transform .2s,visibility .2s;overflow-y:auto;visibility:hidden}
+ html.nav-open aside{transform:none;visibility:visible}
+ #admScrim{display:block;position:fixed;inset:0;z-index:50;background:rgba(15,27,42,.55);opacity:0;pointer-events:none;transition:opacity .2s}
+ html.nav-open #admScrim{opacity:1;pointer-events:auto}
+ header{position:static!important;height:auto!important;min-height:64px;padding:12px 24px!important;flex-wrap:wrap;gap:10px;backdrop-filter:none}
+ header:not(.keep-h1) h1{display:none}
+ header:not(.keep-h1):not(:has(.btn)){display:none}
+ header>div:last-child:not(:first-child){display:flex;gap:8px;flex-wrap:wrap}
+ main{padding:24px!important}
+ .pager{padding:12px 16px}
+}
+@media (max-width:767px){
+ header{padding:12px 16px!important}
+ header>div:last-child:not(:first-child){width:100%}
+ header>div:last-child:not(:first-child) .btn{flex:1 1 0;padding:0 10px}
+ main{padding:16px!important}
+ main.space-y-6>*+*{margin-top:16px!important}
+ main .grid:not(.keep-cols){grid-template-columns:minmax(0,1fr)!important}
+ main .gap-6{gap:16px}
+ .card .px-6{padding-left:16px!important;padding-right:16px!important}
+ .card.p-6{padding:16px}
+ .btn,.btn-sm{height:44px}
+ input.input,select.input{height:44px}
+ .tab{height:44px}
+ .tbl-wrap .td{white-space:nowrap}
+ article.card.p-5{padding:12px 14px}
+ article.card.p-5 .w-10.h-10{display:none}
+ table.stack{min-width:0!important;display:block}
+ table.stack thead{display:none}
+ table.stack tbody{display:block}
+ table.stack tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:14px 16px;border-bottom:1px solid #eef1f4}
+ table.stack tr:last-child{border-bottom:0}
+ table.stack td{display:block;height:auto;padding:0!important;border:0!important;width:auto!important;white-space:normal!important}
+ .toolbar-m{flex-direction:column;align-items:stretch!important}
+ .toolbar-m>*{width:100%!important}
+ #toast{left:16px;right:16px;bottom:16px}
+ .dock{bottom:12px}
+ .pager{flex-direction:column;align-items:stretch;text-align:center}
+ .pager>div{justify-content:center}
+}
+</style>
+</head>
+<body class="bg-surface font-sans text-ink flex h-screen overflow-hidden">
+
+<!-- SIDEBAR -->
+<aside class="w-64 bg-tertiary text-white flex flex-col justify-between flex-shrink-0 select-none" aria-label="Điều hướng quản trị">
+<div>
+<div class="h-16 px-5 flex items-center gap-3 border-b border-white/10">
+<div class="relative w-10 h-10 rounded-lg bg-tertiary border border-primary flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-[#509cff] text-[22px]">cloud</span><img alt="FCAJ" class="absolute inset-0 h-full w-full object-contain p-1.5 bg-tertiary" onerror="this.remove()" src="https://lh3.googleusercontent.com/aida/ALJJyrCsHVf_6xHvbc6KxDszQRu-ELiUZH48ZLYBFWwLDED6pTulYfxZclhrK5p1lHD0AUvtBWeM1Ktg-cKEjxVfCkMS3KOMPBk9y2ZjRJKiTU5obpX8A08b_QM_V0BvT_R7IL-DJluwnK6jtPsQZxHrU7cir4CSm1esVRv-qNQmaIrDnCVXG5dbljNzCMG6IGGRnB5kIRDJqmhnZBlqIrhD_nqX4fi8_Wr8EaHtxZP7kg"></div>
+<div class="leading-tight">
+<div class="flex items-center gap-2"><span class="font-bold text-base">FCAJ</span><span class="px-1.5 py-0.5 rounded bg-white/10 text-[11px] font-semibold uppercase tracking-wide text-[#a7c8ff]">Admin</span></div>
+<span class="text-xs text-[#bbc7db]">Đà Nẵng Chapter</span>
+</div>
+</div>
+<nav class="p-3 space-y-1">
+<a href="../06-quan-tri-duyet-cfp/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">dashboard</span>Tổng quan</span></a>
+<a href="../10-admin-quan-ly-su-kien/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">calendar_month</span>Sự kiện</span></a>
+<a href="../11-admin-duyet-dien-gia/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">rate_review</span>Duyệt diễn giả</span><span class="min-w-[22px] text-center px-1.5 py-0.5 rounded-full bg-[#ba1a1a] text-white text-[11px] font-bold">9</span></a>
+<a href="../12-admin-khach-tham-du/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">groups</span>Khách tham dự</span></a>
+<a href="../13-admin-karma-diem/code.html" aria-current="page" class="flex items-center justify-between px-3 py-2.5 rounded bg-white/10 text-white text-sm font-semibold border-l-[3px] border-secondary"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">emoji_events</span>Điểm đóng góp</span></a>
+<a href="../14-admin-cai-dat/code.html" class="flex items-center justify-between px-3 py-2.5 rounded text-[#d5dbdb] hover:bg-white/5 hover:text-white text-sm font-semibold border-l-[3px] border-transparent"><span class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">settings</span>Cài đặt</span></a>
+</nav>
+</div>
+<div class="p-4 border-t border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary border border-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">TN</div>
+<div class="min-w-0 leading-tight"><div class="text-sm font-semibold truncate">Tuấn Nguyễn</div><div class="text-xs text-[#bbc7db] truncate">Chủ nhiệm</div></div>
+</div>
+<button class="p-1.5 rounded text-[#bbc7db] hover:text-white hover:bg-white/10" title="Đăng xuất" aria-label="Đăng xuất" type="button"><span class="material-symbols-outlined text-[20px]">logout</span></button>
+</div>
+</aside>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col h-screen overflow-y-auto">
+<header class="h-16 px-8 bg-white border-b border-line flex items-center justify-between flex-shrink-0 sticky top-0 z-20">
+<div class="flex items-center gap-3 min-w-0"><h1 class="text-xl font-bold text-primary">Điểm đóng góp</h1><span class="badge badge-amber" id="dirtyB" hidden>Chưa lưu</span></div>
+<div class="flex items-center gap-3">
+<button class="btn btn-ghost" type="button" id="exp"><span class="material-symbols-outlined">download</span>Xuất CSV</button>
+<button class="btn btn-primary" type="button" id="saveTop"><span class="material-symbols-outlined">save</span>Lưu thay đổi</button>
+</div>
+</header>
+
+<main class="flex-1 p-8 space-y-6 max-w-[1280px] w-full mx-auto">
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-4 keep-cols" aria-label="Thống kê điểm">
+<article class="card p-5 kpi"><div class="min-w-0"><div class="v">14.8k</div><div class="l">Điểm đã cấp</div><div class="sub">+1.240 trong 7 ngày</div></div><div class="ic"><span class="material-symbols-outlined">emoji_events</span></div></article>
+<article class="card p-5 kpi"><div class="min-w-0"><div class="v">312</div><div class="l">Thành viên có điểm</div><div class="sub">+18 trong tháng 11</div></div><div class="ic"><span class="material-symbols-outlined">groups</span></div></article>
+<article class="card p-5 kpi"><div class="min-w-0"><div class="v" id="kAdj">7</div><div class="l">Điều chỉnh thủ công</div><div class="sub">trong tháng 11</div></div><div class="ic"><span class="material-symbols-outlined">tune</span></div></article>
+<article class="card p-5 kpi"><div class="min-w-0"><div class="v"><span id="kOn">6</span><span class="text-base text-slate-500 font-bold">/7</span></div><div class="l">Quy tắc đang bật</div><div class="sub">áp dụng cho sự kiện mới</div></div><div class="ic"><span class="material-symbols-outlined">rule</span></div></article>
+</section>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<div class="lg:col-span-8 space-y-6 min-w-0">
+<section class="card overflow-hidden" aria-labelledby="hRules">
+<div class="flex items-center justify-between gap-3 px-6 py-4 border-b border-line"><h2 id="hRules" class="text-base font-bold text-primary">Quy tắc tính điểm</h2><span class="text-sm text-muted">Áp dụng cho sự kiện mới</span></div>
+<div class="tbl-wrap" style="--mw:620px"><table class="w-full border-collapse" style="table-layout:fixed"><colgroup><col><col style="width:104px"><col style="width:176px"><col style="width:72px"></colgroup>
+<thead><tr><th class="th">Hoạt động</th><th class="th num">Điểm</th><th class="th">Sửa lần cuối</th><th class="th num">Bật</th></tr></thead><tbody id="rules"></tbody></table></div>
+</section>
+
+<section class="card overflow-hidden" aria-labelledby="hHist">
+<div class="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-line"><h2 id="hHist" class="text-base font-bold text-primary">Lịch sử điểm gần đây</h2>
+<div class="flex items-center gap-3"><select id="hf" class="input !w-auto" aria-label="Lọc lịch sử"><option value="">Tất cả</option><option value="auto">Tự động</option><option value="man">Thủ công</option></select><button type="button" class="text-sm font-semibold text-secondary hover:underline" id="seeAll">Xem tất cả</button></div></div>
+<div class="tbl-wrap" style="--mw:700px"><table class="w-full border-collapse stack" style="table-layout:fixed"><colgroup><col style="width:128px"><col style="width:23%"><col><col style="width:72px"><col style="width:128px"></colgroup>
+<thead><tr><th class="th">Thời gian</th><th class="th">Thành viên</th><th class="th">Lý do</th><th class="th num">Điểm</th><th class="th">Thực hiện bởi</th></tr></thead><tbody id="hist"></tbody></table></div>
+<div class="empty" id="hEmpty" hidden><span class="material-symbols-outlined">history</span><b>Chưa có lịch sử phù hợp</b></div>
+</section>
+</div>
+
+<div class="lg:col-span-4 space-y-6 min-w-0">
+<section class="card" aria-labelledby="hTop">
+<div class="flex items-center justify-between gap-3 px-6 py-4 border-b border-line"><h2 id="hTop" class="text-base font-bold text-primary">Top đóng góp</h2><a href="../05-bang-xep-hang-leaderboard/code.html" class="text-sm font-semibold text-secondary hover:underline whitespace-nowrap">Bảng xếp hạng</a></div>
+<ol class="divide-y divide-line" id="top"></ol>
+</section>
+<section class="card" aria-labelledby="hAdj">
+<div class="px-6 py-4 border-b border-line"><h2 id="hAdj" class="text-base font-bold text-primary">Điều chỉnh điểm thủ công</h2><p class="sub !mt-0.5">Mọi điều chỉnh được ghi vào lịch sử cùng tên người thực hiện.</p></div>
+<form class="p-6 space-y-4" id="adj" novalidate>
+<div><label class="lbl" for="m">Thành viên <span class="text-[#be123c]">*</span></label><input id="m" class="input" list="mem" placeholder="Tìm theo tên hoặc Facebook" autocomplete="off" type="text"><datalist id="mem"></datalist><div class="hint" id="mH">Chọn từ danh sách thành viên.</div></div>
+<div class="grid grid-cols-2 gap-4 keep-cols"><div><label class="lbl" for="t">Loại</label><select id="t" class="input"><option value="1">Cộng điểm</option><option value="-1">Trừ điểm</option></select></div>
+<div><label class="lbl" for="p">Số điểm <span class="text-[#be123c]">*</span></label><input id="p" class="input" type="number" min="1" max="500" placeholder="0"></div></div>
+<div><label class="lbl" for="r">Lý do <span class="text-[#be123c]">*</span></label><textarea id="r" rows="3" maxlength="140" class="input" placeholder="Ví dụ: Bù điểm cho phiên Lab ngày 12/11"></textarea><div class="hint flex justify-between gap-3"><span id="rH">Tối thiểu 10 ký tự, hiển thị cho thành viên.</span><span id="rC">0/140</span></div></div>
+<div class="note blue" id="pv" hidden><span class="material-symbols-outlined">info</span><div class="min-w-0"><div class="nt" id="pvT"></div></div></div>
+<div class="flex justify-end"><button class="btn btn-primary" type="submit" id="ap" disabled>Áp dụng</button></div>
+</form></section>
+</div>
+</div>
+
+<div class="dock" id="dock" hidden role="region" aria-label="Lưu thay đổi"><span class="material-symbols-outlined">edit_note</span><span id="dN">Có thay đổi chưa lưu</span><span class="flex-1"></span><button class="btn btn-ghost btn-sm" type="button" id="undo">Hoàn tác</button><button class="btn btn-primary btn-sm" type="button" id="saveDock">Lưu thay đổi</button></div>
+</main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<style>
+.pts{width:80px;margin-left:auto;text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:#047857}.neg{color:#be123c}
+.rk{width:24px;height:24px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.rk.r1{background:#fef3c7;color:#92400e}.rk.r2{background:#e2e8f0;color:#334155}.rk.r3{background:#fde7d3;color:#9a3412}
+@media (max-width:767px){
+ #hist tr{grid-template-columns:minmax(0,1fr) auto}
+ #hist td:nth-child(1){grid-column:1/-1;order:5;font-size:12px;color:#64748b}
+ #hist td:nth-child(2){order:1}
+ #hist td:nth-child(3){grid-column:1/-1;order:3}
+ #hist td:nth-child(4){order:2;justify-self:end}
+ #hist td:nth-child(5){grid-column:1/-1;order:4;font-size:12px;color:#64748b}
+ #hist td:nth-child(1)::after{content:""}
+}
+</style>
+<script>
+const $=id=>document.getElementById(id);
+const R0=[["Đăng ký sự kiện","Khi đăng ký thành công vé · 1 lần/sự kiện",10,1,"02/11/26","Tuấn Nguyễn"],["Check-in tham dự","Quét QR tại sự kiện · 1 lần/sự kiện",20,1,"02/11/26","Tuấn Nguyễn"],["Đăng ký làm diễn giả","Mỗi đăng ký hợp lệ",30,1,"05/11/26","Lê Hoài Phương"],["Diễn giả được duyệt","Khi đăng ký được duyệt",100,1,"05/11/26","Lê Hoài Phương"],["Chia sẻ slides / blog","Sau sự kiện, đã được duyệt",25,1,"10/11/26","Nguyễn Bảo Châu"],["Giới thiệu bạn bè","Bạn bè đăng ký lần đầu · đang tạm tắt",15,0,"14/11/26","Tuấn Nguyễn"],["Đánh giá sự kiện","Hoàn thành khảo sát",5,1,"02/11/26","Tuấn Nguyễn"]];
+let R=R0.map(r=>r.slice());
+const H=[["18/11/26 09:10","Đặng Văn Thành","Check-in tham dự",20,"Tự động"],["18/11/26 09:06","Lê Mai Anh","Check-in tham dự",20,"Tự động"],["16/11/26 09:42","Lê Mai Anh","Diễn giả được duyệt",100,"Tự động"],["15/11/26 17:20","Phạm Gia Huy","Đăng ký làm diễn giả",30,"Tự động"],["15/11/26 10:05","Trần Quốc Bảo","Điều chỉnh thủ công: bù điểm Lab",50,"Tuấn Nguyễn"],["14/11/26 16:48","Hoàng Thu Trang","Điều chỉnh thủ công: đăng ký trùng",-10,"Tuấn Nguyễn"],["12/11/26 09:12","Đặng Văn Thành","Check-in tham dự",20,"Tự động"],["05/11/26 15:03","Võ Minh Khôi","Đánh giá sự kiện",5,"Tự động"]];
+const TOP=[["Lê Mai Anh","AWS Lab",1240],["Đặng Văn Thành","Enouvo",1085],["Trần Quốc Bảo","Axon",960],["Võ Minh Khôi","Danang IT Park",845],["Nguyễn Hoàng Long","FPT Software",720]];
+const fmt=n=>n.toLocaleString('en-US');
+const ini=n=>n.split(' ').slice(-2).map(w=>w[0]).join('');
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+function rules(){$('rules').innerHTML=R.map((r,i)=>`<tr class="${r[3]?'':'bg-[#f8fafc]'}"><td class="td" style="padding-top:10px;padding-bottom:10px"><div class="font-bold ${r[3]?'text-primary':'text-muted'}">${r[0]}</div><div class="sub">${r[1]}</div></td><td class="td"><input class="input pts" type="number" min="0" max="500" value="${r[2]}" data-p="${i}" aria-label="Điểm cho ${r[0]}"></td><td class="td"><div class="text-sm">${r[4]}</div><div class="sub !mt-0">${r[5]}</div></td><td class="td"><div class="flex justify-end"><button class="sw" role="switch" aria-checked="${!!r[3]}" data-s="${i}" aria-label="Bật quy tắc ${r[0]}" type="button"></button></div></td></tr>`).join('');
+ $('kOn').textContent=R.filter(r=>r[3]).length}
+function dirty(){const d=JSON.stringify(R.map(r=>[r[2],r[3]]))!==JSON.stringify(R0.map(r=>[r[2],r[3]]));$('dirtyB').hidden=!d;$('dock').hidden=!d;return d}
+$('rules').addEventListener('input',e=>{const i=e.target.dataset.p;if(i==null)return;R[i][2]=Math.max(0,Math.min(500,+e.target.value||0));dirty()});
+$('rules').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;const i=+b.dataset.s;R[i][3]=R[i][3]?0:1;rules();dirty()});
+function save(){if(!dirty()){toast('Không có thay đổi để lưu');return}R.forEach((r,i)=>{const o=R0[i];if(o[2]!==r[2]||o[3]!==r[3]){r[4]='18/11/26';r[5]='Tuấn Nguyễn'}});R0.length=0;R.forEach(r=>R0.push(r.slice()));rules();dirty();toast('Đã lưu quy tắc tính điểm')}
+$('saveTop').onclick=save;$('saveDock').onclick=save;
+$('undo').onclick=()=>{R=R0.map(r=>r.slice());rules();dirty();toast('Đã hoàn tác thay đổi')};
+function hist(){const f=$('hf').value,a=H.filter(h=>!f||(f==='auto'?h[4]==='Tự động':h[4]!=='Tự động'));
+ $('hist').innerHTML=a.map(h=>`<tr class="hover:bg-surface/60"><td class="td text-muted whitespace-nowrap">${h[0]}</td><td class="td"><span class="font-bold text-primary trunc block">${h[1]}</span></td><td class="td"><span class="trunc block">${h[2]}</span></td><td class="td num font-bold ${h[3]>0?'pos':'neg'}">${h[3]>0?'+':'−'}${Math.abs(h[3])}</td><td class="td text-muted whitespace-nowrap">${h[4]}</td></tr>`).join('');
+ $('hEmpty').hidden=a.length>0}
+$('hf').onchange=hist;$('seeAll').onclick=()=>toast('Đã tải toàn bộ lịch sử điểm (312 thành viên)');$('exp').onclick=()=>toast('Đã xuất lịch sử điểm (CSV)');
+function top(){$('top').innerHTML=[...TOP].sort((a,b)=>b[2]-a[2]).map((t,i)=>`<li class="px-6 py-3 flex items-center gap-3"><span class="rk ${i<3?'r'+(i+1):''}">${i+1}</span><span class="av av-36">${ini(t[0])}</span><div class="min-w-0 flex-1"><div class="text-sm font-bold text-primary trunc">${t[0]}</div><div class="sub !mt-0 trunc">${t[1]}</div></div><span class="font-bold text-primary tabular-nums">${fmt(t[2])}</span></li>`).join('')}
+$('mem').innerHTML=TOP.map(t=>`<option value="${t[0]}">`).join('')+['Phạm Gia Huy','Hoàng Thu Trang','Lê Mai Anh'].map(n=>`<option value="${n}">`).join('');
+// form
+function chk(show){const m=$('m').value.trim(),p=+$('p').value,r=$('r').value.trim(),t=+$('t').value;
+ const e1=!m,e2=!(p>0&&p<=500),e3=r.length<10;
+ if(show){$('mH').textContent=e1?'Vui lòng chọn thành viên.':'Chọn từ danh sách thành viên.';$('mH').style.color=e1?'#be123c':'';$('p').style.borderColor=e2?'#fda4af':'';$('rH').style.color=e3?'#be123c':'';$('rH').textContent=e3?'Lý do cần tối thiểu 10 ký tự.':'Hiển thị cho thành viên.'}
+ $('ap').disabled=e1||e2||e3;$('rC').textContent=$('r').value.length+'/140';
+ const tp=TOP.find(x=>x[0]===m);$('pv').hidden=!(tp&&p>0);if(tp&&p>0){$('pvT').textContent=m+': '+fmt(tp[2])+' → '+fmt(Math.max(0,tp[2]+t*p))+' điểm'}
+ return !(e1||e2||e3)}
+['m','t','p','r'].forEach(x=>$(x).addEventListener('input',()=>chk(false)));
+$('adj').addEventListener('submit',e=>{e.preventDefault();if(!chk(true))return;const m=$('m').value.trim(),p=+$('p').value*+$('t').value,r=$('r').value.trim();
+ const d=new Date(),tm='18/11/26 09:'+String(14+(d.getSeconds()%40)).padStart(2,'0');H.unshift([tm,m,'Điều chỉnh thủ công: '+r,p,'Tuấn Nguyễn']);
+ const tp=TOP.find(x=>x[0]===m);if(tp)tp[2]=Math.max(0,tp[2]+p);$('kAdj').textContent=+$('kAdj').textContent+1;
+ hist();top();$('adj').reset();chk(false);toast((p>0?'Đã cộng ':'Đã trừ ')+Math.abs(p)+' điểm cho '+m)});
+$('ap').addEventListener('pointerdown',()=>chk(true));
+rules();hist();top();chk(false);
+</script>
+<script id="adm-mobile">
+(function(){
+var a=document.querySelector('aside');if(!a)return;
+var root=document.documentElement,h1=document.querySelector('header h1');
+var title=document.body.getAttribute('data-title')||(h1?h1.textContent.trim():'Admin');
+var bar=document.createElement('div');bar.id='admBar';
+bar.innerHTML='<div class="adm-logo"></div><div class="adm-title"></div><button type="button" id="admMenu" aria-label="Mở menu" aria-expanded="false"><span class="material-symbols-outlined">menu</span></button>';
+bar.querySelector('.adm-title').textContent=title;
+var lg=a.querySelector('.relative');if(lg){var c=lg.cloneNode(true);c.className=lg.className+' adm-logo';bar.replaceChild(c,bar.querySelector('.adm-logo'))}
+var sc=document.createElement('div');sc.id='admScrim';
+document.body.insertBefore(bar,document.body.firstChild);document.body.appendChild(sc);
+var b=bar.querySelector('#admMenu'),mq=matchMedia('(max-width:1023px)');
+function set(o){root.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o);b.firstChild.textContent=o?'close':'menu';b.setAttribute('aria-label',o?'Đóng menu':'Mở menu');if('inert' in a)a.inert=mq.matches&&!o}
+b.addEventListener('click',function(){set(!root.classList.contains('nav-open'))});
+sc.addEventListener('click',function(){set(false)});
+a.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&root.classList.contains('nav-open')){set(false);b.focus()}});
+(mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){set(false)});
+set(false);
+})();
+</script>
+</body></html>
